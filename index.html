@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tatviya - Digital Growth & Social Media Services. YouTube Monetization, Channel Trading, Digital Marketing & Social Media Education.">
+    <title>Tatviya - Digital Growth & Social Media Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#home" aria-label="Tatviya home">
+                    <img src="static/logo.webp" alt="Tatviya" class="logo-image">
+                    <span class="logo-text">Tatviya</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section id="home" class="hero" aria-label="Main banner"></section>
+
+    <!-- Hero Summary Section -->
+    <section class="hero-summary">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Build Your Profitable Online Presence</h1>
+                <p>Transform your digital journey with expert guidance in YouTube monetization, channel trading, and digital marketing services tailored for creators and businesses.</p>
+                <button class="cta-btn" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})">Get Started Today</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>400+</h3>
+                    <p>Channel Deals In 4 Years</p>
+                </div>
+                <div class="stat">
+                    <h3>100+</h3>
+                    <p>Online Deals With Trust</p>
+                </div>
+                <div class="stat">
+                    <h3>3.7</h3>
+                    <p>Million Subscribers Bought In Single Channel</p>
+                </div>
+                <div class="stat">
+                    <h3>0</h3>
+                    <p>% AdSense Tax Deduction in India</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-graph" aria-hidden="true">
+            <div class="graph-bars">
+                <span class="bar" style="--h: 24%; --d: 0s;"></span>
+                <span class="bar" style="--h: 34%; --d: 0.1s;"></span>
+                <span class="bar" style="--h: 46%; --d: 0.2s;"></span>
+                <span class="bar" style="--h: 58%; --d: 0.3s;"></span>
+                <span class="bar" style="--h: 66%; --d: 0.4s;"></span>
+                <span class="bar" style="--h: 78%; --d: 0.5s;"></span>
+            </div>
+            <svg class="spike-chart" viewBox="0 0 320 150" preserveAspectRatio="none">
+                <polyline class="spike-line" points="0,132 42,118 84,112 126,96 168,82 210,72 252,45 294,20"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p class="section-subtitle">Comprehensive solutions for your digital growth needs</p>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>YouTube Monetization</h3>
+                    <p>Transform your YouTube channel into a revenue-generating asset. We guide creators through the journey to achieve 1,000 subscribers and 4,000 watch hours - the gateway to YouTube Partner Program monetization.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Subscriber growth strategies</li>
+                        <li><i class="fas fa-check"></i> Watch hour acceleration</li>
+                        <li><i class="fas fa-check"></i> Content optimization</li>
+                        <li><i class="fas fa-check"></i> Monetization setup guidance</li>
+                    </ul>
+                    <a href="#contact" class="learn-more">Contact US →</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>YouTube Channel Trading</h3>
+                    <p>Buy and sell monetized YouTube channels with complete transparency and security. We facilitate trading of channels ranging from 100K to 10M+ subscribers, handling all verification and transfer processes.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Channel verification</li>
+                        <li><i class="fas fa-check"></i> Complete due diligence</li>
+                        <li><i class="fas fa-check"></i> Secure transactions</li>
+                        <li><i class="fas fa-check"></i> Full account transfer support</li>
+                    </ul>
+                    <a href="#contact" class="learn-more">Contact Us →</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Digital Marketing Services</h3>
+                    <p>Boost your business with our comprehensive digital marketing expertise. From SEO to paid advertising across Facebook, Instagram, and YouTube - we deliver measurable results.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> SEO optimization</li>
+                        <li><i class="fas fa-check"></i> Facebook Ads management</li>
+                        <li><i class="fas fa-check"></i> Instagram Ads campaigns</li>
+                        <li><i class="fas fa-check"></i> YouTube Ads strategy</li>
+                    </ul>
+                    <a href="#contact" class="learn-more">Contact Us →</a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Passive Income Education</h3>
+                    <p>Learn the strategies and techniques to build sustainable passive income streams through social media and online opportunities. Our experts share proven methodologies and real-world insights.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Comprehensive training programs</li>
+                        <li><i class="fas fa-check"></i> Proven income strategies</li>
+                        <li><i class="fas fa-check"></i> One-on-one mentoring</li>
+                        <li><i class="fas fa-check"></i> Ongoing support & updates</li>
+                    </ul>
+                    <a href="#contact" class="learn-more">Contact Us →</a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website Design & Development</h3>
+                    <p>Build a professional online presence with modern, conversion-focused websites tailored for small, medium, and large businesses to grow faster in the digital market.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Business website design</li>
+                        <li><i class="fas fa-check"></i> Custom development solutions</li>
+                        <li><i class="fas fa-check"></i> Mobile responsive layouts</li>
+                        <li><i class="fas fa-check"></i> Performance and SEO-ready setup</li>
+                    </ul>
+                    <a href="#contact" class="learn-more">Contact Us →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose Tatviya?</h2>
+                    <p>We are a specialized digital growth and social media services company dedicated to helping individuals, creators, and businesses achieve their online potential. With years of expertise in the digital space, we've developed proven strategies that deliver real results.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <h4>Expert Team</h4>
+                            <p>Industry veterans with hands-on experience in YouTube growth, channel operations, and digital marketing.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Secure & Transparent</h4>
+                            <p>All transactions and services are conducted with complete transparency and industry-standard security protocols.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Dedicated Support</h4>
+                            <p>Our team provides personalized guidance and ongoing support throughout your digital growth journey.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <h4>Proven Results</h4>
+                            <p>Track record of helping 500+ creators achieve monetization and facilitating 100K+ channel subscriber transfers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="placeholder-image">
+                        <i class="fas fa-briefcase"></i>
+                        <p>Professional Digital Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <p class="section-subtitle">Real success stories from creators and businesses we've helped</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Tatviya helped me achieve YouTube monetization in just 6 months. Their strategy was clear, actionable, and the support was exceptional."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RJ</div>
+                        <div>
+                            <h4>Rajesh Jain</h4>
+                            <p>YouTube Creator</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The digital marketing services from Tatviya increased our online sales by 150%. Their Facebook and Instagram ad campaigns are incredibly targeted and effective."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div>
+                            <h4>Aisha Singh</h4>
+                            <p>E-commerce Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"I purchased a monetized YouTube channel through their platform. The entire process was secure, transparent, and professional. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PK</div>
+                        <div>
+                            <h4>Priya Kapoor</h4>
+                            <p>Channel Investor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2>Our Expert Team</h2>
+            <p class="section-subtitle">Meet the professionals dedicated to your digital success</p>
+            
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="static/Vishnu.webp" alt="Bhimakonda Vishnu Prasad – Founder" class="team-photo">
+                    </div>
+                    <h3>Bhimakonda Vishnu Prasad</h3>
+                    <p class="designation">Founder</p>
+                    
+                    <div class="team-socials">
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="static/Jagan.webp" alt="T. Jagan – Chief Executive Officer (CEO)" class="team-photo">
+                    </div>
+                    <h3>T. Jagan</h3>
+                    <p class="designation">Chief Executive Officer (CEO)</p>
+                    
+                    <div class="team-socials">
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="static/Krishna Vamsi.webp" alt="S. Krishna Vamsi – Managing Director" class="team-photo">
+                    </div>
+                    <h3>S. Krishna Vamsi</h3>
+                    <p class="designation">Managing Director</p>
+                    
+                    <div class="team-socials">
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="static/Rohith.webp" alt="K. Rohith – Editor" class="team-photo">
+                    </div>
+                    <h3>K. Rohith</h3>
+                    <p class="designation">Editor</p>
+                    
+                    <div class="team-socials">
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Have questions? Let's talk about how we can help your business grow.</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>16-6-457 1StFloor Karnala Layout, Tirupati</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+916281434800">+91 6281434800</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p><a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer">@Yt_channel_buyer_india</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Mon - Sat: 9:00 AM - 6:00 PM IST</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tatviya</h4>
+                    <p>Your trusted partner in digital growth and social media success.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">YouTube Monetization</a></li>
+                        <li><a href="#services">Channel Trading</a></li>
+                        <li><a href="#services">Digital Marketing</a></li>
+                        <li><a href="#services">Passive Income Education</a></li>
+                        <li><a href="#services">Website Design & Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tatviya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/916281434800" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
