@@ -1,17 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="midnight">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tatviya - Digital Growth & Social Media Services. YouTube Monetization, Channel Trading, Digital Marketing & Social Media Education.">
-    <title>Tatviya - Digital Growth & Social Media Services</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Tatviya - India's Premier Digital Growth & Social Media Agency. YouTube Monetization, Channel Trading, Digital Marketing & Passive Income Education.">
+    <meta name="keywords" content="YouTube monetization, channel trading, digital marketing, social media, Tatviya, Tirupati">
+    <meta name="author" content="Tatviya">
+    <title>Tatviya – Digital Growth & Social Media Services</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Model Viewer for 3D GLB Rendering -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="container">
+
+    <!-- ═══════════════════════════════════════
+         PAGE LOADER
+    ═══════════════════════════════════════ -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-inner">
+            <img src="static/logo.webp" alt="Tatviya" class="loader-logo">
+            <div class="loader-bar-track"><div class="loader-bar"></div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         SCROLL PROGRESS
+    ═══════════════════════════════════════ -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ═══════════════════════════════════════
+         THEME PANEL BACKDROP
+    ═══════════════════════════════════════ -->
+    <div class="theme-backdrop" id="themeBackdrop"></div>
+
+    <!-- ═══════════════════════════════════════
+         THEME PANEL
+    ═══════════════════════════════════════ -->
+    <aside class="theme-panel" id="themePanel" aria-label="Theme selector">
+        <div class="theme-panel-header">
+            <div class="theme-panel-title">
+                <i class="fas fa-palette"></i>
+                <h4>Choose Your Theme</h4>
+            </div>
+            <button class="theme-panel-close" id="closePanelBtn" aria-label="Close theme panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p class="theme-panel-subtitle">Select a visual style that suits your taste</p>
+        <div class="theme-grid">
+            <button class="theme-swatch" data-theme="midnight" aria-label="Midnight theme">
+                <div class="swatch-colors">
+                    <span style="background:#07080f;"></span>
+                    <span style="background:#FF6B35;"></span>
+                    <span style="background:#58e5ff;"></span>
+                </div>
+                <span class="swatch-emoji">🌙</span>
+                <span class="swatch-name">Midnight</span>
+                <span class="swatch-desc">Dark luxury</span>
+                <span class="swatch-check"><i class="fas fa-check"></i></span>
+            </button>
+            <button class="theme-swatch" data-theme="solar" aria-label="Solar theme">
+                <div class="swatch-colors">
+                    <span style="background:#faf8f2;border:1px solid #ddd;"></span>
+                    <span style="background:#C9A84C;"></span>
+                    <span style="background:#1a3a2a;"></span>
+                </div>
+                <span class="swatch-emoji">☀️</span>
+                <span class="swatch-name">Solar</span>
+                <span class="swatch-desc">Corporate gold</span>
+                <span class="swatch-check"><i class="fas fa-check"></i></span>
+            </button>
+            <button class="theme-swatch" data-theme="nebula" aria-label="Nebula theme">
+                <div class="swatch-colors">
+                    <span style="background:#070413;"></span>
+                    <span style="background:#A855F7;"></span>
+                    <span style="background:#06B6D4;"></span>
+                </div>
+                <span class="swatch-emoji">🔮</span>
+                <span class="swatch-name">Nebula</span>
+                <span class="swatch-desc">Futuristic</span>
+                <span class="swatch-check"><i class="fas fa-check"></i></span>
+            </button>
+            <button class="theme-swatch" data-theme="emerald" aria-label="Emerald theme">
+                <div class="swatch-colors">
+                    <span style="background:#020d07;"></span>
+                    <span style="background:#10B981;"></span>
+                    <span style="background:#F59E0B;"></span>
+                </div>
+                <span class="swatch-emoji">🌿</span>
+                <span class="swatch-name">Emerald</span>
+                <span class="swatch-desc">Natural luxury</span>
+                <span class="swatch-check"><i class="fas fa-check"></i></span>
+            </button>
+            <button class="theme-swatch" data-theme="crimson" aria-label="Crimson theme">
+                <div class="swatch-colors">
+                    <span style="background:#0a0303;"></span>
+                    <span style="background:#DC2626;"></span>
+                    <span style="background:#E4B4B4;"></span>
+                </div>
+                <span class="swatch-emoji">🔥</span>
+                <span class="swatch-name">Crimson</span>
+                <span class="swatch-desc">Bold executive</span>
+                <span class="swatch-check"><i class="fas fa-check"></i></span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION BAR
+    ═══════════════════════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
             <div class="logo">
                 <a href="#home" aria-label="Tatviya home">
                     <img src="static/logo.webp" alt="Tatviya" class="logo-image">
@@ -19,251 +129,334 @@
                 </a>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Change theme">
+                    <i class="fas fa-palette"></i>
+                    <span>Theme</span>
+                </button>
+                <a href="#contact" class="nav-cta-btn">Get Started</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Banner -->
-    <section id="home" class="hero" aria-label="Main banner"></section>
+    <!-- ═══════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════ -->
+    <section id="home" class="hero" aria-label="Main banner">
+        <canvas id="particleCanvas" class="particle-canvas"></canvas>
+        <div class="hero-overlay"></div>
 
-    <!-- Hero Summary Section -->
-    <section class="hero-summary">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Build Your Profitable Online Presence</h1>
-                <p>Transform your digital journey with expert guidance in YouTube monetization, channel trading, and digital marketing services tailored for creators and businesses.</p>
-                <button class="cta-btn" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})">Get Started Today</button>
+        <div class="hero-content container">
+            <div class="hero-badge" data-reveal>
+                <i class="fas fa-star"></i>
+                <span>India's Premier Digital Growth Agency</span>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <h3>400+</h3>
-                    <p>Channel Deals In 4 Years</p>
+
+            <h1 class="hero-headline" data-reveal>
+                Build Your <span class="gradient-text">Profitable</span><br>
+                Online Presence
+            </h1>
+
+            <p class="hero-subtext" data-reveal>
+                Transform your digital journey with expert guidance in YouTube monetization,
+                channel trading, and digital marketing — tailored for creators and businesses.
+            </p>
+
+            <div class="hero-cta-group" data-reveal>
+                <button class="cta-btn" id="heroCta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+                    <span>Get Started Today</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <a href="#services" class="cta-outline">
+                    <span>Explore Services</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+
+            <div class="hero-stats-row" data-reveal>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-target="400" data-suffix="+">400+</span>
+                    <span class="hero-stat-label">Channel Deals In 4 Years</span>
                 </div>
-                <div class="stat">
-                    <h3>100+</h3>
-                    <p>Online Deals With Trust</p>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-target="100" data-suffix="+">100+</span>
+                    <span class="hero-stat-label">Online Deals With Trust</span>
                 </div>
-                <div class="stat">
-                    <h3>3.7</h3>
-                    <p>Million Subscribers Bought In Single Channel</p>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-target="3.7" data-suffix="M">3.7M</span>
+                    <span class="hero-stat-label">Subscribers in Single Channel</span>
                 </div>
-                <div class="stat">
-                    <h3>0</h3>
-                    <p>% AdSense Tax Deduction in India</p>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-target="0" data-suffix="%">0%</span>
+                    <span class="hero-stat-label">AdSense Tax Deduction in India</span>
                 </div>
             </div>
         </div>
-        <div class="hero-graph" aria-hidden="true">
-            <div class="graph-bars">
-                <span class="bar" style="--h: 24%; --d: 0s;"></span>
-                <span class="bar" style="--h: 34%; --d: 0.1s;"></span>
-                <span class="bar" style="--h: 46%; --d: 0.2s;"></span>
-                <span class="bar" style="--h: 58%; --d: 0.3s;"></span>
-                <span class="bar" style="--h: 66%; --d: 0.4s;"></span>
-                <span class="bar" style="--h: 78%; --d: 0.5s;"></span>
+
+        <!-- Floating 3D YouTube Model -->
+        <div class="hero-model-container">
+            <model-viewer src="static/you_tube.glb" 
+                          alt="YouTube 3D Logo" 
+                          auto-rotate 
+                          camera-controls 
+                          disable-zoom 
+                          interaction-prompt="none" 
+                          shadow-intensity="1.5"
+                          class="hero-3d-model">
+            </model-viewer>
+        </div>
+
+        <!-- Floating Analytics Widget -->
+        <div class="hero-widget" aria-hidden="true">
+            <div class="widget-header">
+                <span class="widget-dot"></span>
+                <span class="widget-title">Revenue Analytics</span>
+                <span class="widget-live">LIVE</span>
             </div>
-            <svg class="spike-chart" viewBox="0 0 320 150" preserveAspectRatio="none">
-                <polyline class="spike-line" points="0,132 42,118 84,112 126,96 168,82 210,72 252,45 294,20"></polyline>
+            <div class="graph-bars">
+                <span class="bar" style="--h:24%;--d:0s;"></span>
+                <span class="bar" style="--h:38%;--d:0.1s;"></span>
+                <span class="bar" style="--h:52%;--d:0.2s;"></span>
+                <span class="bar" style="--h:64%;--d:0.3s;"></span>
+                <span class="bar" style="--h:72%;--d:0.4s;"></span>
+                <span class="bar" style="--h:88%;--d:0.5s;"></span>
+            </div>
+            <svg class="spike-chart" viewBox="0 0 280 90" preserveAspectRatio="none">
+                <polyline class="spike-line" points="0,80 40,68 80,62 120,48 160,36 200,24 240,12 280,4"></polyline>
             </svg>
+            <div class="widget-footer">
+                <span class="widget-growth"><i class="fas fa-arrow-up"></i> 127% growth this year</span>
+            </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
+    <!-- ═══════════════════════════════════════
+         SERVICES SECTION
+    ═══════════════════════════════════════ -->
+    <section id="services" class="services section">
         <div class="container">
-            <h2>Our Services</h2>
-            <p class="section-subtitle">Comprehensive solutions for your digital growth needs</p>
-            
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2>Our <span class="gradient-text">Services</span></h2>
+                <p class="section-subtitle">Comprehensive solutions for every stage of your digital growth journey</p>
+            </div>
+
             <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
+                <div class="service-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="service-icon-wrap"><i class="fas fa-play-circle"></i></div>
                     <h3>YouTube Monetization</h3>
-                    <p>Transform your YouTube channel into a revenue-generating asset. We guide creators through the journey to achieve 1,000 subscribers and 4,000 watch hours - the gateway to YouTube Partner Program monetization.</p>
+                    <p>Transform your YouTube channel into a revenue-generating asset. We guide creators through the journey to achieve 1,000 subscribers and 4,000 watch hours — the gateway to YouTube Partner Program.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Subscriber growth strategies</li>
-                        <li><i class="fas fa-check"></i> Watch hour acceleration</li>
-                        <li><i class="fas fa-check"></i> Content optimization</li>
-                        <li><i class="fas fa-check"></i> Monetization setup guidance</li>
+                        <li><i class="fas fa-check-circle"></i> Subscriber growth strategies</li>
+                        <li><i class="fas fa-check-circle"></i> Watch hour acceleration</li>
+                        <li><i class="fas fa-check-circle"></i> Content optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Monetization setup guidance</li>
                     </ul>
-                    <a href="#contact" class="learn-more">Contact US →</a>
+                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
+                <div class="service-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="service-icon-wrap"><i class="fas fa-exchange-alt"></i></div>
                     <h3>YouTube Channel Trading</h3>
-                    <p>Buy and sell monetized YouTube channels with complete transparency and security. We facilitate trading of channels ranging from 100K to 10M+ subscribers, handling all verification and transfer processes.</p>
+                    <p>Buy and sell monetized YouTube channels with complete transparency and security. We facilitate trading from 100K to 10M+ subscribers, handling all verification and transfer processes.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Channel verification</li>
-                        <li><i class="fas fa-check"></i> Complete due diligence</li>
-                        <li><i class="fas fa-check"></i> Secure transactions</li>
-                        <li><i class="fas fa-check"></i> Full account transfer support</li>
+                        <li><i class="fas fa-check-circle"></i> Channel verification</li>
+                        <li><i class="fas fa-check-circle"></i> Complete due diligence</li>
+                        <li><i class="fas fa-check-circle"></i> Secure transactions</li>
+                        <li><i class="fas fa-check-circle"></i> Full account transfer support</li>
                     </ul>
-                    <a href="#contact" class="learn-more">Contact Us →</a>
+                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
+                <div class="service-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="service-icon-wrap"><i class="fas fa-chart-line"></i></div>
                     <h3>Digital Marketing Services</h3>
-                    <p>Boost your business with our comprehensive digital marketing expertise. From SEO to paid advertising across Facebook, Instagram, and YouTube - we deliver measurable results.</p>
+                    <p>Boost your business with our comprehensive digital marketing expertise. From SEO to paid advertising across Facebook, Instagram, and YouTube — we deliver measurable results.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> SEO optimization</li>
-                        <li><i class="fas fa-check"></i> Facebook Ads management</li>
-                        <li><i class="fas fa-check"></i> Instagram Ads campaigns</li>
-                        <li><i class="fas fa-check"></i> YouTube Ads strategy</li>
+                        <li><i class="fas fa-check-circle"></i> SEO optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Facebook Ads management</li>
+                        <li><i class="fas fa-check-circle"></i> Instagram Ads campaigns</li>
+                        <li><i class="fas fa-check-circle"></i> YouTube Ads strategy</li>
                     </ul>
-                    <a href="#contact" class="learn-more">Contact Us →</a>
+                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                <div class="service-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="service-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Passive Income Education</h3>
-                    <p>Learn the strategies and techniques to build sustainable passive income streams through social media and online opportunities. Our experts share proven methodologies and real-world insights.</p>
+                    <p>Learn proven strategies to build sustainable passive income streams through social media. Our experts share real-world methodologies backed by years of practical experience.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Comprehensive training programs</li>
-                        <li><i class="fas fa-check"></i> Proven income strategies</li>
-                        <li><i class="fas fa-check"></i> One-on-one mentoring</li>
-                        <li><i class="fas fa-check"></i> Ongoing support & updates</li>
+                        <li><i class="fas fa-check-circle"></i> Comprehensive training programs</li>
+                        <li><i class="fas fa-check-circle"></i> Proven income strategies</li>
+                        <li><i class="fas fa-check-circle"></i> One-on-one mentoring</li>
+                        <li><i class="fas fa-check-circle"></i> Ongoing support &amp; updates</li>
                     </ul>
-                    <a href="#contact" class="learn-more">Contact Us →</a>
+                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Service 5 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Website Design & Development</h3>
+                <div class="service-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="service-icon-wrap"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Website Design &amp; Development</h3>
                     <p>Build a professional online presence with modern, conversion-focused websites tailored for small, medium, and large businesses to grow faster in the digital market.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Business website design</li>
-                        <li><i class="fas fa-check"></i> Custom development solutions</li>
-                        <li><i class="fas fa-check"></i> Mobile responsive layouts</li>
-                        <li><i class="fas fa-check"></i> Performance and SEO-ready setup</li>
+                        <li><i class="fas fa-check-circle"></i> Business website design</li>
+                        <li><i class="fas fa-check-circle"></i> Custom development solutions</li>
+                        <li><i class="fas fa-check-circle"></i> Mobile responsive layouts</li>
+                        <li><i class="fas fa-check-circle"></i> Performance &amp; SEO-ready setup</li>
                     </ul>
-                    <a href="#contact" class="learn-more">Contact Us →</a>
+                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- ═══════════════════════════════════════
+         ABOUT SECTION
+    ═══════════════════════════════════════ -->
+    <section id="about" class="about section">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Why Choose Tatviya?</h2>
-                    <p>We are a specialized digital growth and social media services company dedicated to helping individuals, creators, and businesses achieve their online potential. With years of expertise in the digital space, we've developed proven strategies that deliver real results.</p>
-                    
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-star"></i>
-                            <h4>Expert Team</h4>
-                            <p>Industry veterans with hands-on experience in YouTube growth, channel operations, and digital marketing.</p>
+            <div class="about-layout">
+                <div class="about-text reveal">
+                    <span class="section-tag">Why Us</span>
+                    <h2>Why Choose <span class="gradient-text">Tatviya?</span></h2>
+                    <p class="about-lead">We are a specialized digital growth and social media services company dedicated to helping individuals, creators, and businesses achieve their online potential with proven strategies that deliver real results.</p>
+
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-star"></i></div>
+                            <div class="feature-body">
+                                <h4>Expert Team</h4>
+                                <p>Industry veterans with hands-on experience in YouTube growth, channel operations, and digital marketing.</p>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <h4>Secure & Transparent</h4>
-                            <p>All transactions and services are conducted with complete transparency and industry-standard security protocols.</p>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="feature-body">
+                                <h4>Secure &amp; Transparent</h4>
+                                <p>All transactions and services are conducted with complete transparency and industry-standard security protocols.</p>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-handshake"></i>
-                            <h4>Dedicated Support</h4>
-                            <p>Our team provides personalized guidance and ongoing support throughout your digital growth journey.</p>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                            <div class="feature-body">
+                                <h4>Dedicated Support</h4>
+                                <p>Our team provides personalized guidance and ongoing support throughout your digital growth journey.</p>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-trophy"></i>
-                            <h4>Proven Results</h4>
-                            <p>Track record of helping 500+ creators achieve monetization and facilitating 100K+ channel subscriber transfers.</p>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="feature-body">
+                                <h4>Proven Results</h4>
+                                <p>Track record of helping 500+ creators achieve monetization and facilitating 100K+ subscriber channel transfers.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="placeholder-image">
-                        <i class="fas fa-briefcase"></i>
-                        <p>Professional Digital Services</p>
+
+                <div class="about-visual reveal">
+                    <div class="about-vis-main">
+                        <div class="vis-center-card">
+                            <div class="vis-center-icon"><i class="fas fa-rocket"></i></div>
+                            <p class="vis-center-title">Digital Growth Partner</p>
+                            <span class="vis-center-years">4+ Years of Excellence</span>
+                        </div>
+                        <div class="vis-stats-row">
+                            <div class="vis-stat-card">
+                                <i class="fas fa-chart-line"></i>
+                                <strong>127%</strong>
+                                <span>Avg. Growth</span>
+                            </div>
+                            <div class="vis-stat-card">
+                                <i class="fas fa-users"></i>
+                                <strong>500+</strong>
+                                <span>Clients</span>
+                            </div>
+                            <div class="vis-stat-card">
+                                <i class="fas fa-lock"></i>
+                                <strong>100%</strong>
+                                <span>Secure Deals</span>
+                            </div>
+                        </div>
+                        <div class="vis-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Trusted by 400+ Channel Owners</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+    <!-- ═══════════════════════════════════════
+         TESTIMONIALS SECTION
+    ═══════════════════════════════════════ -->
+    <section class="testimonials section">
         <div class="container">
-            <h2>What Our Clients Say</h2>
-            <p class="section-subtitle">Real success stories from creators and businesses we've helped</p>
-            
+            <div class="section-header">
+                <span class="section-tag">Client Stories</span>
+                <h2>What Our <span class="gradient-text">Clients Say</span></h2>
+                <p class="section-subtitle">Real success stories from creators and businesses we've helped grow</p>
+            </div>
+
             <div class="testimonials-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal">
+                    <div class="quote-icon">"</div>
                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p>"Tatviya helped me achieve YouTube monetization in just 6 months. Their strategy was clear, actionable, and the support was exceptional."</p>
+                    <p>"Tatviya helped me achieve YouTube monetization in just 6 months. Their strategy was clear, actionable, and the support was exceptional throughout the entire journey."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">RJ</div>
-                        <div>
+                        <div class="author-info">
                             <h4>Rajesh Jain</h4>
                             <p>YouTube Creator</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal">
+                    <div class="quote-icon">"</div>
                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
                     <p>"The digital marketing services from Tatviya increased our online sales by 150%. Their Facebook and Instagram ad campaigns are incredibly targeted and effective."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">AS</div>
-                        <div>
+                        <div class="author-info">
                             <h4>Aisha Singh</h4>
                             <p>E-commerce Owner</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal">
+                    <div class="quote-icon">"</div>
                     <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p>"I purchased a monetized YouTube channel through their platform. The entire process was secure, transparent, and professional. Highly recommended!"</p>
+                    <p>"I purchased a monetized YouTube channel through their platform. The entire process was secure, transparent, and professional. Highly recommended for channel investors!"</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">PK</div>
-                        <div>
+                        <div class="author-info">
                             <h4>Priya Kapoor</h4>
                             <p>Channel Investor</p>
                         </div>
@@ -273,135 +466,150 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team" class="team">
+    <!-- ═══════════════════════════════════════
+         TEAM SECTION
+    ═══════════════════════════════════════ -->
+    <section id="team" class="team section">
         <div class="container">
-            <h2>Our Expert Team</h2>
-            <p class="section-subtitle">Meet the professionals dedicated to your digital success</p>
-            
+            <div class="section-header">
+                <span class="section-tag">The People</span>
+                <h2>Our Expert <span class="gradient-text">Team</span></h2>
+                <p class="section-subtitle">Meet the professionals dedicated to your digital success</p>
+            </div>
+
             <div class="team-grid">
-                <!-- Team Member 1 -->
-                <div class="team-card">
-                    <div class="team-image">
+                <div class="team-card reveal">
+                    <div class="team-photo-wrap">
                         <img src="static/Vishnu.webp" alt="Bhimakonda Vishnu Prasad – Founder" class="team-photo">
+                        <div class="photo-ring"></div>
                     </div>
                     <h3>Bhimakonda Vishnu Prasad</h3>
                     <p class="designation">Founder</p>
-                    
                     <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <!-- Team Member 2 -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="static/Jagan.webp" alt="T. Jagan – Chief Executive Officer (CEO)" class="team-photo">
+                <div class="team-card reveal">
+                    <div class="team-photo-wrap">
+                        <img src="static/Jagan.webp" alt="T. Jagan – Chief Executive Officer" class="team-photo">
+                        <div class="photo-ring"></div>
                     </div>
                     <h3>T. Jagan</h3>
                     <p class="designation">Chief Executive Officer (CEO)</p>
-                    
                     <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <!-- Team Member 3 -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="static/Krishna Vamsi.webp" alt="S. Krishna Vamsi – Managing Director" class="team-photo">
+                <div class="team-card reveal">
+                    <div class="team-photo-wrap">
+                        <img src="static/Krishna Vamsi.webp" alt="S. Krishna Vamsi – Revenue & Partnership Director" class="team-photo">
+                        <div class="photo-ring"></div>
                     </div>
                     <h3>Krishna Vamsi</h3>
-                    <p class="designation">Managing Director</p>
-                    
+                    <p class="designation">Revenue &amp; Partnership Director</p>
                     <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <!-- Team Member 4 -->
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="static/Rohith.webp" alt="K. Rohith – Editor" class="team-photo">
+                <div class="team-card reveal">
+                    <div class="team-photo-wrap">
+                        <img src="static/Rohith.webp" alt="K. Rohith – Content Director" class="team-photo">
+                        <div class="photo-ring"></div>
                     </div>
                     <h3>K. Rohith</h3>
-                    <p class="designation">Editor</p>
-                    
+                    <p class="designation">Content Director</p>
                     <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- ═══════════════════════════════════════
+         CONTACT SECTION
+    ═══════════════════════════════════════ -->
+    <section id="contact" class="contact section">
         <div class="container">
-            <h2>Get In Touch</h2>
-            <p class="section-subtitle">Have questions? Let's talk about how we can help your business grow.</p>
-            
+            <div class="section-header">
+                <span class="section-tag">Reach Out</span>
+                <h2>Get In <span class="gradient-text">Touch</span></h2>
+                <p class="section-subtitle">Have questions? Let's talk about how we can help your business grow.</p>
+            </div>
+
             <div class="contact-wrapper">
-                <div class="contact-form-container">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
+                <div class="contact-form-container reveal">
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-group floating-label">
+                            <input type="text" id="contactName" name="name" placeholder=" " required autocomplete="name">
+                            <label for="contactName">Your Name</label>
                         </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
+                        <div class="form-group floating-label">
+                            <input type="email" id="contactEmail" name="email" placeholder=" " required autocomplete="email">
+                            <label for="contactEmail">Email Address</label>
                         </div>
-                        <div class="form-group">
-                            <input type="text" name="subject" placeholder="Subject" required>
+                        <div class="form-group floating-label">
+                            <input type="text" id="contactSubject" name="subject" placeholder=" " required>
+                            <label for="contactSubject">Subject</label>
                         </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <div class="form-group floating-label">
+                            <textarea id="contactMessage" name="message" placeholder=" " rows="5" required></textarea>
+                            <label for="contactMessage">Your Message</label>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
 
-                <div class="contact-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Address</h4>
-                            <p>16-6-457 1StFloor Karnala Layout, Tirupati</p>
+                <div class="contact-info reveal">
+                    <div class="info-card">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="info-body">
+                                <h4>Address</h4>
+                                <p>16-6-457 1st Floor Karnala Layout, Tirupati</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p><a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="info-body">
+                                <h4>Email</h4>
+                                <p><a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p><a href="tel:+916281434800">+91 6281434800</a></p>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-phone"></i></div>
+                            <div class="info-body">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+916281434800">+91 6281434800</a></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fab fa-instagram"></i>
-                        <div>
-                            <h4>Instagram</h4>
-                            <p><a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer">@Yt_channel_buyer_india</a></p>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fab fa-instagram"></i></div>
+                            <div class="info-body">
+                                <h4>Instagram</h4>
+                                <p><a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer">@Yt_channel_buyer_india</a></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h4>Business Hours</h4>
-                            <p>Mon - Sat: 9:00 AM - 6:00 PM IST</p>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-clock"></i></div>
+                            <div class="info-body">
+                                <h4>Business Hours</h4>
+                                <p>Mon – Sat: 9:00 AM – 6:00 PM IST</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -409,41 +617,64 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Tatviya</h4>
-                    <p>Your trusted partner in digital growth and social media success.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="static/logo.webp" alt="Tatviya" class="footer-logo-img">
+                        <span>Tatviya</span>
+                    </div>
+                    <p>Your trusted partner in digital growth and social media success. Building profitable online presences since 2022.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/916281434800" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
+
+                <div class="footer-links-col">
+                    <h5>Services</h5>
                     <ul>
                         <li><a href="#services">YouTube Monetization</a></li>
                         <li><a href="#services">Channel Trading</a></li>
                         <li><a href="#services">Digital Marketing</a></li>
                         <li><a href="#services">Passive Income Education</a></li>
-                        <li><a href="#services">Website Design & Development</a></li>
+                        <li><a href="#services">Website Design &amp; Development</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
+
+                <div class="footer-links-col">
+                    <h5>Company</h5>
                     <ul>
                         <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
+
+                <div class="footer-contact-col">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-phone"></i><a href="tel:+916281434800">+91 6281434800</a></p>
+                    <p><i class="fas fa-envelope"></i><a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i>Tirupati, Andhra Pradesh</p>
+                    <a href="#contact" class="footer-cta">Start a Project →</a>
+                </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 Tatviya. All rights reserved.</p>
+                <p>© 2026 Tatviya. All rights reserved. Crafted with <i class="fas fa-heart"></i> in India.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -451,6 +682,7 @@
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/916281434800" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
         <i class="fab fa-whatsapp"></i>
+        <span class="wa-pulse"></span>
     </a>
 
     <script src="script.js"></script>
