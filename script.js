@@ -1,100 +1,22 @@
 /* ═══════════════════════════════════════════════════════════
-   TATVIYA — PREMIUM SCRIPT
-   Theme System · Particle Canvas · 3D Tilt · Magnetic · Reveals
+   TATVIYA — XCODEFIX-INSPIRED UI SCRIPT
+   Particle Canvas · 3D Tilt · Magnetic · Reveals · Counters
    ═══════════════════════════════════════════════════════════ */
 
 'use strict';
 
+
 /* ──────────────────────────────────────────
-   PAGE LOADER
+   THEME — Fixed light/red theme
 ────────────────────────────────────────── */
-window.addEventListener('load', () => {
-    const loader = document.getElementById('pageLoader');
-    if (loader) {
-        setTimeout(() => {
-            loader.classList.add('hidden');
-        }, 900);
-    }
-});
+
+// Single fixed light theme — no multi-theme in this design
+document.documentElement.setAttribute('data-theme', 'light');
 
 
 /* ──────────────────────────────────────────
-   THEME SYSTEM
+   SCROLL PROGRESS BAR — removed per user request
 ────────────────────────────────────────── */
-
-const THEME_KEY = 'tatviya-theme';
-
-function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(THEME_KEY, theme);
-
-    // Sync swatch states
-    document.querySelectorAll('.theme-swatch').forEach(sw => {
-        sw.classList.toggle('active', sw.dataset.theme === theme);
-    });
-
-    // Reinit particles with new color
-    setTimeout(initParticles, 100);
-}
-
-// Load saved or default theme
-const savedTheme = localStorage.getItem(THEME_KEY) || 'midnight';
-applyTheme(savedTheme);
-
-// Theme panel open/close
-const themePanel    = document.getElementById('themePanel');
-const themeBackdrop = document.getElementById('themeBackdrop');
-const themeToggle   = document.getElementById('themeToggleBtn');
-const closePanelBtn = document.getElementById('closePanelBtn');
-
-function openThemePanel() {
-    if (themePanel && themeBackdrop) {
-        themePanel.classList.add('open');
-        themeBackdrop.classList.add('visible');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeThemePanel() {
-    if (themePanel && themeBackdrop) {
-        themePanel.classList.remove('open');
-        themeBackdrop.classList.remove('visible');
-        document.body.style.overflow = '';
-    }
-}
-
-if (themeToggle)   themeToggle.addEventListener('click', openThemePanel);
-if (closePanelBtn) closePanelBtn.addEventListener('click', closeThemePanel);
-if (themeBackdrop) themeBackdrop.addEventListener('click', closeThemePanel);
-
-// ESC to close
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeThemePanel();
-});
-
-// Swatch click
-document.querySelectorAll('.theme-swatch').forEach(swatch => {
-    swatch.addEventListener('click', () => {
-        applyTheme(swatch.dataset.theme);
-    });
-});
-
-
-/* ──────────────────────────────────────────
-   SCROLL PROGRESS BAR
-────────────────────────────────────────── */
-
-const scrollProgress = document.getElementById('scrollProgress');
-
-function updateScrollProgress() {
-    if (!scrollProgress) return;
-    const scrollTop    = window.scrollY;
-    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
-    const pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollProgress.style.width = pct + '%';
-}
-
-window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
 
 /* ──────────────────────────────────────────
@@ -178,15 +100,8 @@ const canvas = document.getElementById('particleCanvas');
 let ctx, particles = [], animId;
 
 function getParticleRGB() {
-    const theme = document.documentElement.getAttribute('data-theme') || 'midnight';
-    const map = {
-        midnight: [255, 107, 53],
-        solar:    [201, 168, 76],
-        nebula:   [168, 85, 247],
-        emerald:  [16, 185, 129],
-        crimson:  [220, 38, 38],
-    };
-    return map[theme] || map.midnight;
+    // White-gray particles on dark bg — matches xcodefix.com constellation effect
+    return [195, 197, 207];
 }
 
 function resizeCanvas() {
@@ -204,10 +119,10 @@ class Particle {
     reset() {
         this.x      = Math.random() * this.w;
         this.y      = Math.random() * this.h;
-        this.vx     = (Math.random() - 0.5) * 0.55;
-        this.vy     = (Math.random() - 0.5) * 0.55;
-        this.radius = Math.random() * 1.8 + 0.6;
-        this.alpha  = Math.random() * 0.45 + 0.1;
+        this.vx     = (Math.random() - 0.5) * 0.45;
+        this.vy     = (Math.random() - 0.5) * 0.45;
+        this.radius = Math.random() * 2.8 + 1.2;
+        this.alpha  = Math.random() * 0.65 + 0.25;
     }
 
     update() {
@@ -226,7 +141,7 @@ class Particle {
 }
 
 function connectParticles(rgb) {
-    const max = 110;
+    const max = 140;
     for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
             const dx   = particles[i].x - particles[j].x;
@@ -236,9 +151,9 @@ function connectParticles(rgb) {
                 ctx.beginPath();
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(particles[j].x, particles[j].y);
-                const a = (1 - dist / max) * 0.14;
+                const a = (1 - dist / max) * 0.28;
                 ctx.strokeStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
-                ctx.lineWidth   = 1;
+                ctx.lineWidth   = 0.8;
                 ctx.stroke();
             }
         }
@@ -259,7 +174,8 @@ function initParticles() {
     ctx = canvas.getContext('2d');
     resizeCanvas();
 
-    const count = Math.min(90, Math.floor((canvas.width * canvas.height) / 10000));
+    // More particles for a dense xcodefix-like network
+    const count = Math.min(130, Math.floor((canvas.width * canvas.height) / 7000));
     particles = Array.from({ length: count }, () => new Particle(canvas.width, canvas.height));
 
     if (animId) cancelAnimationFrame(animId);
@@ -386,7 +302,13 @@ const counterObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
+// Observe hero stat numbers
 document.querySelectorAll('.hero-stat-num').forEach(el => {
+    counterObserver.observe(el);
+});
+
+// Observe stats section numbers
+document.querySelectorAll('.stat-number[data-target]').forEach(el => {
     counterObserver.observe(el);
 });
 
@@ -604,4 +526,4 @@ visCards.forEach((card, i) => {
    INIT LOG
 ────────────────────────────────────────── */
 
-console.log('%cTatviya ✦ Premium UI Loaded', 'color:#FF6B35;font-size:14px;font-weight:bold;');
+console.log('%cTatviya ✦ xcodefix-Inspired UI Loaded', 'color:#e2211c;font-size:14px;font-weight:bold;');

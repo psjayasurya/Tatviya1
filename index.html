@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tatviya - India's Premier Digital Growth & Social Media Agency. YouTube Monetization, Channel Trading, Digital Marketing & Passive Income Education.">
+    <meta name="description" content="Tatviya - India's Premier Digital Growth &amp; Social Media Agency. YouTube Monetization, Channel Trading, Digital Marketing &amp; Passive Income Education.">
     <meta name="keywords" content="YouTube monetization, channel trading, digital marketing, social media, Tatviya, Tirupati">
     <meta name="author" content="Tatviya">
-    <title>Tatviya – Digital Growth & Social Media Services</title>
+    <title>Tatviya – Digital Growth &amp; Social Media Services</title>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Droid Serif + Inter (kept for numeric fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Droid+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,98 +24,34 @@
 </head>
 <body>
 
+
     <!-- ═══════════════════════════════════════
-         PAGE LOADER
+         TOP UTILITY BAR  (xcodefix style)
     ═══════════════════════════════════════ -->
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-inner">
-            <img src="static/logo.webp" alt="Tatviya" class="loader-logo">
-            <div class="loader-bar-track"><div class="loader-bar"></div></div>
+    <div class="topbar" id="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <a href="tel:+916281434800" class="topbar-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 6281434800</span>
+                </a>
+                <a href="mailto:contact@tatviya.com" class="topbar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@tatviya.com</span>
+                </a>
+                <span class="topbar-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Tirupati, Andhra Pradesh</span>
+                </span>
+            </div>
+            <div class="topbar-right">
+                <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://wa.me/916281434800" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
     </div>
-
-    <!-- ═══════════════════════════════════════
-         SCROLL PROGRESS
-    ═══════════════════════════════════════ -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- ═══════════════════════════════════════
-         THEME PANEL BACKDROP
-    ═══════════════════════════════════════ -->
-    <div class="theme-backdrop" id="themeBackdrop"></div>
-
-    <!-- ═══════════════════════════════════════
-         THEME PANEL
-    ═══════════════════════════════════════ -->
-    <aside class="theme-panel" id="themePanel" aria-label="Theme selector">
-        <div class="theme-panel-header">
-            <div class="theme-panel-title">
-                <i class="fas fa-palette"></i>
-                <h4>Choose Your Theme</h4>
-            </div>
-            <button class="theme-panel-close" id="closePanelBtn" aria-label="Close theme panel">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <p class="theme-panel-subtitle">Select a visual style that suits your taste</p>
-        <div class="theme-grid">
-            <button class="theme-swatch" data-theme="midnight" aria-label="Midnight theme">
-                <div class="swatch-colors">
-                    <span style="background:#07080f;"></span>
-                    <span style="background:#FF6B35;"></span>
-                    <span style="background:#58e5ff;"></span>
-                </div>
-                <span class="swatch-emoji">🌙</span>
-                <span class="swatch-name">Midnight</span>
-                <span class="swatch-desc">Dark luxury</span>
-                <span class="swatch-check"><i class="fas fa-check"></i></span>
-            </button>
-            <button class="theme-swatch" data-theme="solar" aria-label="Solar theme">
-                <div class="swatch-colors">
-                    <span style="background:#faf8f2;border:1px solid #ddd;"></span>
-                    <span style="background:#C9A84C;"></span>
-                    <span style="background:#1a3a2a;"></span>
-                </div>
-                <span class="swatch-emoji">☀️</span>
-                <span class="swatch-name">Solar</span>
-                <span class="swatch-desc">Corporate gold</span>
-                <span class="swatch-check"><i class="fas fa-check"></i></span>
-            </button>
-            <button class="theme-swatch" data-theme="nebula" aria-label="Nebula theme">
-                <div class="swatch-colors">
-                    <span style="background:#070413;"></span>
-                    <span style="background:#A855F7;"></span>
-                    <span style="background:#06B6D4;"></span>
-                </div>
-                <span class="swatch-emoji">🔮</span>
-                <span class="swatch-name">Nebula</span>
-                <span class="swatch-desc">Futuristic</span>
-                <span class="swatch-check"><i class="fas fa-check"></i></span>
-            </button>
-            <button class="theme-swatch" data-theme="emerald" aria-label="Emerald theme">
-                <div class="swatch-colors">
-                    <span style="background:#020d07;"></span>
-                    <span style="background:#10B981;"></span>
-                    <span style="background:#F59E0B;"></span>
-                </div>
-                <span class="swatch-emoji">🌿</span>
-                <span class="swatch-name">Emerald</span>
-                <span class="swatch-desc">Natural luxury</span>
-                <span class="swatch-check"><i class="fas fa-check"></i></span>
-            </button>
-            <button class="theme-swatch" data-theme="crimson" aria-label="Crimson theme">
-                <div class="swatch-colors">
-                    <span style="background:#0a0303;"></span>
-                    <span style="background:#DC2626;"></span>
-                    <span style="background:#E4B4B4;"></span>
-                </div>
-                <span class="swatch-emoji">🔥</span>
-                <span class="swatch-name">Crimson</span>
-                <span class="swatch-desc">Bold executive</span>
-                <span class="swatch-check"><i class="fas fa-check"></i></span>
-            </button>
-        </div>
-    </aside>
 
     <!-- ═══════════════════════════════════════
          NAVIGATION BAR
@@ -125,22 +61,23 @@
             <div class="logo">
                 <a href="#home" aria-label="Tatviya home">
                     <img src="static/logo.webp" alt="Tatviya" class="logo-image">
-                    <span class="logo-text">Tatviya</span>
+                    <span class="logo-text">Tat<span>viya</span></span>
                 </a>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#team" class="nav-link">Team</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Change theme">
+                <!-- Theme toggle hidden in new design -->
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Change theme" style="display:none">
                     <i class="fas fa-palette"></i>
                     <span>Theme</span>
                 </button>
-                <a href="#contact" class="nav-cta-btn">Get Started</a>
+                <a href="#contact" class="nav-cta-btn" id="navCta">Get Started</a>
                 <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span></span>
                     <span></span>
@@ -206,58 +143,27 @@
                 </div>
             </div>
         </div>
-
-        <!-- Floating 3D YouTube Model -->
-        <div class="hero-model-container">
-            <model-viewer src="static/you_tube.glb" 
-                          alt="YouTube 3D Logo" 
-                          auto-rotate 
-                          camera-controls 
-                          disable-zoom 
-                          interaction-prompt="none" 
-                          shadow-intensity="1.5"
-                          class="hero-3d-model">
-            </model-viewer>
-        </div>
-
-        <!-- Floating Analytics Widget -->
-        <div class="hero-widget" aria-hidden="true">
-            <div class="widget-header">
-                <span class="widget-dot"></span>
-                <span class="widget-title">Revenue Analytics</span>
-                <span class="widget-live">LIVE</span>
-            </div>
-            <div class="graph-bars">
-                <span class="bar" style="--h:24%;--d:0s;"></span>
-                <span class="bar" style="--h:38%;--d:0.1s;"></span>
-                <span class="bar" style="--h:52%;--d:0.2s;"></span>
-                <span class="bar" style="--h:64%;--d:0.3s;"></span>
-                <span class="bar" style="--h:72%;--d:0.4s;"></span>
-                <span class="bar" style="--h:88%;--d:0.5s;"></span>
-            </div>
-            <svg class="spike-chart" viewBox="0 0 280 90" preserveAspectRatio="none">
-                <polyline class="spike-line" points="0,80 40,68 80,62 120,48 160,36 200,24 240,12 280,4"></polyline>
-            </svg>
-            <div class="widget-footer">
-                <span class="widget-growth"><i class="fas fa-arrow-up"></i> 127% growth this year</span>
-            </div>
-        </div>
     </section>
 
     <!-- ═══════════════════════════════════════
          SERVICES SECTION
     ═══════════════════════════════════════ -->
-    <section id="services" class="services section">
+    <section id="services" class="services section" aria-label="Our Services">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">What We Offer</span>
                 <h2>Our <span class="gradient-text">Services</span></h2>
+                <!-- xcodefix-style separator -->
+                <div class="section-separator">
+                    <span class="sep-line left"></span>
+                    <span class="sep-icon"><i class="fas fa-star"></i></span>
+                    <span class="sep-line right"></span>
+                </div>
                 <p class="section-subtitle">Comprehensive solutions for every stage of your digital growth journey</p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card tilt-card">
-                    <div class="card-glow"></div>
                     <div class="service-icon-wrap"><i class="fas fa-play-circle"></i></div>
                     <h3>YouTube Monetization</h3>
                     <p>Transform your YouTube channel into a revenue-generating asset. We guide creators through the journey to achieve 1,000 subscribers and 4,000 watch hours — the gateway to YouTube Partner Program.</p>
@@ -271,7 +177,6 @@
                 </div>
 
                 <div class="service-card tilt-card">
-                    <div class="card-glow"></div>
                     <div class="service-icon-wrap"><i class="fas fa-exchange-alt"></i></div>
                     <h3>YouTube Channel Trading</h3>
                     <p>Buy and sell monetized YouTube channels with complete transparency and security. We facilitate trading from 100K to 10M+ subscribers, handling all verification and transfer processes.</p>
@@ -285,7 +190,6 @@
                 </div>
 
                 <div class="service-card tilt-card">
-                    <div class="card-glow"></div>
                     <div class="service-icon-wrap"><i class="fas fa-chart-line"></i></div>
                     <h3>Digital Marketing Services</h3>
                     <p>Boost your business with our comprehensive digital marketing expertise. From SEO to paid advertising across Facebook, Instagram, and YouTube — we deliver measurable results.</p>
@@ -299,7 +203,6 @@
                 </div>
 
                 <div class="service-card tilt-card">
-                    <div class="card-glow"></div>
                     <div class="service-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Passive Income Education</h3>
                     <p>Learn proven strategies to build sustainable passive income streams through social media. Our experts share real-world methodologies backed by years of practical experience.</p>
@@ -313,7 +216,6 @@
                 </div>
 
                 <div class="service-card tilt-card">
-                    <div class="card-glow"></div>
                     <div class="service-icon-wrap"><i class="fas fa-laptop-code"></i></div>
                     <h3>Website Design &amp; Development</h3>
                     <p>Build a professional online presence with modern, conversion-focused websites tailored for small, medium, and large businesses to grow faster in the digital market.</p>
@@ -330,14 +232,67 @@
     </section>
 
     <!-- ═══════════════════════════════════════
+         STATS / KEY NUMBERS SECTION
+    ═══════════════════════════════════════ -->
+    <section class="stats-section" aria-label="Key Numbers">
+        <div class="container">
+            <div class="section-header" style="color:#fff; margin-bottom:2.5rem;">
+                <span class="section-tag" style="background:rgba(226,33,28,0.2);color:#ff6b6b;border-color:rgba(226,33,28,0.35);">Our Achievements</span>
+                <h2 style="color:#ffffff; font-family:'Droid Serif',serif;">Numbers That <span style="color:var(--primary)">Speak</span> For Us</h2>
+                <div class="section-separator">
+                    <span class="sep-line left" style="background:linear-gradient(to right, transparent, rgba(226,33,28,0.6))"></span>
+                    <span class="sep-icon"><i class="fas fa-chart-bar" style="color:var(--primary)"></i></span>
+                    <span class="sep-line right" style="background:linear-gradient(to left, transparent, rgba(226,33,28,0.6))"></span>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-handshake" style="font-size:1.8rem;color:var(--primary)"></i>
+                    </div>
+                    <span class="stat-number" data-target="400" data-suffix="+">400+</span>
+                    <span class="stat-label">Channel Deals</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users" style="font-size:1.8rem;color:var(--primary)"></i>
+                    </div>
+                    <span class="stat-number" data-target="500" data-suffix="+">500+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-play-circle" style="font-size:1.8rem;color:var(--primary)"></i>
+                    </div>
+                    <span class="stat-number" data-target="3.7" data-suffix="M">3.7M</span>
+                    <span class="stat-label">Subscribers Managed</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shield-alt" style="font-size:1.8rem;color:var(--primary)"></i>
+                    </div>
+                    <span class="stat-number" data-target="100" data-suffix="%">100%</span>
+                    <span class="stat-label">Secure Transactions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
          ABOUT SECTION
     ═══════════════════════════════════════ -->
-    <section id="about" class="about section">
+    <section id="about" class="about section alt-bg" aria-label="About Tatviya">
         <div class="container">
             <div class="about-layout">
                 <div class="about-text reveal">
                     <span class="section-tag">Why Us</span>
                     <h2>Why Choose <span class="gradient-text">Tatviya?</span></h2>
+                    <!-- xcodefix separator -->
+                    <div class="section-separator" style="justify-content:flex-start;max-width:260px;margin-left:0;margin-bottom:1.5rem;">
+                        <span class="sep-line left"></span>
+                        <span class="sep-icon"><i class="fas fa-star"></i></span>
+                        <span class="sep-line right"></span>
+                    </div>
                     <p class="about-lead">We are a specialized digital growth and social media services company dedicated to helping individuals, creators, and businesses achieve their online potential with proven strategies that deliver real results.</p>
 
                     <div class="features-list">
@@ -409,11 +364,16 @@
     <!-- ═══════════════════════════════════════
          TESTIMONIALS SECTION
     ═══════════════════════════════════════ -->
-    <section class="testimonials section">
+    <section class="testimonials section" aria-label="Client Testimonials">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Client Stories</span>
                 <h2>What Our <span class="gradient-text">Clients Say</span></h2>
+                <div class="section-separator">
+                    <span class="sep-line left"></span>
+                    <span class="sep-icon"><i class="fas fa-star"></i></span>
+                    <span class="sep-line right"></span>
+                </div>
                 <p class="section-subtitle">Real success stories from creators and businesses we've helped grow</p>
             </div>
 
@@ -469,11 +429,16 @@
     <!-- ═══════════════════════════════════════
          TEAM SECTION
     ═══════════════════════════════════════ -->
-    <section id="team" class="team section">
+    <section id="team" class="team section alt-bg" aria-label="Our Team">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">The People</span>
                 <h2>Our Expert <span class="gradient-text">Team</span></h2>
+                <div class="section-separator">
+                    <span class="sep-line left"></span>
+                    <span class="sep-icon"><i class="fas fa-star"></i></span>
+                    <span class="sep-line right"></span>
+                </div>
                 <p class="section-subtitle">Meet the professionals dedicated to your digital success</p>
             </div>
 
@@ -508,7 +473,7 @@
 
                 <div class="team-card reveal">
                     <div class="team-photo-wrap">
-                        <img src="static/Krishna Vamsi.webp" alt="S. Krishna Vamsi – Revenue & Partnership Director" class="team-photo">
+                        <img src="static/Krishna Vamsi.webp" alt="S. Krishna Vamsi – Revenue &amp; Partnership Director" class="team-photo">
                         <div class="photo-ring"></div>
                     </div>
                     <h3>Krishna Vamsi</h3>
@@ -540,11 +505,16 @@
     <!-- ═══════════════════════════════════════
          CONTACT SECTION
     ═══════════════════════════════════════ -->
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact section" aria-label="Contact Us">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Reach Out</span>
                 <h2>Get In <span class="gradient-text">Touch</span></h2>
+                <div class="section-separator">
+                    <span class="sep-line left"></span>
+                    <span class="sep-icon"><i class="fas fa-star"></i></span>
+                    <span class="sep-line right"></span>
+                </div>
                 <p class="section-subtitle">Have questions? Let's talk about how we can help your business grow.</p>
             </div>
 
@@ -620,7 +590,7 @@
     <!-- ═══════════════════════════════════════
          FOOTER
     ═══════════════════════════════════════ -->
-    <footer class="footer">
+    <footer class="footer" aria-label="Site Footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
