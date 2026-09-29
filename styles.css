@@ -387,6 +387,7 @@ ul {
     padding: 0 24px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 68px;
     gap: 1.5rem;
 }
@@ -2247,9 +2248,14 @@ ul {
    22. ANTI-OVERFLOW GUARD - Prevents ALL horizontal scroll
    ---------------------------------------------------------- */
 
-.navbar, .topbar, .hero, .section, .stats-section, .footer {
+.hero, .section, .stats-section, .footer {
     max-width: 100vw;
     overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.navbar, .topbar {
+    max-width: 100vw;
     box-sizing: border-box;
 }
 
