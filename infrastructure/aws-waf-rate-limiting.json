@@ -1,0 +1,57 @@
+{
+  "Name": "TatviyaSiteRateLimitRule",
+  "Priority": 1,
+  "Statement": {
+    "RateBasedStatement": {
+      "Limit": 100,
+      "AggregateKeyType": "IP",
+      "EvaluationWindowSec": 3600,
+      "ScopeDownStatement": {
+        "NotStatement": {
+          "Statement": {
+            "ByteMatchStatement": {
+              "SearchString": "/static/",
+              "FieldToMatch": {
+                "UriPath": {}
+              },
+              "TextTransformations": [
+                {
+                  "Priority": 0,
+                  "Type": "LOWERCASE"
+                }
+              ],
+              "PositionalConstraint": "STARTS_WITH"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Action": {
+    "Block": {
+      "CustomResponse": {
+        "ResponseCode": 429,
+        "CustomResponseBodyKey": "TatviyaRateLimitBody",
+        "ResponseHeaders": [
+          {
+            "Name": "Retry-After",
+            "Value": "3600"
+          },
+          {
+            "Name": "X-RateLimit-Limit",
+            "Value": "100"
+          },
+          {
+            "Name": "X-RateLimit-Remaining",
+            "Value": "0"
+          }
+        ]
+      }
+    }
+  },
+  "VisibilityConfig": {
+    "SampledRequestsEnabled": true,
+    "CloudWatchMetricsEnabled": true,
+    "MetricName": "TatviyaSiteRateLimitMetric"
+  }
+}

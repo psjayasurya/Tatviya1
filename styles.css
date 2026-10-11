@@ -2449,3 +2449,460 @@ ul {
         display: none !important;
     }
 }
+
+/* ──────────────────────────────────────────
+   22. DEDICATED LEGAL PAGES STYLES
+────────────────────────────────────────── */
+.legal-page-section {
+    padding-top: 60px;
+    padding-bottom: 90px;
+    background-color: var(--bg-body);
+}
+
+.legal-container {
+    max-width: 900px;
+}
+
+.legal-hero {
+    margin-bottom: 40px;
+}
+
+.legal-hero h1 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    margin-bottom: 12px;
+}
+
+.legal-meta {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.legal-content {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.legal-content h2 {
+    font-size: 1.45rem;
+    color: var(--navy-dark);
+    margin-top: 40px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.legal-content h3 {
+    font-size: 1.15rem;
+    color: var(--navy-dark);
+    margin-top: 24px;
+    margin-bottom: 10px;
+}
+
+.legal-content p {
+    margin-bottom: 16px;
+}
+
+.legal-content ul,
+.legal-content ol {
+    margin-bottom: 20px;
+    padding-left: 24px;
+}
+
+.legal-content ul li {
+    list-style: disc;
+    margin-bottom: 8px;
+}
+
+.legal-content ol li {
+    list-style: decimal;
+    margin-bottom: 10px;
+}
+
+.legal-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--primary-soft);
+    border: 1px solid rgba(226, 33, 28, 0.25);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-md);
+    margin-bottom: 32px;
+    color: var(--text-primary);
+}
+
+.legal-callout i {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.grievance-card {
+    background: var(--bg-secondary);
+    border: 1.5px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 24px 0;
+}
+
+.grievance-card h4 {
+    font-size: 1.15rem;
+    color: var(--navy-dark);
+    margin-bottom: 12px;
+}
+
+.grievance-card p {
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+}
+
+/* Cloudflare Turnstile Widget */
+.cf-turnstile-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    min-height: 65px;
+}
+
+/* ──────────────────────────────────────────
+   RATE LIMITING (HTTP 429) & SECURITY BARRIER
+   Enforces 100 requests per 1 hour IP Quota
+────────────────────────────────────────── */
+.rate-limit-page {
+    background-color: var(--navy-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.rate-limit-header {
+    background: rgba(16, 26, 51, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 0;
+}
+
+.rate-limit-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(226, 33, 28, 0.12);
+    border: 1px solid rgba(226, 33, 28, 0.3);
+    color: #ff5733;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+}
+
+.rate-limit-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 16px;
+    position: relative;
+    background: radial-gradient(circle at 50% 20%, rgba(226, 33, 28, 0.08) 0%, transparent 60%);
+}
+
+.rate-limit-card {
+    max-width: 680px;
+    margin: 0 auto;
+    background: rgba(23, 35, 68, 0.85);
+    border: 1.5px solid rgba(226, 33, 28, 0.35);
+    border-radius: var(--radius-xl);
+    padding: clamp(32px, 5vw, 48px);
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(226, 33, 28, 0.12);
+    backdrop-filter: blur(16px);
+}
+
+.rate-limit-icon-wrap {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: rgba(226, 33, 28, 0.15);
+    border: 2px solid rgba(226, 33, 28, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: #ff4a45;
+    animation: pulseIcon 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(226, 33, 28, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px 4px rgba(226, 33, 28, 0.3); }
+}
+
+.rate-limit-badge {
+    display: inline-block;
+    background: rgba(226, 33, 28, 0.2);
+    border: 1px solid rgba(226, 33, 28, 0.5);
+    color: #ff5733;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.rate-limit-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.rate-limit-desc {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-light-sub);
+    margin-bottom: 28px;
+}
+
+.rate-limit-desc strong {
+    color: #ffffff;
+}
+
+.rate-limit-status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+    .rate-limit-status-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.status-cell {
+    background: rgba(16, 26, 51, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 14px 10px;
+    text-align: center;
+}
+
+.status-cell.highlight {
+    border-color: rgba(226, 33, 28, 0.3);
+    background: rgba(226, 33, 28, 0.08);
+}
+
+.cell-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-light-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.cell-val {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.status-active {
+    color: #ff5733 !important;
+}
+
+.rate-limit-countdown-box {
+    background: rgba(10, 16, 34, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.countdown-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light-sub);
+    margin-bottom: 8px;
+}
+
+.countdown-display {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #ff5733;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px;
+}
+
+.countdown-hint {
+    font-size: 0.85rem;
+    color: var(--text-light-sub);
+    margin-bottom: 0;
+}
+
+.rate-limit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.rate-limit-actions .btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.rate-limit-actions .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.rate-limit-actions .btn-outline:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.rate-limit-footnote {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    font-size: 0.85rem;
+    color: var(--text-light-sub);
+    line-height: 1.5;
+}
+
+.rate-limit-footnote a {
+    color: #ff5733;
+    text-decoration: underline;
+}
+
+.rate-limit-footer {
+    background: #0a1022;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 0;
+    font-size: 0.85rem;
+    color: var(--text-light-sub);
+}
+
+/* ──────────────────────────────────────────
+   MODAL SHIELD OVERLAY (CLIENT-SIDE THROTTLER)
+   Triggers when visit velocity exceeds 100 hits/hour
+────────────────────────────────────────── */
+.tatviya-rate-shield-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 16, 34, 0.94);
+    backdrop-filter: blur(14px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.tatviya-rate-shield-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.tatviya-rate-shield-modal {
+    max-width: 560px;
+    width: 100%;
+    background: rgba(23, 35, 68, 0.95);
+    border: 2px solid rgba(226, 33, 28, 0.5);
+    border-radius: var(--radius-xl);
+    padding: clamp(28px, 4vw, 40px);
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 50px rgba(226, 33, 28, 0.2);
+    animation: modalBounceIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalBounceIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.tatviya-rate-shield-modal .shield-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(226, 33, 28, 0.16);
+    border: 2px solid #ff4a45;
+    color: #ff4a45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 18px;
+}
+
+.tatviya-rate-shield-modal h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.tatviya-rate-shield-modal p {
+    font-size: 0.95rem;
+    color: var(--text-light-sub);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tatviya-rate-shield-modal .shield-timer {
+    background: rgba(10, 16, 34, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    margin-bottom: 24px;
+}
+
+.tatviya-rate-shield-modal .shield-timer-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light-sub);
+    margin-bottom: 4px;
+}
+
+.tatviya-rate-shield-modal .shield-timer-val {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ff5733;
+    font-variant-numeric: tabular-nums;
+}
+
+.tatviya-rate-shield-modal .shield-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+

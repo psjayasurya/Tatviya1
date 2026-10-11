@@ -7,10 +7,13 @@
     <!-- ═══════════════════════════════════════════
          SECURITY DIRECTIVES & HEADERS
     ═══════════════════════════════════════════ -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=()">
+    
+    <!-- Cloudflare Turnstile Bot Protection API -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     
     <!-- ═══════════════════════════════════════════
          PRIMARY SEO & METADATA
@@ -61,7 +64,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Design System Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=2.1">
+    <link rel="stylesheet" href="styles.css?v=2.2">
 
     <!-- ═══════════════════════════════════════════
          SCHEMA.ORG JSON-LD STRUCTURED DATA
@@ -1141,10 +1144,15 @@
                                 <span class="form-error-msg" id="messageError" role="alert"></span>
                             </div>
 
+                            <!-- Cloudflare Turnstile Bot Protection Widget -->
+                            <div class="cf-turnstile-container">
+                                <div class="cf-turnstile" data-sitekey="0x4AAAAAAAx7O63rS5yDkFzX" data-theme="light"></div>
+                            </div>
+
                             <div class="form-consent-check">
                                 <label class="checkbox-label">
                                     <input type="checkbox" id="contactConsent" name="consent" required checked aria-required="true">
-                                    <span>I agree to the <a href="#privacyModal" class="modal-trigger" data-modal="privacy">Privacy Policy</a> and consent to being contacted by Tatviya representatives.</span>
+                                    <span>I consent to the collection, retention, and processing of my submitted details as described in the <a href="/privacy/" target="_blank">Privacy Policy</a> and agree to the <a href="/terms/" target="_blank">Terms of Service</a>. *</span>
                                 </label>
                             </div>
 
@@ -1262,9 +1270,10 @@
                         <li><a href="#about">About Our Firm</a></li>
                         <li><a href="#team">Leadership Team</a></li>
                         <li><a href="#process">Escrow Protocol</a></li>
-                        <li><a href="#privacyModal" class="modal-trigger" data-modal="privacy">Privacy Policy</a></li>
-                        <li><a href="#termsModal" class="modal-trigger" data-modal="terms">Terms of Service</a></li>
-                        <li><a href="#disclaimerModal" class="modal-trigger" data-modal="disclaimer">YouTube &amp; Google Disclaimer</a></li>
+                        <li><a href="/privacy/">Privacy Policy</a></li>
+                        <li><a href="/terms/">Terms of Service</a></li>
+                        <li><a href="/refund-policy/">Refund &amp; Cancellation Policy</a></li>
+                        <li><a href="/sitemap.xml" target="_blank">XML Sitemap</a></li>
                         <li><a href="/.well-known/security.txt" target="_blank">Security Disclosure</a></li>
                     </ul>
                 </div>
@@ -1289,13 +1298,13 @@
             <div class="footer-bottom">
                 <p class="footer-copyright">© 2026 Tatviya. All rights reserved. Registered in Tirupati, Andhra Pradesh, India.</p>
                 <div class="footer-bottom-links">
-                    <button type="button" class="footer-link-btn modal-trigger" data-modal="privacy">Privacy Policy</button>
+                    <a href="/privacy/" class="footer-link-btn">Privacy Policy</a>
                     <span class="footer-sep" aria-hidden="true">•</span>
-                    <button type="button" class="footer-link-btn modal-trigger" data-modal="terms">Terms of Service</button>
+                    <a href="/terms/" class="footer-link-btn">Terms of Service</a>
                     <span class="footer-sep" aria-hidden="true">•</span>
-                    <button type="button" class="footer-link-btn modal-trigger" data-modal="disclaimer">Disclaimer</button>
+                    <a href="/refund-policy/" class="footer-link-btn">Refund Policy</a>
                     <span class="footer-sep" aria-hidden="true">•</span>
-                    <a href="sitemap.xml" target="_blank" class="footer-link-btn">Sitemap</a>
+                    <a href="/sitemap.xml" target="_blank" class="footer-link-btn">Sitemap</a>
                 </div>
             </div>
         </div>
@@ -1427,6 +1436,6 @@
     </a>
 
     <!-- Application Script (Modular, Hardened, Strict Mode) -->
-    <script src="script.js?v=2.1"></script>
+    <script src="script.js?v=2.2"></script>
 </body>
 </html>

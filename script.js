@@ -27,6 +27,7 @@
          */
         init() {
             try {
+                this.SiteRateLimiter.init();
                 this.Security.init();
                 this.Navigation.init();
                 this.Particles.init();
@@ -118,6 +119,240 @@
             } catch {
                 // Ignore storage access errors in restricted private contexts
             }
+        }
+    };
+
+    /* ──────────────────────────────────────────
+       SITE-WIDE ACCESS RATE LIMITER (100 HITS / 1 HOUR)
+       DDoS Mitigation, Anti-Hammering & Automated Scraper Shield
+    ────────────────────────────────────────── */
+    TatviyaApp.SiteRateLimiter = {
+        config: {
+            maxRequestsPerHour: 100,
+            windowMs: 60 * 60 * 1000, // 1 hour (3,600,000 ms)
+            storageKey: 'tatviya_site_access_history',
+            timerInterval: null
+        },
+
+        init() {
+            // Expose globally for testing/monitoring
+            if (typeof window !== 'undefined') {
+                window.TatviyaRateLimiter = this;
+            }
+
+            // If on 429.html dedicated error page, run error page countdown handler
+            if (document.body && (document.body.classList.contains('rate-limit-page') || document.getElementById('rateLimitCountdown'))) {
+                this.initErrorPageHandler();
+                return;
+            }
+
+            // Otherwise, evaluate current visit velocity across site
+            const result = this.recordAndEvaluateAccess();
+            if (result.blocked) {
+                this.renderShieldModal(result.resetTimeMs);
+            }
+        },
+
+        /**
+         * Retrieve active timestamps within the 1-hour window
+         */
+        getHistory() {
+            try {
+                const now = Date.now();
+                const raw = localStorage.getItem(this.config.storageKey);
+                const list = raw ? JSON.parse(raw) : [];
+                return list.filter(ts => (now - ts) < this.config.windowMs);
+            } catch {
+                return [];
+            }
+        },
+
+        /**
+         * Save active history to localStorage
+         */
+        saveHistory(list) {
+            try {
+                localStorage.setItem(this.config.storageKey, JSON.stringify(list));
+            } catch {
+                // Storage quota exceeded or disabled
+            }
+        },
+
+        /**
+         * Record current page hit and check if threshold (100 hits/hr) is exceeded
+         */
+        recordAndEvaluateAccess() {
+            const now = Date.now();
+            let history = this.getHistory();
+
+            // Check if already reached max limit
+            if (history.length >= this.config.maxRequestsPerHour) {
+                const oldestTs = history[0];
+                const resetTimeMs = (oldestTs + this.config.windowMs) - now;
+                return {
+                    blocked: true,
+                    count: history.length,
+                    remaining: 0,
+                    resetTimeMs: Math.max(1000, resetTimeMs)
+                };
+            }
+
+            // Append current hit
+            history.push(now);
+            this.saveHistory(history);
+
+            const oldestTs = history[0];
+            const resetTimeMs = (oldestTs + this.config.windowMs) - now;
+
+            return {
+                blocked: false,
+                count: history.length,
+                remaining: this.config.maxRequestsPerHour - history.length,
+                resetTimeMs
+            };
+        },
+
+        /**
+         * Current status helper for debug and diagnostics
+         */
+        getStatus() {
+            const now = Date.now();
+            const history = this.getHistory();
+            const count = history.length;
+            const oldestTs = count > 0 ? history[0] : now;
+            const resetInMs = Math.max(0, (oldestTs + this.config.windowMs) - now);
+            return {
+                limit: this.config.maxRequestsPerHour,
+                count: count,
+                remaining: Math.max(0, this.config.maxRequestsPerHour - count),
+                resetInSeconds: Math.ceil(resetInMs / 1000)
+            };
+        },
+
+        /**
+         * Reset history for testing purposes
+         */
+        resetQuota() {
+            try {
+                localStorage.removeItem(this.config.storageKey);
+                console.log('[TatviyaRateLimiter] Quota reset successfully.');
+            } catch {
+                // Ignore
+            }
+        },
+
+        /**
+         * Display on-page 429 Shield Modal barrier when 100 hits exceeded
+         */
+        renderShieldModal(resetTimeMs) {
+            let overlay = document.getElementById('tatviyaRateShield');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'tatviyaRateShield';
+                overlay.className = 'tatviya-rate-shield-overlay is-active';
+                overlay.setAttribute('role', 'alertdialog');
+                overlay.setAttribute('aria-modal', 'true');
+                overlay.setAttribute('aria-labelledby', 'shieldModalTitle');
+                overlay.setAttribute('aria-describedby', 'shieldModalDesc');
+
+                overlay.innerHTML = `
+                    <div class="tatviya-rate-shield-modal">
+                        <div class="shield-icon" aria-hidden="true">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h2 id="shieldModalTitle">HTTP 429 · Rate Limit Active</h2>
+                        <p id="shieldModalDesc">
+                            This device/IP has reached the security limit of <strong>100 requests in 1 hour</strong>. 
+                            To protect server availability and defend against automated crawlers, further requests are paused.
+                        </p>
+                        <div class="shield-timer">
+                            <div class="shield-timer-label">Access Resumes Automatically In</div>
+                            <div class="shield-timer-val" id="shieldModalCountdown">--:--</div>
+                        </div>
+                        <div class="shield-actions">
+                            <a href="https://wa.me/916281434800?text=Hi%20Tatviya,%20I%20hit%20the%20rate%20limit%20barrier%20on%20the%20website.%20Please%20verify%20my%20session." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Support
+                            </a>
+                            <a href="mailto:contact@tatviya.com?subject=Rate%20Limit%20Clearance" class="btn btn-secondary">
+                                <i class="fas fa-envelope" aria-hidden="true"></i> Email Clearance
+                            </a>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+            } else {
+                overlay.classList.add('is-active');
+            }
+
+            // Lock body scroll
+            document.body.style.overflow = 'hidden';
+
+            // Start countdown
+            this.startCountdown('shieldModalCountdown', resetTimeMs, () => {
+                // When timer reaches 0, reload page
+                window.location.reload();
+            });
+        },
+
+        /**
+         * Dedicated countdown handler for 429.html
+         */
+        initErrorPageHandler() {
+            const countdownEl = document.getElementById('rateLimitCountdown');
+            if (!countdownEl) return;
+
+            const status = this.getStatus();
+            const resetMs = (status.resetInSeconds > 0 ? status.resetInSeconds : 3600) * 1000;
+
+            this.startCountdown('rateLimitCountdown', resetMs, () => {
+                countdownEl.textContent = 'Window expired. You may now retry access.';
+                const retryBtn = document.getElementById('retryAccessBtn');
+                if (retryBtn) {
+                    retryBtn.classList.add('pulse');
+                }
+            });
+
+            const retryBtn = document.getElementById('retryAccessBtn');
+            if (retryBtn) {
+                retryBtn.addEventListener('click', (e) => {
+                    const currentStatus = this.getStatus();
+                    if (currentStatus.remaining <= 0) {
+                        e.preventDefault();
+                        alert('Rate limit is still active for your IP. Please wait for the countdown to expire.');
+                    }
+                });
+            }
+        },
+
+        /**
+         * Live ticking countdown timer
+         */
+        startCountdown(elementId, initialMs, onComplete) {
+            if (this.config.timerInterval) {
+                clearInterval(this.config.timerInterval);
+            }
+
+            let remainingMs = initialMs;
+            const targetEl = document.getElementById(elementId);
+            if (!targetEl) return;
+
+            const update = () => {
+                if (remainingMs <= 0) {
+                    clearInterval(this.config.timerInterval);
+                    if (typeof onComplete === 'function') onComplete();
+                    return;
+                }
+
+                const totalSec = Math.ceil(remainingMs / 1000);
+                const minutes = Math.floor(totalSec / 60);
+                const seconds = totalSec % 60;
+                targetEl.textContent = `${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
+
+                remainingMs -= 1000;
+            };
+
+            update();
+            this.config.timerInterval = setInterval(update, 1000);
         }
     };
 
@@ -796,21 +1031,27 @@
 
             const consentBox = document.getElementById('contactConsent');
             if (consentBox && !consentBox.checked) {
-                this.showToast('Please agree to the Privacy Policy to proceed.', 'error');
+                this.showToast('Please consent to the Privacy Policy to proceed.', 'error');
                 allValid = false;
             }
+
+            // Cloudflare Turnstile token check (if Turnstile widget loaded)
+            const turnstileInput = this.form.querySelector('[name="cf-turnstile-response"]');
+            const turnstileToken = turnstileInput ? turnstileInput.value : '';
 
             if (!allValid) {
                 this.showToast('Please correct the highlighted fields before submitting.', 'error');
                 return;
             }
 
-            // Prepare Payload
-            const name = TatviyaApp.Security.escapeHTML(this.form.name.value.trim());
-            const email = this.form.email.value.trim();
-            const phone = TatviyaApp.Security.escapeHTML(this.form.phone.value.trim());
-            const service = TatviyaApp.Security.escapeHTML(this.form.service.value);
-            const subject = TatviyaApp.Security.escapeHTML(this.form.subject.value.trim());
+            // Anti-Email Header Injection: Strip CRLF (\r, \n) and control characters from single-line fields
+            const stripCRLF = (str) => typeof str === 'string' ? str.replace(/[\r\n\x00-\x1F\x7F]/g, ' ').trim() : '';
+
+            const name = stripCRLF(this.form.name.value);
+            const email = stripCRLF(this.form.email.value);
+            const phone = stripCRLF(this.form.phone.value);
+            const service = stripCRLF(this.form.service.value);
+            const subject = stripCRLF(this.form.subject.value);
             const message = TatviyaApp.Security.escapeHTML(this.form.message.value.trim());
 
             const submitBtn = document.getElementById('submitBtn');
@@ -819,35 +1060,81 @@
             this.isSubmitting = true;
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span>Securing &amp; Sending…</span>';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span>Verifying &amp; Securing…</span>';
             }
 
             try {
-                const response = await fetch(TatviyaApp.config.formEndpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name,
-                        email,
-                        phone: phone || 'Not provided',
-                        service,
-                        subject,
-                        message,
-                        _subject: `[Tatviya Inquiry] ${service}: ${subject}`,
-                        _template: 'table'
-                    })
-                });
+                // Try dedicated serverless API /api/contact first
+                let succeeded = false;
+                let responseMsg = 'Inquiry securely verified and received! Our team will contact you within 24 hours. 🎉';
 
-                if (!response.ok) {
-                    throw new Error(`Server returned status ${response.status}`);
+                try {
+                    const apiRes = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-Token': 'tatviya_csrf_' + Date.now()
+                        },
+                        body: JSON.stringify({
+                            name,
+                            email,
+                            phone: phone || 'Not provided',
+                            service,
+                            subject,
+                            message,
+                            'cf-turnstile-response': turnstileToken
+                        })
+                    });
+
+                    if (apiRes.ok) {
+                        const data = await apiRes.json();
+                        if (data.message) responseMsg = data.message;
+                        succeeded = true;
+                    } else if (apiRes.status === 429) {
+                        const errData = await apiRes.json().catch(() => ({}));
+                        this.showToast(errData.error || 'Submission limit reached for this IP (max 5 per hour).', 'error');
+                        return;
+                    } else if (apiRes.status === 403) {
+                        const errData = await apiRes.json().catch(() => ({}));
+                        this.showToast(errData.error || 'Turnstile verification failed. Please try again.', 'error');
+                        return;
+                    }
+                } catch {
+                    // /api/contact unavailable (e.g. static hosting)
+                    succeeded = false;
+                }
+
+                // If standalone serverless endpoint not active, fallback to hardened form endpoint
+                if (!succeeded) {
+                    const fallbackRes = await fetch(TatviyaApp.config.formEndpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name,
+                            email,
+                            phone: phone || 'Not provided',
+                            service,
+                            subject,
+                            message,
+                            _subject: `[Tatviya Verified Inquiry] ${service}: ${subject}`,
+                            _template: 'table'
+                        })
+                    });
+
+                    if (!fallbackRes.ok) {
+                        throw new Error(`Server returned status ${fallbackRes.status}`);
+                    }
                 }
 
                 TatviyaApp.Security.recordSubmission();
-                this.showToast('Inquiry securely received! Our team will contact you within 24 hours. 🎉', 'success');
+                this.showToast(responseMsg, 'success');
                 this.form.reset();
+                if (window.turnstile) {
+                    try { window.turnstile.reset(); } catch {}
+                }
             } catch (err) {
                 console.error('[TatviyaApp] Form submit error:', err);
                 this.showToast('Could not submit inquiry right now. Please message us directly on WhatsApp.', 'error');

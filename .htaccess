@@ -1,0 +1,86 @@
+# ═══════════════════════════════════════════════════════════════
+# TATVIYA — APACHE .HTACCESS SECURITY & RATE LIMITING CONFIGURATION
+# Enforces IP Rate Limiting: 100 requests per 1 hour (3600 seconds)
+# ═══════════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────────────────────
+# 1. HARDENED SECURITY HEADERS
+# ─────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    # HSTS (Strict Transport Security)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Prevent MIME Sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Clickjacking Protection
+    Header always set X-Frame-Options "DENY"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=()"
+    
+    # Cross-Origin Policies
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Resource-Policy "same-origin"
+    
+    # Content Security Policy (Tightened for Tatviya + Turnstile)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;"
+    
+    # Rate Limit Response Header
+    Header always set X-RateLimit-Limit "100"
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 2. RATE LIMITING & DOS MITIGATION
+# ─────────────────────────────────────────────────────────────
+# Custom 429 Too Many Requests Error Page
+ErrorDocument 429 /429.html
+
+# mod_evasive configuration (when enabled on Apache host)
+<IfModule mod_evasive24.c>
+    DOSHashTableSize    3097
+    DOSPageCount        100
+    DOSSiteCount        150
+    DOSPageInterval     3600
+    DOSSiteInterval     3600
+    DOSBlockingPeriod   3600
+    DOSLogDir           "/var/log/apache2/evasive"
+</IfModule>
+<IfModule mod_evasive20.c>
+    DOSHashTableSize    3097
+    DOSPageCount        100
+    DOSSiteCount        150
+    DOSPageInterval     3600
+    DOSSiteInterval     3600
+    DOSBlockingPeriod   3600
+    DOSLogDir           "/var/log/apache2/evasive"
+</IfModule>
+
+# mod_ratelimit configuration (bandwidth throttling)
+<IfModule mod_ratelimit.c>
+    <Location "/">
+        SetOutputFilter RATE_LIMIT
+        SetEnv rate-limit 1000
+    </Location>
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 3. URL REWRITES & CLEAN ROUTING
+# ─────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Block malicious query strings or scrapers
+    RewriteCond %{HTTP_USER_AGENT} ^(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC]
+    RewriteCond %{REQUEST_URI} !^/robots\.txt$
+    RewriteRule .* - [F,L]
+
+    # Clean URL Rewrites for /privacy, /terms, /refund-policy
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>

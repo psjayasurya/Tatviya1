@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- Security Directives & Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    
+    <title>429 Too Many Requests — Tatviya Digital Growth &amp; Escrow Agency</title>
+    <meta name="description" content="HTTP 429: Rate limit exceeded. Access is capped at 100 requests per hour per IP to ensure high security and platform availability.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="icon" type="image/webp" href="static/logo.webp">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#101a33">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Droid+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="styles.css?v=2.2">
+</head>
+<body class="rate-limit-page">
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Minimal Header -->
+    <header class="site-header rate-limit-header" role="banner">
+        <div class="container navbar-inner">
+            <a href="index.html" class="logo" aria-label="Tatviya Home">
+                <img src="static/logo.webp" alt="Tatviya Logo" class="logo-img" width="48" height="48">
+                <span class="logo-text">Tatviya</span>
+            </a>
+            <div class="rate-limit-header-badge">
+                <i class="fas fa-shield-halved" aria-hidden="true"></i> DDoS Protection Active
+            </div>
+        </div>
+    </header>
+
+    <!-- Main 429 Content Section -->
+    <main id="main" class="rate-limit-main" role="main">
+        <div class="container">
+            <div class="rate-limit-card" role="alert" aria-live="assertive">
+                <div class="rate-limit-icon-wrap" aria-hidden="true">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
+                
+                <span class="rate-limit-badge">HTTP 429 · RATE LIMIT EXCEEDED</span>
+                
+                <h1 class="rate-limit-title">Too Many Requests From Your IP</h1>
+                
+                <p class="rate-limit-desc">
+                    To safeguard our marketplace against automated scrapers, denial-of-service attempts, and brute-force inquiries, Tatviya enforces a strict security policy of <strong>100 requests per 1 hour</strong> per IP address.
+                </p>
+
+                <!-- Status & Timer Breakdown -->
+                <div class="rate-limit-status-grid">
+                    <div class="status-cell">
+                        <span class="cell-label">Hourly Quota</span>
+                        <strong class="cell-val">100 Requests</strong>
+                    </div>
+                    <div class="status-cell">
+                        <span class="cell-label">Evaluation Window</span>
+                        <strong class="cell-val">60 Minutes</strong>
+                    </div>
+                    <div class="status-cell highlight">
+                        <span class="cell-label">Restriction Status</span>
+                        <strong class="cell-val status-active">Active Throttle</strong>
+                    </div>
+                </div>
+
+                <div class="rate-limit-countdown-box">
+                    <div class="countdown-label">Estimated Quota Reset Time</div>
+                    <div class="countdown-display" id="rateLimitCountdown" aria-live="polite">
+                        Calculating reset window...
+                    </div>
+                    <p class="countdown-hint">Your IP access will automatically resume once the current 60-minute evaluation window rolls over.</p>
+                </div>
+
+                <!-- Emergency Contact Options -->
+                <div class="rate-limit-actions">
+                    <a href="index.html" class="btn btn-primary" id="retryAccessBtn">
+                        <i class="fas fa-rotate-right" aria-hidden="true"></i> Retry Access
+                    </a>
+                    <a href="https://wa.me/916281434800?text=Hi%20Tatviya,%20I%20hit%20the%20rate%20limit%20on%20tatviya.com.%20Please%20verify%20my%20access." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Instant WhatsApp Verify
+                    </a>
+                    <a href="mailto:contact@tatviya.com?subject=Rate%20Limit%20Clearance%20Request" class="btn btn-outline">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Email Support
+                    </a>
+                </div>
+
+                <!-- Support Footnote -->
+                <div class="rate-limit-footnote">
+                    <p>
+                        Are you an institutional partner or API aggregator? Contact our engineering team at 
+                        <a href="mailto:contact@tatviya.com">contact@tatviya.com</a> or call 
+                        <a href="tel:+916281434800">+91 6281434800</a> for dedicated API whitelist keys.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="site-footer rate-limit-footer" role="contentinfo">
+        <div class="container footer-bottom-inner">
+            <p>&copy; 2026 Tatviya Digital Growth Agency. All rights reserved. Registered MSME: UDYAM-AP-10-0043813.</p>
+            <div class="footer-legal-links">
+                <a href="privacy/">Privacy Policy</a>
+                <a href="terms/">Terms of Service</a>
+                <a href="refund-policy/">Refund Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Script -->
+    <script src="script.js?v=2.2" defer></script>
+</body>
+</html>

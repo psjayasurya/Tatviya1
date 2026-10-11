@@ -1,0 +1,49 @@
+{
+  "ResponseHeadersPolicyConfig": {
+    "Comment": "Tatviya Enterprise Security Headers Policy (A+ on SecurityHeaders & Observatory)",
+    "Name": "Tatviya-Security-Headers-Policy",
+    "SecurityHeadersConfig": {
+      "StrictTransportSecurity": {
+        "Override": true,
+        "AccessControlMaxAgeSec": 31536000,
+        "IncludeSubdomains": true,
+        "Preload": true
+      },
+      "ContentTypeOptions": {
+        "Override": true
+      },
+      "FrameOptions": {
+        "Override": true,
+        "FrameOption": "DENY"
+      },
+      "ReferrerPolicy": {
+        "Override": true,
+        "ReferrerPolicy": "strict-origin-when-cross-origin"
+      },
+      "ContentSecurityPolicy": {
+        "Override": true,
+        "ContentSecurityPolicy": "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;"
+      }
+    },
+    "CustomHeadersConfig": {
+      "Quantity": 3,
+      "Items": [
+        {
+          "Header": "Permissions-Policy",
+          "Value": "camera=(), microphone=(), geolocation=(), accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=()",
+          "Override": true
+        },
+        {
+          "Header": "Cross-Origin-Opener-Policy",
+          "Value": "same-origin",
+          "Override": true
+        },
+        {
+          "Header": "Cross-Origin-Resource-Policy",
+          "Value": "same-origin",
+          "Override": true
+        }
+      ]
+    }
+  }
+}

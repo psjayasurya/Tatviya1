@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
 
-# Disallow scrapers from non-public data
+# Disallow scrapers from non-public data and error pages
 Disallow: /static/Tatviya-main/
+Disallow: /429.html
+Disallow: /api/
 
 # Sitemap location
 Sitemap: https://tatviya.com/sitemap.xml
