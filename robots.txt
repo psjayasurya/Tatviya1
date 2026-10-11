@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow scrapers from non-public data
+Disallow: /static/Tatviya-main/
+
+# Sitemap location
+Sitemap: https://tatviya.com/sitemap.xml

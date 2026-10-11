@@ -1,664 +1,1432 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#2d2f38">
+    
+    <!-- ═══════════════════════════════════════════
+         SECURITY DIRECTIVES & HEADERS
+    ═══════════════════════════════════════════ -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()">
+    
+    <!-- ═══════════════════════════════════════════
+         PRIMARY SEO & METADATA
+    ═══════════════════════════════════════════ -->
+    <title>Tatviya – Digital Growth, YouTube Monetization &amp; Channel Trading Agency</title>
+    <meta name="description" content="India's leading digital growth agency specializing in YouTube channel trading, monetization acceleration, digital marketing, and creator revenue strategies. Based in Tirupati, India.">
+    <meta name="keywords" content="YouTube monetization, YouTube channel trading, buy YouTube channel, sell YouTube channel, digital marketing agency, channel escrow India, Tatviya, Tirupati">
+    <meta name="author" content="Tatviya">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://tatviya.com/">
+    
+    <!-- Theme & Mobile Integration -->
+    <meta name="theme-color" content="#1a2540">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="Tatviya - India's Premier Digital Growth &amp; Social Media Agency. YouTube Monetization, Channel Trading, Digital Marketing &amp; Passive Income Education.">
-    <meta name="keywords" content="YouTube monetization, channel trading, digital marketing, social media, Tatviya, Tirupati">
-    <meta name="author" content="Tatviya">
-    <title>Tatviya – Digital Growth &amp; Social Media Services</title>
+    <meta name="apple-mobile-web-app-title" content="Tatviya">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/webp" href="static/logo.webp">
+    <link rel="apple-touch-icon" href="static/logo.webp">
 
-    <!-- Google Fonts: Droid Serif + Inter (kept for numeric fallback) -->
+    <!-- ═══════════════════════════════════════════
+         OPEN GRAPH PROTOCOL (Social Sharing)
+    ═══════════════════════════════════════════ -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Tatviya">
+    <meta property="og:title" content="Tatviya – Premier Digital Growth &amp; YouTube Channel Trading Agency">
+    <meta property="og:description" content="Transform your digital presence with verified YouTube monetization, secure channel trading, and high-performance marketing. Trusted by 500+ creators.">
+    <meta property="og:url" content="https://tatviya.com/">
+    <meta property="og:image" content="https://tatviya.com/static/logo.webp">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card Protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tatviya">
+    <meta name="twitter:creator" content="@tatviya">
+    <meta name="twitter:title" content="Tatviya – Premier Digital Growth &amp; YouTube Channel Trading Agency">
+    <meta name="twitter:description" content="India's trusted digital growth agency for YouTube monetization, channel trading, and creator marketing solutions.">
+    <meta name="twitter:image" content="https://tatviya.com/static/logo.webp">
+
+    <!-- ═══════════════════════════════════════════
+         TYPOGRAPHY & ICONS
+    ═══════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Droid+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Droid+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome with Subresource Integrity (SRI) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Design System Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=2.1">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Model Viewer for 3D GLB Rendering -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <!-- ═══════════════════════════════════════════
+         SCHEMA.ORG JSON-LD STRUCTURED DATA
+    ═══════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://tatviya.com/#organization",
+          "name": "Tatviya",
+          "url": "https://tatviya.com/",
+          "logo": "https://tatviya.com/static/logo.webp",
+          "foundingDate": "2022",
+          "description": "India's premier digital growth and social media agency specializing in YouTube monetization, channel trading, digital marketing, and creator revenue education.",
+          "founders": [
+            {
+              "@type": "Person",
+              "name": "Bhimakonda Vishnu Prasad",
+              "jobTitle": "Founder"
+            }
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-6281434800",
+            "contactType": "customer service",
+            "email": "contact@tatviya.com",
+            "areaServed": "IN",
+            "availableLanguage": ["English", "Hindi", "Telugu"]
+          },
+          "sameAs": [
+            "https://www.instagram.com/yt_channel_buyer_india",
+            "https://x.com/tatviya",
+            "https://www.youtube.com/@tatviya"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://tatviya.com/#business",
+          "name": "Tatviya Digital Growth Agency",
+          "url": "https://tatviya.com/",
+          "image": "https://tatviya.com/static/logo.webp",
+          "telephone": "+91-6281434800",
+          "email": "contact@tatviya.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "16-6-457 1st Floor Karnala Layout",
+            "addressLocality": "Tirupati",
+            "addressRegion": "Andhra Pradesh",
+            "postalCode": "517501",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 13.6288,
+            "longitude": 79.4192
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          "priceRange": "$$"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://tatviya.com/#website",
+          "url": "https://tatviya.com/",
+          "name": "Tatviya",
+          "publisher": {
+            "@id": "https://tatviya.com/#organization"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://tatviya.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does YouTube Channel Trading work securely through Tatviya?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tatviya acts as a verified escrow and due diligence intermediary. We conduct full analytics audits, copyright checks, and identity verification. Funds are held in secure escrow while ownership is transferred via Google Brand Account primary ownership over a mandatory 7-day security period, ensuring 100% protection for both buyer and seller."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the 7-day Google Brand Account rule and why is it mandatory?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Google requires a 7-day waiting period after adding a new Owner before Primary Ownership of a YouTube Brand Account can be transferred. Tatviya strictly enforces this protocol with contract-backed escrow to ensure complete security against unauthorized recovery."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does 0% AdSense Tax Deduction in India work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Indian YouTube creators can benefit from the US-India Double Taxation Avoidance Agreement (DTAA) by properly submitting W-8BEN tax documentation. Tatviya guides creators through setting up compliant tax submissions to prevent unnecessary 24-30% foreign withholding taxes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Tatviya assist with YouTube Monetization?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We provide creators with organic algorithmic growth strategies, metadata optimization, watch-hour acceleration frameworks, and end-to-end guidance to achieve the 1,000 subscribers and 4,000 watch hours required for the YouTube Partner Program (YPP)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What guarantees and escrow protections are provided during transactions?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All transactions are backed by legally binding contracts, full identity verification (KYC), Non-Disclosure Agreements (NDA), and milestone-based escrow release. Funds are never disbursed to the seller until the buyer has verified full, uncompromised Primary Ownership."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can Tatviya build custom websites for businesses?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Beyond social media growth, Tatviya engineers high-performance, responsive, SEO-optimized business websites and web applications designed to maximize conversion rates and digital credibility."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
+    <!-- Accessible Skip to Main Content Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-    <!-- ═══════════════════════════════════════
-         TOP UTILITY BAR  (xcodefix style)
-    ═══════════════════════════════════════ -->
-    <div class="topbar" id="topbar">
-        <div class="topbar-inner">
-            <div class="topbar-left">
-                <a href="tel:+916281434800" class="topbar-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+91 6281434800</span>
-                </a>
-                <a href="mailto:contact@tatviya.com" class="topbar-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@tatviya.com</span>
-                </a>
-                <span class="topbar-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Tirupati, Andhra Pradesh</span>
-                </span>
-            </div>
-            <div class="topbar-right">
-                <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://wa.me/916281434800" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════
-         NAVIGATION BAR
-    ═══════════════════════════════════════ -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="#home" aria-label="Tatviya home">
-                    <img src="static/logo.webp" alt="Tatviya" class="logo-image">
-                    <span class="logo-text">Tat<span>viya</span></span>
-                </a>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#team" class="nav-link">Team</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <!-- Theme toggle hidden in new design -->
-                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Change theme" style="display:none">
-                    <i class="fas fa-palette"></i>
-                    <span>Theme</span>
-                </button>
-                <a href="#contact" class="nav-cta-btn" id="navCta">Get Started</a>
-                <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ═══════════════════════════════════════
-         HERO SECTION
-    ═══════════════════════════════════════ -->
-    <section id="home" class="hero" aria-label="Main banner">
-        <canvas id="particleCanvas" class="particle-canvas"></canvas>
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content container">
-            <div class="hero-badge" data-reveal>
-                <i class="fas fa-star"></i>
-                <span>India's Premier Digital Growth Agency</span>
-            </div>
-
-            <h1 class="hero-headline" data-reveal>
-                Build Your <span class="gradient-text">Profitable</span><br>
-                Online Presence
-            </h1>
-
-            <p class="hero-subtext" data-reveal>
-                Transform your digital journey with expert guidance in YouTube monetization,
-                channel trading, and digital marketing — tailored for creators and businesses.
-            </p>
-
-            <div class="hero-cta-group" data-reveal>
-                <button class="cta-btn" id="heroCta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
-                    <span>Get Started Today</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-                <a href="#services" class="cta-outline">
-                    <span>Explore Services</span>
-                    <i class="fas fa-chevron-down"></i>
-                </a>
-            </div>
-
-            <div class="hero-stats-row" data-reveal>
-                <div class="hero-stat">
-                    <span class="hero-stat-num" data-target="400" data-suffix="+">400+</span>
-                    <span class="hero-stat-label">Channel Deals In 4 Years</span>
+    <!-- ═══════════════════════════════════════════
+         SITE HEADER & NAVIGATION
+    ═══════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+        <!-- Top Utility Bar -->
+        <div class="topbar" id="topbar">
+            <div class="container topbar-inner">
+                <div class="topbar-left">
+                    <a href="tel:+916281434800" class="topbar-item" aria-label="Call Tatviya at +91 6281434800">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <span>+91 6281434800</span>
+                    </a>
+                    <a href="mailto:contact@tatviya.com" class="topbar-item" aria-label="Send email to contact@tatviya.com">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span>contact@tatviya.com</span>
+                    </a>
+                    <span class="topbar-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>Tirupati, Andhra Pradesh, India</span>
+                    </span>
                 </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-num" data-target="100" data-suffix="+">100+</span>
-                    <span class="hero-stat-label">Online Deals With Trust</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-num" data-target="3.7" data-suffix="M">3.7M</span>
-                    <span class="hero-stat-label">Subscribers in Single Channel</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-num" data-target="0" data-suffix="%">0%</span>
-                    <span class="hero-stat-label">AdSense Tax Deduction in India</span>
+                <div class="topbar-right">
+                    <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Follow Tatviya on Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Follow Tatviya on X (Twitter)">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Subscribe to Tatviya on YouTube">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/916281434800" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Chat with Tatviya on WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════
-         SERVICES SECTION
-    ═══════════════════════════════════════ -->
-    <section id="services" class="services section" aria-label="Our Services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">What We Offer</span>
-                <h2>Our <span class="gradient-text">Services</span></h2>
-                <!-- xcodefix-style separator -->
-                <div class="section-separator">
-                    <span class="sep-line left"></span>
-                    <span class="sep-icon"><i class="fas fa-star"></i></span>
-                    <span class="sep-line right"></span>
-                </div>
-                <p class="section-subtitle">Comprehensive solutions for every stage of your digital growth journey</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card tilt-card">
-                    <div class="service-icon-wrap"><i class="fas fa-play-circle"></i></div>
-                    <h3>YouTube Monetization</h3>
-                    <p>Transform your YouTube channel into a revenue-generating asset. We guide creators through the journey to achieve 1,000 subscribers and 4,000 watch hours — the gateway to YouTube Partner Program.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Subscriber growth strategies</li>
-                        <li><i class="fas fa-check-circle"></i> Watch hour acceleration</li>
-                        <li><i class="fas fa-check-circle"></i> Content optimization</li>
-                        <li><i class="fas fa-check-circle"></i> Monetization setup guidance</li>
-                    </ul>
-                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
+        <!-- Main Navigation Bar -->
+        <nav class="navbar" id="navbar" aria-label="Main Navigation">
+            <div class="container nav-container">
+                <div class="logo">
+                    <a href="#home" class="logo-link" aria-label="Tatviya Homepage">
+                        <img src="static/logo.webp" alt="Tatviya Corporate Logo" class="logo-image" width="44" height="44">
+                        <span class="logo-text">Tat<span class="logo-accent">viya</span></span>
+                    </a>
                 </div>
 
-                <div class="service-card tilt-card">
-                    <div class="service-icon-wrap"><i class="fas fa-exchange-alt"></i></div>
-                    <h3>YouTube Channel Trading</h3>
-                    <p>Buy and sell monetized YouTube channels with complete transparency and security. We facilitate trading from 100K to 10M+ subscribers, handling all verification and transfer processes.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Channel verification</li>
-                        <li><i class="fas fa-check-circle"></i> Complete due diligence</li>
-                        <li><i class="fas fa-check-circle"></i> Secure transactions</li>
-                        <li><i class="fas fa-check-circle"></i> Full account transfer support</li>
-                    </ul>
-                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
-                </div>
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="#home" class="nav-link active" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
+                    <li role="none"><a href="#calculator" class="nav-link" role="menuitem">Valuation Calculator</a></li>
+                    <li role="none"><a href="#process" class="nav-link" role="menuitem">Escrow Process</a></li>
+                    <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                    <li role="none"><a href="#team" class="nav-link" role="menuitem">Team</a></li>
+                    <li role="none"><a href="#faq" class="nav-link" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+                </ul>
 
-                <div class="service-card tilt-card">
-                    <div class="service-icon-wrap"><i class="fas fa-chart-line"></i></div>
-                    <h3>Digital Marketing Services</h3>
-                    <p>Boost your business with our comprehensive digital marketing expertise. From SEO to paid advertising across Facebook, Instagram, and YouTube — we deliver measurable results.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> SEO optimization</li>
-                        <li><i class="fas fa-check-circle"></i> Facebook Ads management</li>
-                        <li><i class="fas fa-check-circle"></i> Instagram Ads campaigns</li>
-                        <li><i class="fas fa-check-circle"></i> YouTube Ads strategy</li>
-                    </ul>
-                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card tilt-card">
-                    <div class="service-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>Passive Income Education</h3>
-                    <p>Learn proven strategies to build sustainable passive income streams through social media. Our experts share real-world methodologies backed by years of practical experience.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Comprehensive training programs</li>
-                        <li><i class="fas fa-check-circle"></i> Proven income strategies</li>
-                        <li><i class="fas fa-check-circle"></i> One-on-one mentoring</li>
-                        <li><i class="fas fa-check-circle"></i> Ongoing support &amp; updates</li>
-                    </ul>
-                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card tilt-card">
-                    <div class="service-icon-wrap"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Website Design &amp; Development</h3>
-                    <p>Build a professional online presence with modern, conversion-focused websites tailored for small, medium, and large businesses to grow faster in the digital market.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Business website design</li>
-                        <li><i class="fas fa-check-circle"></i> Custom development solutions</li>
-                        <li><i class="fas fa-check-circle"></i> Mobile responsive layouts</li>
-                        <li><i class="fas fa-check-circle"></i> Performance &amp; SEO-ready setup</li>
-                    </ul>
-                    <a href="#contact" class="card-cta">Contact Us <i class="fas fa-arrow-right"></i></a>
+                <div class="nav-actions">
+                    <a href="#contact" class="btn btn-primary nav-cta-btn" id="navCta">Get Started</a>
+                    <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navLinks">
+                        <span class="hamburger-bar"></span>
+                        <span class="hamburger-bar"></span>
+                        <span class="hamburger-bar"></span>
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
+    </header>
 
-    <!-- ═══════════════════════════════════════
-         STATS / KEY NUMBERS SECTION
-    ═══════════════════════════════════════ -->
-    <section class="stats-section" aria-label="Key Numbers">
-        <div class="container">
-            <div class="section-header" style="color:#fff; margin-bottom:2.5rem;">
-                <span class="section-tag" style="background:rgba(226,33,28,0.2);color:#ff6b6b;border-color:rgba(226,33,28,0.35);">Our Achievements</span>
-                <h2 style="color:#ffffff; font-family:'Droid Serif',serif;">Numbers That <span style="color:var(--primary)">Speak</span> For Us</h2>
-                <div class="section-separator">
-                    <span class="sep-line left" style="background:linear-gradient(to right, transparent, rgba(226,33,28,0.6))"></span>
-                    <span class="sep-icon"><i class="fas fa-chart-bar" style="color:var(--primary)"></i></span>
-                    <span class="sep-line right" style="background:linear-gradient(to left, transparent, rgba(226,33,28,0.6))"></span>
+    <!-- ═══════════════════════════════════════════
+         MAIN CONTENT CONTAINER (Semantic Landmark)
+    ═══════════════════════════════════════════ -->
+    <main id="main" class="site-main">
+
+        <!-- ─────────────────────────────────────────
+             1. HERO SECTION
+        ───────────────────────────────────────── -->
+        <section id="home" class="hero" aria-labelledby="heroHeading">
+            <canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+            <div class="hero-overlay" aria-hidden="true"></div>
+
+            <div class="container hero-content">
+                <div class="hero-badge" data-reveal>
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    <span>India's Premier Digital Growth &amp; Escrow Agency</span>
                 </div>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-handshake" style="font-size:1.8rem;color:var(--primary)"></i>
+
+                <h1 id="heroHeading" class="hero-headline" data-reveal>
+                    Build Your <span class="gradient-text">Profitable</span><br>
+                    Online Presence
+                </h1>
+
+                <p class="hero-subtext" data-reveal>
+                    Transform your creator journey with verified YouTube monetization, secure contract-backed channel trading, and high-conversion digital marketing solutions tailored for ambitious creators and businesses.
+                </p>
+
+                <div class="hero-cta-group" data-reveal>
+                    <a href="#contact" class="btn btn-primary cta-btn" id="heroCta">
+                        <span>Get Started Today</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                    <a href="#calculator" class="btn btn-outline cta-outline">
+                        <span>Estimate Channel Value</span>
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <!-- Verified Security & Compliance Badges Row -->
+                <div class="hero-trust-strip" data-reveal>
+                    <div class="trust-pill">
+                        <i class="fas fa-lock" aria-hidden="true"></i>
+                        <span>100% Escrow Protection</span>
                     </div>
-                    <span class="stat-number" data-target="400" data-suffix="+">400+</span>
-                    <span class="stat-label">Channel Deals</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-users" style="font-size:1.8rem;color:var(--primary)"></i>
+                    <div class="trust-pill">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                        <span>Google Brand Account Compliant</span>
                     </div>
-                    <span class="stat-number" data-target="500" data-suffix="+">500+</span>
-                    <span class="stat-label">Happy Clients</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-play-circle" style="font-size:1.8rem;color:var(--primary)"></i>
+                    <div class="trust-pill">
+                        <i class="fas fa-file-contract" aria-hidden="true"></i>
+                        <span>Binding NDA &amp; Legal Verification</span>
                     </div>
-                    <span class="stat-number" data-target="3.7" data-suffix="M">3.7M</span>
-                    <span class="stat-label">Subscribers Managed</span>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-shield-alt" style="font-size:1.8rem;color:var(--primary)"></i>
+
+                <!-- Live Metrics Row -->
+                <div class="hero-stats-row" data-reveal>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-target="400" data-suffix="+">400+</span>
+                        <span class="hero-stat-label">Channel Deals In 4 Years</span>
                     </div>
-                    <span class="stat-number" data-target="100" data-suffix="%">100%</span>
-                    <span class="stat-label">Secure Transactions</span>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-target="100" data-suffix="+">100+</span>
+                        <span class="hero-stat-label">Online Deals With Full Trust</span>
+                    </div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-target="3.7" data-suffix="M">3.7M</span>
+                        <span class="hero-stat-label">Max Subs in Single Channel</span>
+                    </div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" data-target="0" data-suffix="%">0%</span>
+                        <span class="hero-stat-label">AdSense Tax Deduction in India</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ═══════════════════════════════════════
-         ABOUT SECTION
-    ═══════════════════════════════════════ -->
-    <section id="about" class="about section alt-bg" aria-label="About Tatviya">
-        <div class="container">
-            <div class="about-layout">
-                <div class="about-text reveal">
-                    <span class="section-tag">Why Us</span>
-                    <h2>Why Choose <span class="gradient-text">Tatviya?</span></h2>
-                    <!-- xcodefix separator -->
-                    <div class="section-separator" style="justify-content:flex-start;max-width:260px;margin-left:0;margin-bottom:1.5rem;">
+        <!-- ─────────────────────────────────────────
+             2. ENTERPRISE TRUST & PROTOCOL STRIP
+        ───────────────────────────────────────── -->
+        <section class="trust-banner" aria-label="Security and Trust Standards">
+            <div class="container trust-banner-inner">
+                <div class="trust-item">
+                    <div class="trust-icon-box">
+                        <i class="fas fa-shield-virus" aria-hidden="true"></i>
+                    </div>
+                    <div class="trust-text">
+                        <strong>Anti-Scam Escrow</strong>
+                        <p>Zero upfront seller payout until buyer verifies Primary Ownership.</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon-box">
+                        <i class="fas fa-user-check" aria-hidden="true"></i>
+                    </div>
+                    <div class="trust-text">
+                        <strong>Rigorous KYC Due Diligence</strong>
+                        <p>Complete analytics audit, copyright strike check, and seller identity proof.</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon-box">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                    </div>
+                    <div class="trust-text">
+                        <strong>7-Day Security Protocol</strong>
+                        <p>Strict compliance with Google Brand Account primary transfer waiting periods.</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon-box">
+                        <i class="fas fa-balance-scale" aria-hidden="true"></i>
+                    </div>
+                    <div class="trust-text">
+                        <strong>Contractually Backed</strong>
+                        <p>Legally enforceable sale agreements registered in Tirupati jurisdiction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             3. SERVICES SECTION
+        ───────────────────────────────────────── -->
+        <section id="services" class="services section" aria-labelledby="servicesHeading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">What We Offer</span>
+                    <h2 id="servicesHeading">Our <span class="gradient-text">Services</span></h2>
+                    <div class="section-separator" aria-hidden="true">
                         <span class="sep-line left"></span>
                         <span class="sep-icon"><i class="fas fa-star"></i></span>
                         <span class="sep-line right"></span>
                     </div>
-                    <p class="about-lead">We are a specialized digital growth and social media services company dedicated to helping individuals, creators, and businesses achieve their online potential with proven strategies that deliver real results.</p>
-
-                    <div class="features-list">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-star"></i></div>
-                            <div class="feature-body">
-                                <h4>Expert Team</h4>
-                                <p>Industry veterans with hands-on experience in YouTube growth, channel operations, and digital marketing.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="feature-body">
-                                <h4>Secure &amp; Transparent</h4>
-                                <p>All transactions and services are conducted with complete transparency and industry-standard security protocols.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-handshake"></i></div>
-                            <div class="feature-body">
-                                <h4>Dedicated Support</h4>
-                                <p>Our team provides personalized guidance and ongoing support throughout your digital growth journey.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-trophy"></i></div>
-                            <div class="feature-body">
-                                <h4>Proven Results</h4>
-                                <p>Track record of helping 500+ creators achieve monetization and facilitating 100K+ subscriber channel transfers.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="section-subtitle">Comprehensive, compliant solutions engineered for every stage of your digital growth journey</p>
                 </div>
 
-                <div class="about-visual reveal">
-                    <div class="about-vis-main">
-                        <div class="vis-center-card">
-                            <div class="vis-center-icon"><i class="fas fa-rocket"></i></div>
-                            <p class="vis-center-title">Digital Growth Partner</p>
-                            <span class="vis-center-years">4+ Years of Excellence</span>
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <article class="service-card tilt-card" data-reveal>
+                        <div class="service-icon-wrap" aria-hidden="true">
+                            <i class="fas fa-play-circle"></i>
                         </div>
-                        <div class="vis-stats-row">
-                            <div class="vis-stat-card">
-                                <i class="fas fa-chart-line"></i>
-                                <strong>127%</strong>
-                                <span>Avg. Growth</span>
-                            </div>
-                            <div class="vis-stat-card">
-                                <i class="fas fa-users"></i>
-                                <strong>500+</strong>
-                                <span>Clients</span>
-                            </div>
-                            <div class="vis-stat-card">
-                                <i class="fas fa-lock"></i>
-                                <strong>100%</strong>
-                                <span>Secure Deals</span>
-                            </div>
-                        </div>
-                        <div class="vis-badge">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Trusted by 400+ Channel Owners</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <h3>YouTube Monetization</h3>
+                        <p>Transform your channel into a recurring revenue engine. We accelerate creators through algorithmic watch hour growth and subscriber acquisition to unlock the YouTube Partner Program (YPP).</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Organic 1,000 subscriber strategies</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 4,000 watch hour acceleration</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Metadata &amp; thumbnail optimization</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> AdSense approval setup guidance</li>
+                        </ul>
+                        <a href="#contact" class="card-cta">Consult an Expert <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
 
-    <!-- ═══════════════════════════════════════
-         TESTIMONIALS SECTION
-    ═══════════════════════════════════════ -->
-    <section class="testimonials section" aria-label="Client Testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Client Stories</span>
-                <h2>What Our <span class="gradient-text">Clients Say</span></h2>
-                <div class="section-separator">
-                    <span class="sep-line left"></span>
-                    <span class="sep-icon"><i class="fas fa-star"></i></span>
-                    <span class="sep-line right"></span>
-                </div>
-                <p class="section-subtitle">Real success stories from creators and businesses we've helped grow</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card reveal">
-                    <div class="quote-icon">"</div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Tatviya helped me achieve YouTube monetization in just 6 months. Their strategy was clear, actionable, and the support was exceptional throughout the entire journey."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RJ</div>
-                        <div class="author-info">
-                            <h4>Rajesh Jain</h4>
-                            <p>YouTube Creator</p>
+                    <!-- Service 2 -->
+                    <article class="service-card tilt-card" data-reveal>
+                        <div class="service-icon-wrap" aria-hidden="true">
+                            <i class="fas fa-exchange-alt"></i>
                         </div>
-                    </div>
-                </div>
+                        <h3>YouTube Channel Trading</h3>
+                        <p>Buy and sell established, monetized YouTube channels with complete legal escrow and verified analytics. Facilitating trades from 100K to 10M+ subscribers with end-to-end account ownership migration.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Comprehensive copyright &amp; strike audit</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Verified audience geography &amp; RPM check</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 100% Secure milestone escrow</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> 7-Day Brand Account handover supervision</li>
+                        </ul>
+                        <a href="#calculator" class="card-cta">Calculate Channel Value <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
 
-                <div class="testimonial-card reveal">
-                    <div class="quote-icon">"</div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"The digital marketing services from Tatviya increased our online sales by 150%. Their Facebook and Instagram ad campaigns are incredibly targeted and effective."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AS</div>
-                        <div class="author-info">
-                            <h4>Aisha Singh</h4>
-                            <p>E-commerce Owner</p>
+                    <!-- Service 3 -->
+                    <article class="service-card tilt-card" data-reveal>
+                        <div class="service-icon-wrap" aria-hidden="true">
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                    </div>
-                </div>
+                        <h3>Digital Marketing &amp; Paid Ads</h3>
+                        <p>Scale your brand's reach and customer acquisition with high-ROI targeted campaigns across Meta (Facebook &amp; Instagram), Google Search, and YouTube In-Stream Ads with measurable conversion tracking.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Search Engine Optimization (SEO)</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Meta Ads funnel management</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> YouTube Video Ads strategy</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Real-time analytics &amp; ROAS reporting</li>
+                        </ul>
+                        <a href="#contact" class="card-cta">Scale Your Brand <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
 
-                <div class="testimonial-card reveal">
-                    <div class="quote-icon">"</div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"I purchased a monetized YouTube channel through their platform. The entire process was secure, transparent, and professional. Highly recommended for channel investors!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PK</div>
-                        <div class="author-info">
-                            <h4>Priya Kapoor</h4>
-                            <p>Channel Investor</p>
+                    <!-- Service 4 -->
+                    <article class="service-card tilt-card" data-reveal>
+                        <div class="service-icon-wrap" aria-hidden="true">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                    </div>
+                        <h3>Passive Income Education</h3>
+                        <p>Master the mechanics of automated digital cash flow. Learn proven methodologies for building, managing, and scaling faceless YouTube channels and affiliate social media assets.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Faceless automation frameworks</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> High-RPM niche selection blueprints</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Direct 1-on-1 mentor guidance</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Exclusive creator network access</li>
+                        </ul>
+                        <a href="#contact" class="card-cta">Start Learning <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <!-- Service 5 -->
+                    <article class="service-card tilt-card" data-reveal>
+                        <div class="service-icon-wrap" aria-hidden="true">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Website Design &amp; Development</h3>
+                        <p>Establish high-trust authority with modern, lightning-fast business websites engineered for maximum conversion, top Google SEO rankings, and seamless mobile responsiveness.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Modern corporate UI/UX architectures</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> WCAG AA accessibility compliance</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Core Web Vitals performance tuning</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Enterprise security &amp; SSL hardening</li>
+                        </ul>
+                        <a href="#contact" class="card-cta">Build Your Website <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ═══════════════════════════════════════
-         TEAM SECTION
-    ═══════════════════════════════════════ -->
-    <section id="team" class="team section alt-bg" aria-label="Our Team">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">The People</span>
-                <h2>Our Expert <span class="gradient-text">Team</span></h2>
-                <div class="section-separator">
-                    <span class="sep-line left"></span>
-                    <span class="sep-icon"><i class="fas fa-star"></i></span>
-                    <span class="sep-line right"></span>
-                </div>
-                <p class="section-subtitle">Meet the professionals dedicated to your digital success</p>
-            </div>
-
-            <div class="team-grid">
-                <div class="team-card reveal">
-                    <div class="team-photo-wrap">
-                        <img src="static/Vishnu.webp" alt="Bhimakonda Vishnu Prasad – Founder" class="team-photo">
-                        <div class="photo-ring"></div>
+        <!-- ─────────────────────────────────────────
+             4. INTERACTIVE CHANNEL VALUATION & REVENUE CALCULATOR
+        ───────────────────────────────────────── -->
+        <section id="calculator" class="calculator-section section alt-bg" aria-labelledby="calculatorHeading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Interactive Tool</span>
+                    <h2 id="calculatorHeading">YouTube Channel <span class="gradient-text">Valuation Calculator</span></h2>
+                    <div class="section-separator" aria-hidden="true">
+                        <span class="sep-line left"></span>
+                        <span class="sep-icon"><i class="fas fa-calculator"></i></span>
+                        <span class="sep-line right"></span>
                     </div>
-                    <h3>Bhimakonda Vishnu Prasad</h3>
-                    <p class="designation">Founder</p>
-                    <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
+                    <p class="section-subtitle">Estimate your channel's market value, AdSense monthly revenue potential, and trading tier based on verified industry benchmarks</p>
                 </div>
 
-                <div class="team-card reveal">
-                    <div class="team-photo-wrap">
-                        <img src="static/Jagan.webp" alt="T. Jagan – Chief Executive Officer" class="team-photo">
-                        <div class="photo-ring"></div>
-                    </div>
-                    <h3>T. Jagan</h3>
-                    <p class="designation">Chief Executive Officer (CEO)</p>
-                    <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-card reveal">
-                    <div class="team-photo-wrap">
-                        <img src="static/Krishna Vamsi.webp" alt="S. Krishna Vamsi – Revenue &amp; Partnership Director" class="team-photo">
-                        <div class="photo-ring"></div>
-                    </div>
-                    <h3>Krishna Vamsi</h3>
-                    <p class="designation">Revenue &amp; Partnership Director</p>
-                    <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-card reveal">
-                    <div class="team-photo-wrap">
-                        <img src="static/Rohith.webp" alt="K. Rohith – Content Director" class="team-photo">
-                        <div class="photo-ring"></div>
-                    </div>
-                    <h3>K. Rohith</h3>
-                    <p class="designation">Content Director</p>
-                    <div class="team-socials">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         CONTACT SECTION
-    ═══════════════════════════════════════ -->
-    <section id="contact" class="contact section" aria-label="Contact Us">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Reach Out</span>
-                <h2>Get In <span class="gradient-text">Touch</span></h2>
-                <div class="section-separator">
-                    <span class="sep-line left"></span>
-                    <span class="sep-icon"><i class="fas fa-star"></i></span>
-                    <span class="sep-line right"></span>
-                </div>
-                <p class="section-subtitle">Have questions? Let's talk about how we can help your business grow.</p>
-            </div>
-
-            <div class="contact-wrapper">
-                <div class="contact-form-container reveal">
-                    <form class="contact-form" id="contactForm" novalidate>
-                        <div class="form-group floating-label">
-                            <input type="text" id="contactName" name="name" placeholder=" " required autocomplete="name">
-                            <label for="contactName">Your Name</label>
+                <div class="calculator-grid">
+                    <!-- Calculator Controls Form -->
+                    <div class="calc-card calc-controls" data-reveal>
+                        <h3 class="calc-card-title">Channel Parameters</h3>
+                        
+                        <!-- Niche Selection -->
+                        <div class="calc-group">
+                            <label for="calcNiche" class="calc-label">Channel Niche / Category</label>
+                            <select id="calcNiche" class="calc-select">
+                                <option value="finance">Finance, Crypto &amp; Business (High RPM ~ ₹350 - ₹700)</option>
+                                <option value="tech" selected>Tech, AI &amp; Gadgets (Medium-High RPM ~ ₹250 - ₹500)</option>
+                                <option value="education">Education, Tutorials &amp; Career (Medium RPM ~ ₹180 - ₹350)</option>
+                                <option value="lifestyle">Vlogs, Travel &amp; Lifestyle (Standard RPM ~ ₹120 - ₹240)</option>
+                                <option value="gaming">Gaming &amp; Live Streaming (Standard RPM ~ ₹90 - ₹180)</option>
+                                <option value="entertainment">Entertainment, Comedy &amp; Shorts (Broad RPM ~ ₹70 - ₹150)</option>
+                            </select>
                         </div>
-                        <div class="form-group floating-label">
-                            <input type="email" id="contactEmail" name="email" placeholder=" " required autocomplete="email">
-                            <label for="contactEmail">Email Address</label>
+
+                        <!-- Subscriber Slider -->
+                        <div class="calc-group">
+                            <div class="calc-group-header">
+                                <label for="calcSubs" class="calc-label">Subscriber Count</label>
+                                <span class="calc-badge" id="calcSubsVal">100,000 Subs</span>
+                            </div>
+                            <input type="range" id="calcSubs" class="calc-slider" min="10000" max="2000000" step="5000" value="100000">
+                            <div class="calc-range-limits">
+                                <span>10K</span>
+                                <span>500K</span>
+                                <span>1M</span>
+                                <span>2M+</span>
+                            </div>
                         </div>
-                        <div class="form-group floating-label">
-                            <input type="text" id="contactSubject" name="subject" placeholder=" " required>
-                            <label for="contactSubject">Subject</label>
+
+                        <!-- Monthly Views Slider -->
+                        <div class="calc-group">
+                            <div class="calc-group-header">
+                                <label for="calcViews" class="calc-label">Monthly Video Views</label>
+                                <span class="calc-badge" id="calcViewsVal">350,000 Views</span>
+                            </div>
+                            <input type="range" id="calcViews" class="calc-slider" min="20000" max="5000000" step="10000" value="350000">
+                            <div class="calc-range-limits">
+                                <span>20K</span>
+                                <span>1M</span>
+                                <span>2.5M</span>
+                                <span>5M+</span>
+                            </div>
                         </div>
-                        <div class="form-group floating-label">
-                            <textarea id="contactMessage" name="message" placeholder=" " rows="5" required></textarea>
-                            <label for="contactMessage">Your Message</label>
+
+                        <!-- Monetization Status -->
+                        <div class="calc-group">
+                            <span class="calc-label">Monetization Status</span>
+                            <div class="calc-toggle-row">
+                                <label class="calc-radio-pill">
+                                    <input type="radio" name="calcMonetized" value="yes" checked>
+                                    <span>Active YouTube Partner Program (YPP)</span>
+                                </label>
+                                <label class="calc-radio-pill">
+                                    <input type="radio" name="calcMonetized" value="no">
+                                    <span>Pre-Monetized (Requires Watch Hours)</span>
+                                </label>
+                            </div>
                         </div>
-                        <button type="submit" class="submit-btn" id="submitBtn">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
+                    </div>
+
+                    <!-- Calculator Results Output -->
+                    <div class="calc-card calc-results" data-reveal>
+                        <h3 class="calc-card-title">Valuation &amp; Projections</h3>
+                        
+                        <div class="calc-metric-box primary-metric">
+                            <span class="metric-label">Estimated Channel Market Asset Value</span>
+                            <div class="metric-value-wrap">
+                                <span class="metric-value" id="resAssetINR">₹2.8L – ₹4.2L</span>
+                                <span class="metric-subval" id="resAssetUSD">($3,350 – $5,050 USD)</span>
+                            </div>
+                            <span class="metric-footnote">Based on trailing 6-month multiple &amp; verified Indian market escrow demand.</span>
+                        </div>
+
+                        <div class="calc-breakdown-grid">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Est. Monthly AdSense</span>
+                                <strong class="breakdown-num" id="resMonthlyEarnings">₹45,000 / mo</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Audience Quality Score</span>
+                                <strong class="breakdown-num" id="resQualityScore">Grade A (High)</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Liquidity &amp; Sale Speed</span>
+                                <strong class="breakdown-num" id="resLiquidity">High (7–14 Days)</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Transfer Protocol</span>
+                                <strong class="breakdown-num">Brand Account (7-Day)</strong>
+                            </div>
+                        </div>
+
+                        <div class="calc-recommendation" id="calcRecommendationBox">
+                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                            <div class="recommendation-text">
+                                <strong>Strategic Recommendation:</strong>
+                                <p id="calcRecText">This channel has established organic velocity. Prime asset for monetization optimization or high-multiple verified trade.</p>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary calc-apply-btn" id="calcApplyBtn">
+                            <i class="fas fa-file-signature" aria-hidden="true"></i>
+                            <span>Request Formal Channel Audit</span>
                         </button>
-                    </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             5. VERIFIED 4-STEP ESCROW & DUE DILIGENCE PROCESS
+        ───────────────────────────────────────── -->
+        <section id="process" class="process-section section" aria-labelledby="processHeading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Security Framework</span>
+                    <h2 id="processHeading">The 4-Step <span class="gradient-text">Verified Escrow Protocol</span></h2>
+                    <div class="section-separator" aria-hidden="true">
+                        <span class="sep-line left"></span>
+                        <span class="sep-icon"><i class="fas fa-shield-alt"></i></span>
+                        <span class="sep-line right"></span>
+                    </div>
+                    <p class="section-subtitle">How Tatviya guarantees 100% scam-free channel transactions under strict Google Brand Account guidelines</p>
                 </div>
 
-                <div class="contact-info reveal">
-                    <div class="info-card">
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="info-body">
-                                <h4>Address</h4>
-                                <p>16-6-457 1st Floor Karnala Layout, Tirupati</p>
+                <div class="process-timeline">
+                    <!-- Step 1 -->
+                    <div class="timeline-step" data-reveal>
+                        <div class="step-marker">
+                            <span class="step-num">01</span>
+                            <div class="step-icon"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Analytics Audit &amp; Due Diligence</h3>
+                            <p>We perform deep analytics verification using screen share and direct read-access. We confirm zero active copyright strikes, audience geography, real-time subscriber velocity, and monetization good standing.</p>
+                            <span class="step-tag">Duration: 24–48 Hours</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-step" data-reveal>
+                        <div class="step-marker">
+                            <span class="step-num">02</span>
+                            <div class="step-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Escrow Contract &amp; Milestone Deposit</h3>
+                            <p>Both parties sign a legally binding Non-Disclosure Agreement (NDA) and Bill of Sale. The buyer deposits 100% of the purchase funds into Tatviya's secure escrow account. The seller is notified that funds are secured.</p>
+                            <span class="step-tag">Duration: Same Day</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-step" data-reveal>
+                        <div class="step-marker">
+                            <span class="step-num">03</span>
+                            <div class="step-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>7-Day Google Brand Account Transfer</h3>
+                            <p>Under Google's mandatory security protocol, the buyer is invited as a "Manager" then "Owner". Exactly 7 days later, the seller transfers "Primary Ownership" to the buyer. This completely eliminates recovery loopholes.</p>
+                            <span class="step-tag">Duration: Mandatory 7 Days</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-step" data-reveal>
+                        <div class="step-marker">
+                            <span class="step-num">04</span>
+                            <div class="step-icon"><i class="fas fa-check-double" aria-hidden="true"></i></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Final Verification &amp; Fund Release</h3>
+                            <p>Once the buyer confirms absolute Primary Ownership and all recovery emails/phones are updated, Tatviya releases escrow funds to the seller. Both parties receive a signed completion certificate.</p>
+                            <span class="step-tag">Duration: Instant Payout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             6. ACHIEVEMENTS & KEY STATS SECTION
+        ───────────────────────────────────────── -->
+        <section class="stats-section" aria-labelledby="statsHeading">
+            <div class="container">
+                <div class="section-header stats-header-light">
+                    <span class="section-tag stats-tag">Our Track Record</span>
+                    <h2 id="statsHeading" class="stats-heading-text">Numbers That <span class="primary-accent">Speak</span> For Our Authority</h2>
+                    <div class="section-separator" aria-hidden="true">
+                        <span class="sep-line left sep-line-light"></span>
+                        <span class="sep-icon"><i class="fas fa-chart-bar primary-accent"></i></span>
+                        <span class="sep-line right sep-line-light"></span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card" data-reveal>
+                        <div class="stat-icon" aria-hidden="true">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <span class="stat-number" data-target="400" data-suffix="+">400+</span>
+                        <span class="stat-label">Channel Deals Brokered</span>
+                    </div>
+
+                    <div class="stat-card" data-reveal>
+                        <div class="stat-icon" aria-hidden="true">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="stat-number" data-target="500" data-suffix="+">500+</span>
+                        <span class="stat-label">Active Satisfied Clients</span>
+                    </div>
+
+                    <div class="stat-card" data-reveal>
+                        <div class="stat-icon" aria-hidden="true">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <span class="stat-number" data-target="3.7" data-suffix="M">3.7M</span>
+                        <span class="stat-label">Subscribers in Peak Channel</span>
+                    </div>
+
+                    <div class="stat-card" data-reveal>
+                        <div class="stat-icon" aria-hidden="true">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span class="stat-number" data-target="100" data-suffix="%">100%</span>
+                        <span class="stat-label">Zero-Dispute Escrow Success</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             7. ABOUT US SECTION
+        ───────────────────────────────────────── -->
+        <section id="about" class="about section" aria-labelledby="aboutHeading">
+            <div class="container">
+                <div class="about-layout">
+                    <div class="about-text" data-reveal>
+                        <span class="section-tag">Why Tatviya</span>
+                        <h2 id="aboutHeading">Built On Trust, <span class="gradient-text">Engineered For Growth</span></h2>
+                        <div class="section-separator left-aligned" aria-hidden="true">
+                            <span class="sep-line left"></span>
+                            <span class="sep-icon"><i class="fas fa-star"></i></span>
+                            <span class="sep-line right"></span>
+                        </div>
+                        <p class="about-lead">
+                            Founded in 2022 in Tirupati, India, Tatviya emerged to solve the rampant opacity and scam vulnerabilities in the digital creator and channel trading ecosystem.
+                        </p>
+                        <p class="about-body-text">
+                            Today, we stand as India's most trusted partner for creators, entrepreneurs, and media investors looking to buy, sell, monetize, and scale digital media assets with enterprise-grade contractual security.
+                        </p>
+
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon" aria-hidden="true"><i class="fas fa-user-tie"></i></div>
+                                <div class="feature-body">
+                                    <h4>Veteran Media Specialists</h4>
+                                    <p>Our strategists have collectively managed over 50M+ YouTube impressions and negotiated transactions across 12 diverse digital niches.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon" aria-hidden="true"><i class="fas fa-shield-alt"></i></div>
+                                <div class="feature-body">
+                                    <h4>100% Compliant &amp; Transparent</h4>
+                                    <p>We adhere strictly to Google Brand Account transfer protocols, Indian DPDP data compliance, and contract-backed milestone escrow.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon" aria-hidden="true"><i class="fas fa-headset"></i></div>
+                                <div class="feature-body">
+                                    <h4>Dedicated 1-on-1 Account Manager</h4>
+                                    <p>Every transaction and marketing client is assigned a dedicated senior liaison available via WhatsApp and phone for immediate support.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon" aria-hidden="true"><i class="fas fa-award"></i></div>
+                                <div class="feature-body">
+                                    <h4>Audited Track Record</h4>
+                                    <p>Over 400 completed channel transactions with zero chargebacks or unrecovered assets since inception.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                            <div class="info-body">
-                                <h4>Email</h4>
-                                <p><a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
+                    </div>
+
+                    <div class="about-visual" data-reveal>
+                        <div class="about-vis-main">
+                            <div class="vis-center-card">
+                                <div class="vis-center-icon" aria-hidden="true"><i class="fas fa-rocket"></i></div>
+                                <h3 class="vis-center-title">Digital Growth Authority</h3>
+                                <span class="vis-center-years">4+ Years of Industry Leadership</span>
                             </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-phone"></i></div>
-                            <div class="info-body">
-                                <h4>Phone</h4>
-                                <p><a href="tel:+916281434800">+91 6281434800</a></p>
+                            <div class="vis-stats-row">
+                                <div class="vis-stat-card">
+                                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                    <strong>127%</strong>
+                                    <span>Avg. Growth Velocity</span>
+                                </div>
+                                <div class="vis-stat-card">
+                                    <i class="fas fa-users" aria-hidden="true"></i>
+                                    <strong>500+</strong>
+                                    <span>Verified Creators</span>
+                                </div>
+                                <div class="vis-stat-card">
+                                    <i class="fas fa-lock" aria-hidden="true"></i>
+                                    <strong>100%</strong>
+                                    <span>Escrow Protected</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fab fa-instagram"></i></div>
-                            <div class="info-body">
-                                <h4>Instagram</h4>
-                                <p><a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer">@Yt_channel_buyer_india</a></p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-clock"></i></div>
-                            <div class="info-body">
-                                <h4>Business Hours</h4>
-                                <p>Mon – Sat: 9:00 AM – 6:00 PM IST</p>
+                            <div class="vis-badge">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Official Operations in Tirupati, India</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ═══════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════ -->
-    <footer class="footer" aria-label="Site Footer">
-        <div class="container">
+        <!-- ─────────────────────────────────────────
+             8. CLIENT TESTIMONIALS
+        ───────────────────────────────────────── -->
+        <section class="testimonials section alt-bg" aria-labelledby="testimonialsHeading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Verified Proof</span>
+                    <h2 id="testimonialsHeading">What Our <span class="gradient-text">Clients &amp; Partners Say</span></h2>
+                    <div class="section-separator" aria-hidden="true">
+                        <span class="sep-line left"></span>
+                        <span class="sep-icon"><i class="fas fa-star"></i></span>
+                        <span class="sep-line right"></span>
+                    </div>
+                    <p class="section-subtitle">Real experiences from creators and investors who scaled their digital presence with Tatviya</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <article class="testimonial-card" data-reveal>
+                        <div class="quote-icon" aria-hidden="true">"</div>
+                        <div class="stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"Tatviya guided my channel through the monetization process within 5 months. Their watch hour acceleration strategy was 100% organic and AdSense accepted our partner application on first review without issues."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">RJ</div>
+                            <div class="author-info">
+                                <h4>Rajesh Jain</h4>
+                                <p>Tech &amp; Gaming Creator</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" data-reveal>
+                        <div class="quote-icon" aria-hidden="true">"</div>
+                        <div class="stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"I acquired a 450K subscriber education channel through Tatviya. The 7-day Google Brand Account handover was handled with surgical precision. Funds remained in escrow until I verified Primary Ownership. True professionals."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">PK</div>
+                            <div class="author-info">
+                                <h4>Priya Kapoor</h4>
+                                <p>Digital Asset Investor</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" data-reveal>
+                        <div class="quote-icon" aria-hidden="true">"</div>
+                        <div class="stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>"Their targeted Meta &amp; YouTube ad campaigns brought our online store a 3.4x ROAS in the first 60 days. The transparency and regular reporting were far ahead of other agencies we had hired previously."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" aria-hidden="true">AS</div>
+                            <div class="author-info">
+                                <h4>Aisha Singh</h4>
+                                <p>E-commerce Founder</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             9. EXECUTIVE LEADERSHIP TEAM
+        ───────────────────────────────────────── -->
+        <section id="team" class="team section" aria-labelledby="teamHeading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Executive Leadership</span>
+                    <h2 id="teamHeading">Meet Our <span class="gradient-text">Leadership Team</span></h2>
+                    <div class="section-separator" aria-hidden="true">
+                        <span class="sep-line left"></span>
+                        <span class="sep-icon"><i class="fas fa-star"></i></span>
+                        <span class="sep-line right"></span>
+                    </div>
+                    <p class="section-subtitle">The dedicated professionals driving India's most secure digital growth ecosystem</p>
+                </div>
+
+                <div class="team-grid">
+                    <!-- Member 1 -->
+                    <article class="team-card" data-reveal>
+                        <div class="team-photo-wrap">
+                            <img src="static/Vishnu.webp" alt="Bhimakonda Vishnu Prasad, Founder of Tatviya" class="team-photo" width="220" height="220" loading="lazy" decoding="async">
+                            <div class="photo-ring" aria-hidden="true"></div>
+                        </div>
+                        <h3>Bhimakonda Vishnu Prasad</h3>
+                        <p class="designation">Founder</p>
+                        <p class="team-bio">Digital asset strategist and pioneer of verified channel trading escrow frameworks across India.</p>
+                        <div class="team-socials">
+                            <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile of Bhimakonda Vishnu Prasad"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" aria-label="X profile of Bhimakonda Vishnu Prasad"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel of Bhimakonda Vishnu Prasad"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Member 2 -->
+                    <article class="team-card" data-reveal>
+                        <div class="team-photo-wrap">
+                            <img src="static/Jagan.webp" alt="T. Jagan, Chief Executive Officer (CEO) of Tatviya" class="team-photo" width="220" height="220" loading="lazy" decoding="async">
+                            <div class="photo-ring" aria-hidden="true"></div>
+                        </div>
+                        <h3>T. Jagan</h3>
+                        <p class="designation">Chief Executive Officer (CEO)</p>
+                        <p class="team-bio">Directs agency operations, legal escrow compliance, and enterprise growth expansion initiatives.</p>
+                        <div class="team-socials">
+                            <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile of T. Jagan"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" aria-label="X profile of T. Jagan"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel of T. Jagan"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Member 3 -->
+                    <article class="team-card" data-reveal>
+                        <div class="team-photo-wrap">
+                            <img src="static/Krishna Vamsi.webp" alt="S. Krishna Vamsi, Revenue &amp; Partnership Director of Tatviya" class="team-photo" width="220" height="220" loading="lazy" decoding="async">
+                            <div class="photo-ring" aria-hidden="true"></div>
+                        </div>
+                        <h3>Krishna Vamsi</h3>
+                        <p class="designation">Revenue &amp; Partnership Director</p>
+                        <p class="team-bio">Manages high-ticket channel portfolios, client investments, and international creator relations.</p>
+                        <div class="team-socials">
+                            <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile of Krishna Vamsi"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" aria-label="X profile of Krishna Vamsi"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel of Krishna Vamsi"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Member 4 -->
+                    <article class="team-card" data-reveal>
+                        <div class="team-photo-wrap">
+                            <img src="static/Rohith.webp" alt="K. Rohith, Content Director of Tatviya" class="team-photo" width="220" height="220" loading="lazy" decoding="async">
+                            <div class="photo-ring" aria-hidden="true"></div>
+                        </div>
+                        <h3>K. Rohith</h3>
+                        <p class="designation">Content Director</p>
+                        <p class="team-bio">Leads YouTube algorithmic distribution, metadata engineering, and audience retention frameworks.</p>
+                        <div class="team-socials">
+                            <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile of K. Rohith"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" aria-label="X profile of K. Rohith"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel of K. Rohith"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             10. FREQUENTLY ASKED QUESTIONS (ACCORDION)
+        ───────────────────────────────────────── -->
+        <section id="faq" class="faq-section section alt-bg" aria-labelledby="faqHeading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Common Inquiries</span>
+                    <h2 id="faqHeading">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                    <div class="section-separator" aria-hidden="true">
+                        <span class="sep-line left"></span>
+                        <span class="sep-icon"><i class="fas fa-question-circle"></i></span>
+                        <span class="sep-line right"></span>
+                    </div>
+                    <p class="section-subtitle">Clear, authoritative answers regarding transaction security, Google compliance, and our process</p>
+                </div>
+
+                <div class="faq-accordion" id="faqAccordion">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item" data-reveal>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faqAns1" id="faqBtn1">
+                            <span>How does YouTube Channel Trading work securely through Tatviya?</span>
+                            <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faqAns1" role="region" aria-labelledby="faqBtn1" hidden>
+                            <p>Tatviya operates as an independent escrow and verification intermediary. Before any transaction, our team conducts a forensic analytics audit to ensure genuine views, zero copyright/guideline strikes, and legitimate AdSense standing. Funds are held in our secure escrow account while ownership is transferred via Google Brand Account primary transfer. Only after the buyer confirms uncompromised Primary Ownership are funds released to the seller.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item" data-reveal>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faqAns2" id="faqBtn2">
+                            <span>What is the 7-day Google Brand Account rule and why is it mandatory?</span>
+                            <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faqAns2" role="region" aria-labelledby="faqBtn2" hidden>
+                            <p>Google enforces a mandatory 7-day security delay when adding a new owner to a YouTube Brand Account before that owner can be promoted to "Primary Owner". We strictly enforce this waiting period under contract escrow. Any seller claiming they can transfer full ownership instantly without a Brand Account is utilizing vulnerable credentials that can easily be recovered. Our 7-day protocol guarantees 100% permanence and security.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item" data-reveal>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faqAns3" id="faqBtn3">
+                            <span>How does 0% AdSense Tax Deduction in India apply to creators?</span>
+                            <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faqAns3" role="region" aria-labelledby="faqBtn3" hidden>
+                            <p>Under the Double Taxation Avoidance Agreement (DTAA) between India and the United States, Indian creators are eligible for reduced or 0% US withholding taxes on non-US viewership and 15% on US viewership, rather than the default punitive 24–30% global withholding. Tatviya guides creators through precise W-8BEN tax form filing in Google AdSense to ensure zero unnecessary deductions.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item" data-reveal>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faqAns4" id="faqBtn4">
+                            <span>How does Tatviya assist with YouTube Monetization?</span>
+                            <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faqAns4" role="region" aria-labelledby="faqBtn4" hidden>
+                            <p>We provide organic algorithmic strategies to reach YouTube Partner Program (YPP) requirements: 1,000 authentic subscribers and 4,000 valid public watch hours. We audit your video pacing, metadata, click-through rates, and audience retention graphs to accelerate genuine monetization without risking bot penalties.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item" data-reveal>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faqAns5" id="faqBtn5">
+                            <span>What legal contracts and guarantees are provided during transactions?</span>
+                            <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faqAns5" role="region" aria-labelledby="faqBtn5" hidden>
+                            <p>Every transaction is backed by a formal digital Asset Purchase Agreement, a mutual Non-Disclosure Agreement (NDA), and KYC identity verification of both counterparties. Disputes are subject to the legal jurisdiction of the courts of Tirupati, Andhra Pradesh, India.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-item" data-reveal>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faqAns6" id="faqBtn6">
+                            <span>Can Tatviya build custom websites for businesses outside social media?</span>
+                            <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faqAns6" role="region" aria-labelledby="faqBtn6" hidden>
+                            <p>Yes. Our engineering division creates modern, high-speed, SEO-optimized corporate websites and web applications for businesses across retail, e-commerce, services, and technology who require an elite digital footprint.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             11. CONTACT & CONSULTATION SECTION
+        ───────────────────────────────────────── -->
+        <section id="contact" class="contact section" aria-labelledby="contactHeading">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Direct Inquiry</span>
+                    <h2 id="contactHeading">Start Your <span class="gradient-text">Growth Consultation</span></h2>
+                    <div class="section-separator" aria-hidden="true">
+                        <span class="sep-line left"></span>
+                        <span class="sep-icon"><i class="fas fa-envelope-open-text"></i></span>
+                        <span class="sep-line right"></span>
+                    </div>
+                    <p class="section-subtitle">Reach out today for channel valuation, monetization inquiries, or digital growth partnerships</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <!-- Secure Form Container -->
+                    <div class="contact-form-container" data-reveal>
+                        <form class="contact-form" id="contactForm" novalidate aria-label="Customer Inquiry Form">
+                            
+                            <!-- Security Honeypot Anti-Spam Bot Filter -->
+                            <div class="sr-only" aria-hidden="true">
+                                <label for="botFilterField">Do not fill this field if human</label>
+                                <input type="text" id="botFilterField" name="_bot_filter" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group floating-label">
+                                    <input type="text" id="contactName" name="name" placeholder=" " required autocomplete="name" maxlength="100" aria-required="true" aria-describedby="nameError">
+                                    <label for="contactName">Your Full Name *</label>
+                                    <span class="form-error-msg" id="nameError" role="alert"></span>
+                                </div>
+
+                                <div class="form-group floating-label">
+                                    <input type="email" id="contactEmail" name="email" placeholder=" " required autocomplete="email" maxlength="120" aria-required="true" aria-describedby="emailError">
+                                    <label for="contactEmail">Email Address *</label>
+                                    <span class="form-error-msg" id="emailError" role="alert"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group floating-label">
+                                    <input type="tel" id="contactPhone" name="phone" placeholder=" " autocomplete="tel" maxlength="20" aria-describedby="phoneError">
+                                    <label for="contactPhone">Phone / WhatsApp Number (Optional)</label>
+                                    <span class="form-error-msg" id="phoneError" role="alert"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactService" class="select-static-label">Service of Interest *</label>
+                                    <select id="contactService" name="service" class="form-select-field" required aria-required="true">
+                                        <option value="YouTube Channel Trading">YouTube Channel Trading (Buy / Sell)</option>
+                                        <option value="YouTube Monetization">YouTube Monetization &amp; Watch Hours</option>
+                                        <option value="Digital Marketing">Digital Marketing &amp; Paid Advertising</option>
+                                        <option value="Channel Valuation Audit">Channel Valuation &amp; Due Diligence Audit</option>
+                                        <option value="Website Development">Website Design &amp; Development</option>
+                                        <option value="General Inquiry">General Partnership Inquiry</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group floating-label">
+                                <input type="text" id="contactSubject" name="subject" placeholder=" " required maxlength="150" aria-required="true" aria-describedby="subjectError">
+                                <label for="contactSubject">Subject *</label>
+                                <span class="form-error-msg" id="subjectError" role="alert"></span>
+                            </div>
+
+                            <div class="form-group floating-label">
+                                <textarea id="contactMessage" name="message" placeholder=" " rows="5" required minlength="15" maxlength="2000" aria-required="true" aria-describedby="messageError"></textarea>
+                                <label for="contactMessage">Your Detailed Message or Channel Link *</label>
+                                <span class="form-error-msg" id="messageError" role="alert"></span>
+                            </div>
+
+                            <div class="form-consent-check">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contactConsent" name="consent" required checked aria-required="true">
+                                    <span>I agree to the <a href="#privacyModal" class="modal-trigger" data-modal="privacy">Privacy Policy</a> and consent to being contacted by Tatviya representatives.</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+                                <span>Submit Inquiry</span>
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+
+                            <p class="form-security-note">
+                                <i class="fas fa-lock" aria-hidden="true"></i>
+                                <span>Your information is encrypted and never shared. Subject to strict NDA.</span>
+                            </p>
+                        </form>
+                    </div>
+
+                    <!-- Contact Details Card -->
+                    <div class="contact-info" data-reveal>
+                        <div class="info-card">
+                            <h3 class="info-card-title">Corporate Headquarters</h3>
+                            
+                            <div class="info-item">
+                                <div class="info-icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="info-body">
+                                    <h4>Physical Address</h4>
+                                    <p>16-6-457 1st Floor Karnala Layout,<br>Tirupati, Andhra Pradesh – 517501, India</p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-icon" aria-hidden="true"><i class="fas fa-envelope"></i></div>
+                                <div class="info-body">
+                                    <h4>Official Email</h4>
+                                    <p><a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-icon" aria-hidden="true"><i class="fas fa-phone-alt"></i></div>
+                                <div class="info-body">
+                                    <h4>Direct Helpline</h4>
+                                    <p><a href="tel:+916281434800">+91 6281434800</a></p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-icon" aria-hidden="true"><i class="fab fa-instagram"></i></div>
+                                <div class="info-body">
+                                    <h4>Instagram Official</h4>
+                                    <p><a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer">@yt_channel_buyer_india</a></p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-icon" aria-hidden="true"><i class="fas fa-clock"></i></div>
+                                <div class="info-body">
+                                    <h4>Operating Hours</h4>
+                                    <p>Monday – Saturday: 9:00 AM – 6:00 PM IST<br><small class="text-muted">Emergency Escrow Operations: 24/7 Monitored</small></p>
+                                </div>
+                            </div>
+
+                            <div class="direct-chat-box">
+                                <a href="https://wa.me/916281434800?text=Hi%20Tatviya%2C%20I%20would%20like%20to%20inquire%20about%20your%20services" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                    <span>Instant WhatsApp Chat</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════
+         SITE FOOTER (Semantic Landmark)
+    ═══════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-container">
             <div class="footer-grid">
+                <!-- Col 1: Brand -->
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="static/logo.webp" alt="Tatviya" class="footer-logo-img">
-                        <span>Tatviya</span>
+                        <img src="static/logo.webp" alt="Tatviya Official Mark" class="footer-logo-img" width="38" height="38" loading="lazy">
+                        <span class="footer-logo-text">Tat<span class="logo-accent">viya</span></span>
                     </div>
-                    <p>Your trusted partner in digital growth and social media success. Building profitable online presences since 2022.</p>
+                    <p class="footer-desc">
+                        India's premier digital growth and social media agency. Providing transparent YouTube monetization, contract-backed channel trading escrow, and digital marketing excellence since 2022.
+                    </p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/yt_channel_buyer_india?igsh=bjg1aXF1NmtiaGlm&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/tatviya?s=21" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/916281434800" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/yt_channel_buyer_india" target="_blank" rel="noopener noreferrer" aria-label="Tatviya Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/tatviya" target="_blank" rel="noopener noreferrer" aria-label="Tatviya X (Twitter)"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@tatviya" target="_blank" rel="noopener noreferrer" aria-label="Tatviya YouTube Channel"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/916281434800" target="_blank" rel="noopener noreferrer" aria-label="Tatviya WhatsApp Support"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
+                <!-- Col 2: Services -->
                 <div class="footer-links-col">
-                    <h5>Services</h5>
+                    <h4 class="footer-heading">Services</h4>
                     <ul>
                         <li><a href="#services">YouTube Monetization</a></li>
-                        <li><a href="#services">Channel Trading</a></li>
-                        <li><a href="#services">Digital Marketing</a></li>
-                        <li><a href="#services">Passive Income Education</a></li>
-                        <li><a href="#services">Website Design &amp; Development</a></li>
+                        <li><a href="#services">Channel Trading &amp; Escrow</a></li>
+                        <li><a href="#calculator">Channel Valuation Tool</a></li>
+                        <li><a href="#services">Digital Marketing Ads</a></li>
+                        <li><a href="#services">Passive Income Training</a></li>
+                        <li><a href="#services">Web Design &amp; Development</a></li>
                     </ul>
                 </div>
 
+                <!-- Col 3: Company & Governance -->
                 <div class="footer-links-col">
-                    <h5>Company</h5>
+                    <h4 class="footer-heading">Governance &amp; Trust</h4>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#about">About Our Firm</a></li>
+                        <li><a href="#team">Leadership Team</a></li>
+                        <li><a href="#process">Escrow Protocol</a></li>
+                        <li><a href="#privacyModal" class="modal-trigger" data-modal="privacy">Privacy Policy</a></li>
+                        <li><a href="#termsModal" class="modal-trigger" data-modal="terms">Terms of Service</a></li>
+                        <li><a href="#disclaimerModal" class="modal-trigger" data-modal="disclaimer">YouTube &amp; Google Disclaimer</a></li>
+                        <li><a href="/.well-known/security.txt" target="_blank">Security Disclosure</a></li>
                     </ul>
                 </div>
 
+                <!-- Col 4: Contact -->
                 <div class="footer-contact-col">
-                    <h5>Contact Us</h5>
-                    <p><i class="fas fa-phone"></i><a href="tel:+916281434800">+91 6281434800</a></p>
-                    <p><i class="fas fa-envelope"></i><a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i>Tirupati, Andhra Pradesh</p>
-                    <a href="#contact" class="footer-cta">Start a Project →</a>
+                    <h4 class="footer-heading">Direct Contact</h4>
+                    <p class="footer-contact-item"><i class="fas fa-phone-alt" aria-hidden="true"></i> <a href="tel:+916281434800">+91 6281434800</a></p>
+                    <p class="footer-contact-item"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@tatviya.com">contact@tatviya.com</a></p>
+                    <p class="footer-contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 16-6-457 1st Fl Karnala Layout, Tirupati, AP, India</p>
+                    <a href="#contact" class="btn btn-outline footer-cta">Inquire Now →</a>
                 </div>
+            </div>
+
+            <!-- YouTube Legal Trademark Notice -->
+            <div class="footer-disclaimer-strip">
+                <p>
+                    <strong>Legal Trademark Notice:</strong> YouTube, Google, and the YouTube logo are trademarks of Google LLC. Tatviya is an independent digital media growth consultancy and escrow broker. Tatviya is not directly affiliated with, sponsored by, or endorsed by Google LLC or YouTube. All transactions operate in strict compliance with Google Brand Account transfer protocols, Indian DPDP Act 2023, and applicable commercial laws.
+                </p>
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Tatviya. All rights reserved. Crafted with <i class="fas fa-heart"></i> in India.</p>
+                <p class="footer-copyright">© 2026 Tatviya. All rights reserved. Registered in Tirupati, Andhra Pradesh, India.</p>
                 <div class="footer-bottom-links">
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                    <a href="#">Sitemap</a>
+                    <button type="button" class="footer-link-btn modal-trigger" data-modal="privacy">Privacy Policy</button>
+                    <span class="footer-sep" aria-hidden="true">•</span>
+                    <button type="button" class="footer-link-btn modal-trigger" data-modal="terms">Terms of Service</button>
+                    <span class="footer-sep" aria-hidden="true">•</span>
+                    <button type="button" class="footer-link-btn modal-trigger" data-modal="disclaimer">Disclaimer</button>
+                    <span class="footer-sep" aria-hidden="true">•</span>
+                    <a href="sitemap.xml" target="_blank" class="footer-link-btn">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/916281434800" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="wa-pulse"></span>
+    <!-- ═══════════════════════════════════════════
+         ACCESSIBLE LEGAL MODALS
+    ═══════════════════════════════════════════ -->
+
+    <!-- Modal 1: Privacy Policy -->
+    <div class="legal-modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle" hidden>
+        <div class="legal-modal-container">
+            <div class="legal-modal-header">
+                <h3 id="privacyModalTitle">Tatviya Privacy Policy</h3>
+                <button type="button" class="modal-close-btn" aria-label="Close Privacy Policy Modal" data-close-modal>
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="legal-modal-body">
+                <p class="legal-date">Last Updated: October 2026 | Effective Date: October 2026</p>
+                
+                <h4>1. Commitment to Data Privacy</h4>
+                <p>Tatviya ("Company", "we", "us", or "our"), headquartered in Tirupati, Andhra Pradesh, India, is committed to safeguarding personal data in accordance with the Digital Personal Data Protection Act (DPDP Act, 2023) of India and applicable international privacy frameworks.</p>
+
+                <h4>2. Information We Collect</h4>
+                <p>We collect information you explicitly provide to us when submitting inquiries, including your full name, email address, phone number, channel URL, and communication preferences. We do not sell, rent, or trade personal data to third parties.</p>
+
+                <h4>3. Use of Personal Information</h4>
+                <p>Your data is used solely for the following business purposes: providing consultation on YouTube channel transactions, executing due diligence audits, preparing escrow agreements, and responding to your customer support requests.</p>
+
+                <h4>4. Non-Disclosure &amp; Escrow Confidentiality</h4>
+                <p>All YouTube channel analytics, revenue screenshots, and financial records submitted for channel trading due diligence are protected under our mutual Non-Disclosure Agreement (NDA). Information is restricted strictly to authorized due diligence specialists.</p>
+
+                <h4>5. Data Retention &amp; Rights</h4>
+                <p>We retain transaction records in compliance with Indian commercial records regulations. You retain the right to access, rectify, or request deletion of your personal data at any time by contacting our Data Grievance Officer at <strong>contact@tatviya.com</strong>.</p>
+
+                <h4>6. Contact Grievance Officer</h4>
+                <p>Grievance Officer: Legal Department, Tatviya<br>Address: 16-6-457 1st Floor Karnala Layout, Tirupati, Andhra Pradesh – 517501, India<br>Email: contact@tatviya.com | Phone: +91 6281434800</p>
+            </div>
+            <div class="legal-modal-footer">
+                <button type="button" class="btn btn-primary modal-close-action" data-close-modal>I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Terms of Service -->
+    <div class="legal-modal-backdrop" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle" hidden>
+        <div class="legal-modal-container">
+            <div class="legal-modal-header">
+                <h3 id="termsModalTitle">Tatviya Terms of Service</h3>
+                <button type="button" class="modal-close-btn" aria-label="Close Terms of Service Modal" data-close-modal>
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="legal-modal-body">
+                <p class="legal-date">Last Updated: October 2026 | Effective Date: October 2026</p>
+
+                <h4>1. Scope of Services</h4>
+                <p>Tatviya operates as an independent consultancy and escrow intermediary facilitating digital marketing services, YouTube audience growth advisory, and verified YouTube Brand Account transfers.</p>
+
+                <h4>2. YouTube Channel Brokerage &amp; Escrow Terms</h4>
+                <p>All channel transactions brokered through Tatviya require adherence to our 4-Step Escrow Protocol. Funds must be deposited into Tatviya's designated escrow holding before any transfer credentials or ownership permissions are initiated.</p>
+
+                <h4>3. 7-Day Google Brand Account Transfer Rule</h4>
+                <p>In adherence to Google's mandatory security architecture, full Primary Ownership requires a mandatory 7-day waiting period. Escrow disbursements will NOT occur until the buyer has verified uncompromised Primary Ownership and updated all secondary security credentials.</p>
+
+                <h4>4. Seller Representations &amp; Warranties</h4>
+                <p>Channel sellers expressly warrant that: (a) they are the rightful owner of the channel; (b) the channel is free of unresolved community guideline strikes, copyright strikes, or financial liens; (c) audience engagement has not been artificially inflated using bot networks or fraudulent click farms.</p>
+
+                <h4>5. Limitation of Liability</h4>
+                <p>Tatviya shall not be held liable for algorithmic fluctuations, YouTube policy revisions, or post-transfer content decisions made by new channel owners after the 7-day verified handover has concluded.</p>
+
+                <h4>6. Dispute Resolution &amp; Jurisdiction</h4>
+                <p>These terms are governed by the laws of India. Any legal dispute or arbitration arising hereunder shall be subject to the exclusive jurisdiction of the competent courts of Tirupati, Andhra Pradesh, India.</p>
+            </div>
+            <div class="legal-modal-footer">
+                <button type="button" class="btn btn-primary modal-close-action" data-close-modal>Accept Terms</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: YouTube & Google Disclaimer -->
+    <div class="legal-modal-backdrop" id="disclaimerModal" role="dialog" aria-modal="true" aria-labelledby="disclaimerModalTitle" hidden>
+        <div class="legal-modal-container">
+            <div class="legal-modal-header">
+                <h3 id="disclaimerModalTitle">YouTube &amp; Google Independent Disclaimer</h3>
+                <button type="button" class="modal-close-btn" aria-label="Close Disclaimer Modal" data-close-modal>
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="legal-modal-body">
+                <h4>Trademark &amp; Non-Affiliation Notice</h4>
+                <p>YouTube™, YouTube Partner Program™, Google™, and Google AdSense™ are registered trademarks of Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA).</p>
+                <p>Tatviya is an independent commercial advisory firm. Tatviya is NOT an employee, agent, joint venture partner, or direct subsidiary of Google LLC. Reference to YouTube or Google services is strictly for descriptive identification of the platforms on which our clients conduct business.</p>
+                <h4>Compliance Standards</h4>
+                <p>All channel administration workflows recommended by Tatviya utilize standard Google Brand Account administrative delegate functions designed for multi-user asset administration. Clients remain responsible for adhering to YouTube's Community Guidelines and Terms of Service.</p>
+            </div>
+            <div class="legal-modal-footer">
+                <button type="button" class="btn btn-primary modal-close-action" data-close-modal>Close Disclaimer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         COOKIE & PRIVACY CONSENT BANNER (DPDP & GDPR)
+    ═══════════════════════════════════════════ -->
+    <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie and Privacy Consent Banner" hidden>
+        <div class="container cookie-inner">
+            <div class="cookie-text-box">
+                <i class="fas fa-cookie-bite cookie-icon" aria-hidden="true"></i>
+                <p>
+                    We use essential security cookies and privacy-respecting analytics to ensure secure escrow processing and optimal site performance under the Indian DPDP Act 2023. Learn more in our <button type="button" class="text-link-btn modal-trigger" data-modal="privacy">Privacy Policy</button>.
+                </p>
+            </div>
+            <div class="cookie-actions">
+                <button type="button" class="btn btn-primary cookie-btn" id="acceptAllCookies">Accept All</button>
+                <button type="button" class="btn btn-outline cookie-btn" id="acceptNecessaryCookies">Essential Only</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         WHATSAPP FLOATING DIRECT ACTION BUTTON
+    ═══════════════════════════════════════════ -->
+    <a href="https://wa.me/916281434800?text=Hi%20Tatviya%2C%20I%20would%20like%20to%20inquire%20about%20your%20services" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Instant WhatsApp Consultation with Tatviya Specialist">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <span class="wa-pulse" aria-hidden="true"></span>
+        <span class="sr-only">Chat on WhatsApp</span>
     </a>
 
-    <script src="script.js"></script>
+    <!-- Application Script (Modular, Hardened, Strict Mode) -->
+    <script src="script.js?v=2.1"></script>
 </body>
 </html>

@@ -1,529 +1,930 @@
-/* ═══════════════════════════════════════════════════════════
-   TATVIYA — XCODEFIX-INSPIRED UI SCRIPT
-   Particle Canvas · 3D Tilt · Magnetic · Reveals · Counters
-   ═══════════════════════════════════════════════════════════ */
+/**
+ * ═══════════════════════════════════════════════════════════
+ * TATVIYA DIGITAL GROWTH AGENCY — APPLICATION CORE
+ * Enterprise Architecture · Hardened Security · WCAG AA Accessible
+ * ═══════════════════════════════════════════════════════════
+ */
 
 'use strict';
 
+(function () {
+    /**
+     * Centralized Application Controller
+     */
+    const TatviyaApp = {
+        // App lifecycle configuration
+        config: {
+            formEndpoint: 'https://formsubmit.co/ajax/contact@tatviya.com',
+            minSubmissionIntervalMs: 30000, // 30 sec between submissions
+            maxSubmissionsPerWindow: 3,     // Max 3 submissions per 10 mins
+            rateLimitWindowMs: 600000,
+            mountTime: Date.now(),
+            exchangeRateUSD: 83.5,          // 1 USD ~ 83.5 INR benchmark
+        },
 
-/* ──────────────────────────────────────────
-   THEME — Fixed light/red theme
-────────────────────────────────────────── */
-
-// Single fixed light theme — no multi-theme in this design
-document.documentElement.setAttribute('data-theme', 'light');
-
-
-/* ──────────────────────────────────────────
-   SCROLL PROGRESS BAR — removed per user request
-────────────────────────────────────────── */
-
-
-/* ──────────────────────────────────────────
-   NAVBAR – SCROLL + ACTIVE LINK
-────────────────────────────────────────── */
-
-const navbar = document.getElementById('navbar');
-
-function updateNavbar() {
-    if (!navbar) return;
-    if (window.scrollY > 60) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-
-    // Active link detection
-    const sections = document.querySelectorAll('section[id]');
-    let current = '';
-    sections.forEach(sec => {
-        if (window.scrollY >= sec.offsetTop - 160) {
-            current = sec.getAttribute('id');
-        }
-    });
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const href = link.getAttribute('href').replace('#', '');
-        link.classList.toggle('active', href === current);
-    });
-}
-
-window.addEventListener('scroll', updateNavbar, { passive: true });
-updateNavbar();
-
-
-/* ──────────────────────────────────────────
-   MOBILE NAVIGATION
-────────────────────────────────────────── */
-
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('navLinks');
-
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('active');
-        hamburger.classList.toggle('open', isOpen);
-        hamburger.setAttribute('aria-expanded', isOpen);
-    });
-}
-
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        if (navLinks) navLinks.classList.remove('active');
-        if (hamburger) hamburger.classList.remove('open');
-    });
-});
-
-
-/* ──────────────────────────────────────────
-   SMOOTH SCROLL
-────────────────────────────────────────── */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-
-/* ──────────────────────────────────────────
-   PARTICLE CANVAS
-────────────────────────────────────────── */
-
-const canvas = document.getElementById('particleCanvas');
-let ctx, particles = [], animId;
-
-function getParticleRGB() {
-    // White-gray particles on dark bg — matches xcodefix.com constellation effect
-    return [195, 197, 207];
-}
-
-function resizeCanvas() {
-    if (!canvas) return;
-    canvas.width  = canvas.offsetWidth  || canvas.parentElement.offsetWidth;
-    canvas.height = canvas.offsetHeight || canvas.parentElement.offsetHeight;
-}
-
-class Particle {
-    constructor(w, h) {
-        this.w = w; this.h = h;
-        this.reset();
-    }
-
-    reset() {
-        this.x      = Math.random() * this.w;
-        this.y      = Math.random() * this.h;
-        this.vx     = (Math.random() - 0.5) * 0.45;
-        this.vy     = (Math.random() - 0.5) * 0.45;
-        this.radius = Math.random() * 2.8 + 1.2;
-        this.alpha  = Math.random() * 0.65 + 0.25;
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > this.w) this.vx *= -1;
-        if (this.y < 0 || this.y > this.h) this.vy *= -1;
-    }
-
-    draw(ctx, rgb) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.alpha})`;
-        ctx.fill();
-    }
-}
-
-function connectParticles(rgb) {
-    const max = 140;
-    for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-            const dx   = particles[i].x - particles[j].x;
-            const dy   = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < max) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                const a = (1 - dist / max) * 0.28;
-                ctx.strokeStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
-                ctx.lineWidth   = 0.8;
-                ctx.stroke();
+        /**
+         * Initialize all subsystems safely
+         */
+        init() {
+            try {
+                this.Security.init();
+                this.Navigation.init();
+                this.Particles.init();
+                this.Calculator.init();
+                this.Counters.init();
+                this.FAQ.init();
+                this.Modals.init();
+                this.CookieConsent.init();
+                this.ContactForm.init();
+                this.ScrollEffects.init();
+            } catch (err) {
+                console.error('[TatviyaApp] Initialization error:', err);
             }
         }
-    }
-}
+    };
 
-function animateParticles() {
-    if (!canvas || !ctx) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const rgb = getParticleRGB();
-    particles.forEach(p => { p.update(); p.draw(ctx, rgb); });
-    connectParticles(rgb);
-    animId = requestAnimationFrame(animateParticles);
-}
+    /* ──────────────────────────────────────────
+       1. SECURITY & DATA INTEGRITY MODULE
+    ────────────────────────────────────────── */
+    TatviyaApp.Security = {
+        init() {
+            // Check submission timestamp
+            TatviyaApp.config.mountTime = Date.now();
+        },
 
-function initParticles() {
-    if (!canvas) return;
-    ctx = canvas.getContext('2d');
-    resizeCanvas();
+        /**
+         * Sanitize untrusted input to prevent DOM XSS
+         * @param {string} str 
+         * @returns {string} Escaped string
+         */
+        escapeHTML(str) {
+            if (typeof str !== 'string') return '';
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#x27;',
+                '/': '&#x2F;'
+            };
+            return str.replace(/[&<>"'/]/g, match => map[match]);
+        },
 
-    // More particles for a dense xcodefix-like network
-    const count = Math.min(130, Math.floor((canvas.width * canvas.height) / 7000));
-    particles = Array.from({ length: count }, () => new Particle(canvas.width, canvas.height));
+        /**
+         * Anti-bot timing check: reject automated sub-2.5 second submissions
+         */
+        isBotTiming() {
+            const elapsed = Date.now() - TatviyaApp.config.mountTime;
+            return elapsed < 2500;
+        },
 
-    if (animId) cancelAnimationFrame(animId);
-    animateParticles();
-}
+        /**
+         * Client-side rate limiting using localStorage
+         */
+        isRateLimited() {
+            try {
+                const now = Date.now();
+                const storageKey = 'tatviya_form_history';
+                const history = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                
+                // Filter out submissions outside the time window
+                const validHistory = history.filter(ts => (now - ts) < TatviyaApp.config.rateLimitWindowMs);
 
-if (canvas) {
-    initParticles();
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-        particles.forEach(p => { p.w = canvas.width; p.h = canvas.height; });
-    }, { passive: true });
-}
+                // Check recent submission within 30 seconds
+                if (validHistory.length > 0 && (now - validHistory[validHistory.length - 1]) < TatviyaApp.config.minSubmissionIntervalMs) {
+                    return { limited: true, reason: 'Please wait at least 30 seconds before submitting another inquiry.' };
+                }
 
+                // Check window limit
+                if (validHistory.length >= TatviyaApp.config.maxSubmissionsPerWindow) {
+                    return { limited: true, reason: 'Submission limit reached. Please contact us directly via WhatsApp or phone.' };
+                }
 
-/* ──────────────────────────────────────────
-   3D TILT ON SERVICE CARDS
-────────────────────────────────────────── */
-
-document.querySelectorAll('.tilt-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect    = card.getBoundingClientRect();
-        const x       = e.clientX - rect.left;
-        const y       = e.clientY - rect.top;
-        const cx      = rect.width  / 2;
-        const cy      = rect.height / 2;
-        const rotX    = ((y - cy) / cy) * -8;
-        const rotY    = ((x - cx) / cx) * 8;
-
-        card.style.transform  = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px)`;
-        card.style.transition = 'transform 0.05s linear, box-shadow 0.3s ease, border-color 0.3s ease';
-
-        const glow = card.querySelector('.card-glow');
-        if (glow) {
-            glow.style.background = `radial-gradient(circle at ${x}px ${y}px, var(--primary-glow), transparent 65%)`;
-        }
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform  = '';
-        card.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease, border-color 0.3s ease';
-    });
-});
-
-
-/* ──────────────────────────────────────────
-   MAGNETIC CTA BUTTONS
-────────────────────────────────────────── */
-
-document.querySelectorAll('.cta-btn, .submit-btn').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-        const rect  = btn.getBoundingClientRect();
-        const x     = e.clientX - rect.left - rect.width  / 2;
-        const y     = e.clientY - rect.top  - rect.height / 2;
-        btn.style.transform  = `translate(${x * 0.18}px, ${y * 0.18}px)`;
-        btn.style.transition = 'transform 0.15s ease';
-    });
-
-    btn.addEventListener('mouseleave', () => {
-        btn.style.transform  = '';
-        btn.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease';
-    });
-});
-
-
-/* ──────────────────────────────────────────
-   SCROLL REVEAL ANIMATIONS
-────────────────────────────────────────── */
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -60px 0px',
-});
-
-function initReveal() {
-    const targets = document.querySelectorAll(
-        '.reveal, .service-card, .testimonial-card, .team-card, .feature-item'
-    );
-    targets.forEach((el, i) => {
-        el.style.transitionDelay = `${(i % 4) * 0.1}s`;
-        revealObserver.observe(el);
-    });
-}
-
-initReveal();
-
-
-/* ──────────────────────────────────────────
-   HERO STAT COUNTER ANIMATION
-────────────────────────────────────────── */
-
-function animateCounter(el, target, suffix, duration = 1800) {
-    const isFloat   = !Number.isInteger(target);
-    const decimals  = isFloat ? 1 : 0;
-    const step      = target / (duration / 16);
-    let current     = 0;
-
-    const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = current.toFixed(decimals) + suffix;
-        if (current >= target) clearInterval(timer);
-    }, 16);
-}
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el     = entry.target;
-            const target = parseFloat(el.dataset.target);
-            const suffix = el.dataset.suffix || '';
-            if (!el.dataset.animated) {
-                el.dataset.animated = 'true';
-                animateCounter(el, target, suffix);
+                return { limited: false };
+            } catch {
+                return { limited: false };
             }
-            counterObserver.unobserve(el);
+        },
+
+        /**
+         * Record a successful submission into rate limiter
+         */
+        recordSubmission() {
+            try {
+                const storageKey = 'tatviya_form_history';
+                const history = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                history.push(Date.now());
+                localStorage.setItem(storageKey, JSON.stringify(history));
+            } catch {
+                // Ignore storage access errors in restricted private contexts
+            }
         }
-    });
-}, { threshold: 0.5 });
+    };
 
-// Observe hero stat numbers
-document.querySelectorAll('.hero-stat-num').forEach(el => {
-    counterObserver.observe(el);
-});
+    /* ──────────────────────────────────────────
+       2. NAVIGATION CONTROLLER (ACCESSIBLE)
+    ────────────────────────────────────────── */
+    TatviyaApp.Navigation = {
+        navbar: null,
+        hamburger: null,
+        navLinks: null,
 
-// Observe stats section numbers
-document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-    counterObserver.observe(el);
-});
+        init() {
+            this.navbar = document.getElementById('navbar');
+            this.hamburger = document.getElementById('hamburger');
+            this.navLinks = document.getElementById('navLinks');
 
+            if (!this.navbar) return;
 
-/* ──────────────────────────────────────────
-   CONTACT FORM HANDLING
-────────────────────────────────────────── */
+            // Scroll listener for elevation styling
+            window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
+            this.handleScroll();
 
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/contact@tatviya.com';
-let isSubmitting    = false;
+            // Mobile menu toggling
+            if (this.hamburger && this.navLinks) {
+                this.hamburger.addEventListener('click', () => this.toggleMobileMenu());
 
-const contactForm = document.getElementById('contactForm');
+                // Close when link clicked
+                this.navLinks.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => this.closeMobileMenu());
+                });
 
-if (contactForm) {
-    const submitBtn      = document.getElementById('submitBtn');
-    const origBtnHTML    = submitBtn ? submitBtn.innerHTML : '';
+                // Keyboard escape to close
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.navLinks.classList.contains('active')) {
+                        this.closeMobileMenu();
+                    }
+                });
 
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        if (isSubmitting) return;
+                // Click outside to close
+                document.addEventListener('click', (e) => {
+                    if (this.navLinks.classList.contains('active')) {
+                        if (!this.navLinks.contains(e.target) && !this.hamburger.contains(e.target)) {
+                            this.closeMobileMenu();
+                        }
+                    }
+                });
+            }
 
-        const name    = this.elements.name.value.trim();
-        const email   = this.elements.email.value.trim();
-        const subject = this.elements.subject.value.trim();
-        const message = this.elements.message.value.trim();
-
-        // Validate
-        if (!name) { showToast('Please enter your name.', 'error'); return; }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            showToast('Please enter a valid email address.', 'error');
-            return;
-        }
-        if (message.length < 10) {
-            showToast('Please write a longer message (at least 10 characters).', 'error');
-            return;
-        }
-
-        isSubmitting = true;
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Sending…</span>';
-        }
-
-        try {
-            const res = await fetch(FORM_ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({
-                    name, email, subject, message,
-                    _subject: `New Inquiry from Tatviya.com: ${subject}`,
-                    _template: 'table',
-                }),
+            // Smooth scroll anchor navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#' || href.startsWith('#privacy') || href.startsWith('#terms') || href.startsWith('#disclaimer')) return;
+                    
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        // Update focus for accessibility
+                        target.setAttribute('tabindex', '-1');
+                        target.focus({ preventScroll: true });
+                    }
+                });
             });
 
-            if (!res.ok) throw new Error('Server error');
-            showToast('Message sent! We\'ll get back to you soon. 🎉', 'success');
-            this.reset();
-        } catch {
-            showToast('Could not send message right now. Please try again later.', 'error');
-        } finally {
-            isSubmitting = false;
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = origBtnHTML;
+            // Active section observer
+            this.initActiveSectionObserver();
+        },
+
+        handleScroll() {
+            if (window.scrollY > 40) {
+                this.navbar.classList.add('scrolled');
+            } else {
+                this.navbar.classList.remove('scrolled');
+            }
+        },
+
+        toggleMobileMenu() {
+            const isOpen = this.navLinks.classList.toggle('active');
+            this.hamburger.classList.toggle('open', isOpen);
+            this.hamburger.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                // Focus first item
+                const firstLink = this.navLinks.querySelector('.nav-link');
+                if (firstLink) firstLink.focus();
+            }
+        },
+
+        closeMobileMenu() {
+            if (this.navLinks && this.hamburger) {
+                this.navLinks.classList.remove('active');
+                this.hamburger.classList.remove('open');
+                this.hamburger.setAttribute('aria-expanded', 'false');
+                this.hamburger.focus();
+            }
+        },
+
+        initActiveSectionObserver() {
+            const sections = document.querySelectorAll('section[id]');
+            const links = document.querySelectorAll('.nav-link');
+            if (!sections.length || !links.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        links.forEach(link => {
+                            const href = link.getAttribute('href');
+                            link.classList.toggle('active', href === `#${id}`);
+                        });
+                    }
+                });
+            }, {
+                rootMargin: '-30% 0px -60% 0px'
+            });
+
+            sections.forEach(sec => observer.observe(sec));
+        }
+    };
+
+    /* ──────────────────────────────────────────
+       3. HIGH-EFFICIENCY PARTICLE CANVAS
+    ────────────────────────────────────────── */
+    TatviyaApp.Particles = {
+        canvas: null,
+        ctx: null,
+        particles: [],
+        animId: null,
+        isVisible: true,
+
+        init() {
+            // Honor prefers-reduced-motion
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            this.canvas = document.getElementById('particleCanvas');
+            if (!this.canvas) return;
+
+            this.ctx = this.canvas.getContext('2d');
+            this.resize();
+
+            // Observe visibility: pause particle rendering when hero is scrolled offscreen
+            const heroSection = document.getElementById('home');
+            if (heroSection) {
+                const visObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        this.isVisible = entry.isIntersecting;
+                        if (this.isVisible) {
+                            if (!this.animId) this.animate();
+                        } else {
+                            if (this.animId) {
+                                cancelAnimationFrame(this.animId);
+                                this.animId = null;
+                            }
+                        }
+                    });
+                }, { threshold: 0.05 });
+                visObserver.observe(heroSection);
+            }
+
+            window.addEventListener('resize', () => {
+                this.resize();
+            }, { passive: true });
+
+            this.createParticles();
+            this.animate();
+        },
+
+        resize() {
+            if (!this.canvas) return;
+            this.canvas.width = this.canvas.offsetWidth || window.innerWidth;
+            this.canvas.height = this.canvas.offsetHeight || 600;
+        },
+
+        createParticles() {
+            const count = Math.min(65, Math.floor((this.canvas.width * this.canvas.height) / 12000));
+            this.particles = [];
+            for (let i = 0; i < count; i++) {
+                this.particles.push({
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    radius: Math.random() * 2 + 1,
+                    alpha: Math.random() * 0.5 + 0.2
+                });
+            }
+        },
+
+        animate() {
+            if (!this.isVisible || !this.ctx) return;
+
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+            const rgb = [200, 210, 230];
+            const maxDist = 120;
+
+            // Update & Draw particles
+            for (let i = 0; i < this.particles.length; i++) {
+                const p = this.particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+
+                this.ctx.beginPath();
+                this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                this.ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${p.alpha})`;
+                this.ctx.fill();
+
+                // Connect nearby nodes
+                for (let j = i + 1; j < this.particles.length; j++) {
+                    const p2 = this.particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(p.x, p.y);
+                        this.ctx.lineTo(p2.x, p2.y);
+                        const alpha = (1 - dist / maxDist) * 0.2;
+                        this.ctx.strokeStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${alpha})`;
+                        this.ctx.lineWidth = 0.7;
+                        this.ctx.stroke();
+                    }
+                }
+            }
+
+            this.animId = requestAnimationFrame(() => this.animate());
+        }
+    };
+
+    /* ──────────────────────────────────────────
+       4. CHANNEL VALUATION CALCULATOR ENGINE
+    ────────────────────────────────────────── */
+    TatviyaApp.Calculator = {
+        nicheRates: {
+            finance:       { rpm: 480, multiple: 34, score: 'Grade A+ (Elite RPM)',    liquidity: 'Very High (5–10 Days)' },
+            tech:          { rpm: 360, multiple: 30, score: 'Grade A (Strong RPM)',     liquidity: 'High (7–14 Days)' },
+            education:     { rpm: 250, multiple: 26, score: 'Grade B+ (Solid Retention)',liquidity: 'High (10–18 Days)' },
+            lifestyle:     { rpm: 180, multiple: 22, score: 'Grade B (Brand Sponsored)',liquidity: 'Medium (14–25 Days)' },
+            gaming:        { rpm: 130, multiple: 20, score: 'Grade B- (High Velocity)', liquidity: 'Medium (14–25 Days)' },
+            entertainment: { rpm: 95,  multiple: 18, score: 'Grade C+ (Mass Reach)',    liquidity: 'Moderate (20–35 Days)' }
+        },
+
+        init() {
+            const nicheSelect = document.getElementById('calcNiche');
+            const subsSlider = document.getElementById('calcSubs');
+            const viewsSlider = document.getElementById('calcViews');
+            const monetizedRadios = document.querySelectorAll('input[name="calcMonetized"]');
+            const applyBtn = document.getElementById('calcApplyBtn');
+
+            if (!nicheSelect || !subsSlider || !viewsSlider) return;
+
+            const updateCalc = () => this.calculate();
+
+            nicheSelect.addEventListener('change', updateCalc);
+            subsSlider.addEventListener('input', () => {
+                const val = parseInt(subsSlider.value, 10);
+                document.getElementById('calcSubsVal').textContent = this.formatNumber(val) + ' Subs';
+                updateCalc();
+            });
+
+            viewsSlider.addEventListener('input', () => {
+                const val = parseInt(viewsSlider.value, 10);
+                document.getElementById('calcViewsVal').textContent = this.formatNumber(val) + ' Views';
+                updateCalc();
+            });
+
+            monetizedRadios.forEach(radio => radio.addEventListener('change', updateCalc));
+
+            if (applyBtn) {
+                applyBtn.addEventListener('click', () => this.applyToContactForm());
+            }
+
+            // Initial calculation
+            updateCalc();
+        },
+
+        formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
+            return num.toString();
+        },
+
+        calculate() {
+            const niche = document.getElementById('calcNiche').value;
+            const subs = parseInt(document.getElementById('calcSubs').value, 10);
+            const views = parseInt(document.getElementById('calcViews').value, 10);
+            const isMonetized = (document.querySelector('input[name="calcMonetized"]:checked')?.value || 'yes') === 'yes';
+
+            const config = this.nicheRates[niche] || this.nicheRates.tech;
+
+            // Monthly AdSense estimate
+            let monthlyEarnings = (views / 1000) * config.rpm;
+            if (!isMonetized) {
+                monthlyEarnings = monthlyEarnings * 0.15; // Unmonetized potential
+            }
+
+            // Asset valuation range based on months multiple + subscriber equity
+            let effectiveMultiple = config.multiple;
+            if (!isMonetized) effectiveMultiple = effectiveMultiple * 0.45; // Substantial discount for unmonetized channels
+
+            const baseAssetValue = monthlyEarnings * effectiveMultiple + (subs * 1.2);
+            const minAssetINR = Math.round(baseAssetValue * 0.85);
+            const maxAssetINR = Math.round(baseAssetValue * 1.15);
+
+            // Convert to INR Lakhs & USD
+            const minLakhs = (minAssetINR / 100000).toFixed(1);
+            const maxLakhs = (maxAssetINR / 100000).toFixed(1);
+
+            const minUSD = Math.round(minAssetINR / TatviyaApp.config.exchangeRateUSD);
+            const maxUSD = Math.round(maxAssetINR / TatviyaApp.config.exchangeRateUSD);
+
+            // Update DOM Elements
+            const resAssetINR = document.getElementById('resAssetINR');
+            const resAssetUSD = document.getElementById('resAssetUSD');
+            const resMonthly = document.getElementById('resMonthlyEarnings');
+            const resQuality = document.getElementById('resQualityScore');
+            const resLiquidity = document.getElementById('resLiquidity');
+            const resRec = document.getElementById('calcRecText');
+
+            if (resAssetINR) resAssetINR.textContent = `₹${minLakhs}L – ₹${maxLakhs}L`;
+            if (resAssetUSD) resAssetUSD.textContent = `($${minUSD.toLocaleString()} – $${maxUSD.toLocaleString()} USD)`;
+            
+            if (resMonthly) {
+                const monthlyFormatted = Math.round(monthlyEarnings).toLocaleString('en-IN');
+                resMonthly.textContent = isMonetized ? `₹${monthlyFormatted} / mo` : `₹${monthlyFormatted} (Potential)`;
+            }
+
+            if (resQuality) resQuality.textContent = config.score;
+            if (resLiquidity) resLiquidity.textContent = config.liquidity;
+
+            if (resRec) {
+                if (isMonetized) {
+                    resRec.textContent = `Channel maintains prime algorithmic standing with established YPP status. Prime candidate for immediate high-multiple escrow trade or monetization optimization.`;
+                } else {
+                    resRec.textContent = `Pre-monetized channel requires watch-hour acceleration to unlock YPP eligibility. Accelerating watch hours will increase asset value by ~120%.`;
+                }
+            }
+        },
+
+        applyToContactForm() {
+            const nicheSelect = document.getElementById('calcNiche');
+            const nicheName = nicheSelect.options[nicheSelect.selectedIndex].text.split('(')[0].trim();
+            const subs = document.getElementById('calcSubsVal').textContent;
+            const views = document.getElementById('calcViewsVal').textContent;
+            const valuation = document.getElementById('resAssetINR').textContent;
+
+            const serviceSelect = document.getElementById('contactService');
+            const subjectInput = document.getElementById('contactSubject');
+            const messageInput = document.getElementById('contactMessage');
+
+            if (serviceSelect) serviceSelect.value = 'Channel Valuation Audit';
+            if (subjectInput) subjectInput.value = `Formal Audit Request: ${nicheName} Channel (${subs})`;
+            if (messageInput) {
+                messageInput.value = `Hello Tatviya Team,\n\nI calculated my channel market valuation using your interactive tool:\n- Category: ${nicheName}\n- Subscribers: ${subs}\n- Monthly Views: ${views}\n- Estimated Valuation: ${valuation}\n\nPlease contact me to proceed with a formal due diligence verification and transaction review.`;
+            }
+
+            // Scroll down to contact section
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                const nameInput = document.getElementById('contactName');
+                if (nameInput) setTimeout(() => nameInput.focus(), 600);
             }
         }
-    });
-}
+    };
 
+    /* ──────────────────────────────────────────
+       5. COUNTER ANIMATION WITH INTERSECTION OBSERVER
+    ────────────────────────────────────────── */
+    TatviyaApp.Counters = {
+        init() {
+            const targets = document.querySelectorAll('[data-target]');
+            if (!targets.length) return;
 
-/* ──────────────────────────────────────────
-   TOAST NOTIFICATION
-────────────────────────────────────────── */
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        entry.target.dataset.animated = 'true';
+                        this.animate(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.35 });
 
-function showToast(message, type = 'info') {
-    // Remove existing toasts
-    document.querySelectorAll('.tatviya-toast').forEach(t => t.remove());
+            targets.forEach(t => observer.observe(t));
+        },
 
-    const toast = document.createElement('div');
-    toast.className = 'tatviya-toast';
+        animate(el) {
+            const target = parseFloat(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const isFloat = !Number.isInteger(target);
+            const decimals = isFloat ? 1 : 0;
+            const duration = 1600;
+            const startTime = performance.now();
 
-    const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-    const bg   = type === 'success'
-        ? 'linear-gradient(135deg, #10B981, #34D399)'
-        : 'linear-gradient(135deg, #EF4444, #F87171)';
+            const step = (now) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+                // Ease out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = eased * target;
 
-    toast.innerHTML = `
-        <div class="toast-inner">
-            <i class="fas ${icon}"></i>
-            <span>${message}</span>
-        </div>
-    `;
+                el.textContent = current.toFixed(decimals) + suffix;
 
-    Object.assign(toast.style, {
-        position:      'fixed',
-        top:           '90px',
-        right:         '20px',
-        background:    bg,
-        color:         'white',
-        padding:       '14px 20px',
-        borderRadius:  '14px',
-        fontWeight:    '600',
-        fontSize:      '0.9rem',
-        zIndex:        '9999',
-        maxWidth:      '360px',
-        boxShadow:     '0 8px 32px rgba(0,0,0,0.25)',
-        transform:     'translateX(420px)',
-        transition:    'transform 0.4s cubic-bezier(0.4,0,0.2,1)',
-        fontFamily:    '\'Inter\', sans-serif',
-    });
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target.toFixed(decimals) + suffix;
+                }
+            };
 
-    toast.querySelector('.toast-inner').style.cssText =
-        'display:flex;align-items:center;gap:10px;';
+            requestAnimationFrame(step);
+        }
+    };
 
-    document.body.appendChild(toast);
+    /* ──────────────────────────────────────────
+       6. ACCESSIBLE FAQ ACCORDION
+    ────────────────────────────────────────── */
+    TatviyaApp.FAQ = {
+        init() {
+            const questions = document.querySelectorAll('.faq-question');
+            questions.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    const answerId = btn.getAttribute('aria-controls');
+                    const answer = document.getElementById(answerId);
+                    const parent = btn.closest('.faq-item');
 
-    // Slide in
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            toast.style.transform = 'translateX(0)';
-        });
-    });
+                    // Close others in accordion
+                    questions.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.setAttribute('aria-expanded', 'false');
+                            const otherAns = document.getElementById(otherBtn.getAttribute('aria-controls'));
+                            if (otherAns) otherAns.hidden = true;
+                            otherBtn.closest('.faq-item')?.classList.remove('active');
+                        }
+                    });
 
-    // Slide out after 4s
-    setTimeout(() => {
-        toast.style.transform = 'translateX(420px)';
-        setTimeout(() => toast.remove(), 420);
-    }, 4200);
-}
+                    // Toggle current
+                    btn.setAttribute('aria-expanded', !expanded);
+                    if (answer) answer.hidden = expanded;
+                    if (parent) parent.classList.toggle('active', !expanded);
+                });
+            });
+        }
+    };
 
+    /* ──────────────────────────────────────────
+       7. ACCESSIBLE LEGAL MODALS
+    ────────────────────────────────────────── */
+    TatviyaApp.Modals = {
+        activeModal: null,
+        lastFocusedElement: null,
 
-/* ──────────────────────────────────────────
-   TEAM CARD PHOTO RING PAUSE ON HOVER
-────────────────────────────────────────── */
+        init() {
+            // Modal trigger buttons
+            document.querySelectorAll('.modal-trigger').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modalType = trigger.dataset.modal;
+                    const modal = document.getElementById(`${modalType}Modal`);
+                    if (modal) this.open(modal, trigger);
+                });
+            });
 
-document.querySelectorAll('.team-card').forEach(card => {
-    const ring = card.querySelector('.photo-ring');
-    if (!ring) return;
+            // Close buttons
+            document.querySelectorAll('[data-close-modal]').forEach(btn => {
+                btn.addEventListener('click', () => this.close());
+            });
 
-    card.addEventListener('mouseenter', () => {
-        ring.style.animationPlayState = 'paused';
-        ring.style.opacity = '0.8';
-        ring.style.borderStyle = 'solid';
-    });
+            // Backdrop click close
+            document.querySelectorAll('.legal-modal-backdrop').forEach(backdrop => {
+                backdrop.addEventListener('click', (e) => {
+                    if (e.target === backdrop) this.close();
+                });
+            });
 
-    card.addEventListener('mouseleave', () => {
-        ring.style.animationPlayState = 'running';
-        ring.style.opacity = '0.35';
-        ring.style.borderStyle = 'dashed';
-    });
-});
+            // Keyboard Escape close & Focus Trap
+            document.addEventListener('keydown', (e) => {
+                if (!this.activeModal) return;
 
+                if (e.key === 'Escape') {
+                    this.close();
+                    return;
+                }
 
-/* ──────────────────────────────────────────
-   HERO BADGE ITEMS — STAGGERED FADE IN
-────────────────────────────────────────── */
+                if (e.key === 'Tab') {
+                    this.trapFocus(e);
+                }
+            });
+        },
 
-window.addEventListener('load', () => {
-    const heroRevealItems = document.querySelectorAll('[data-reveal]');
-    heroRevealItems.forEach((el, i) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.7s ease ${i * 0.18}s, transform 0.7s ease ${i * 0.18}s`;
-        setTimeout(() => {
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-        }, 400 + i * 180);
-    });
-});
+        open(modal, trigger) {
+            this.activeModal = modal;
+            this.lastFocusedElement = trigger || document.activeElement;
 
+            modal.hidden = false;
+            // Next frame for transition
+            requestAnimationFrame(() => {
+                modal.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
 
-/* ──────────────────────────────────────────
-   FOOTER LINK HOVER RIPPLE
-────────────────────────────────────────── */
+                const closeBtn = modal.querySelector('.modal-close-btn');
+                if (closeBtn) closeBtn.focus();
+            });
+        },
 
-document.querySelectorAll('.footer-social a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        ripple.style.cssText = `
-            position:absolute; width:0; height:0;
-            background:rgba(255,255,255,0.3); border-radius:50%;
-            top:50%; left:50%; transform:translate(-50%,-50%);
-            animation: rippleOut 0.5s ease forwards;
-            pointer-events:none;
-        `;
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-    });
-});
+        close() {
+            if (!this.activeModal) return;
+            const modal = this.activeModal;
+            modal.classList.remove('is-open');
 
-// Ripple keyframe (injected once)
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `
-    @keyframes rippleOut {
-        to { width: 80px; height: 80px; opacity: 0; }
+            setTimeout(() => {
+                modal.hidden = true;
+                document.body.style.overflow = '';
+                this.activeModal = null;
+                if (this.lastFocusedElement) {
+                    this.lastFocusedElement.focus();
+                }
+            }, 200);
+        },
+
+        trapFocus(e) {
+            if (!this.activeModal) return;
+            const focusables = this.activeModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (!focusables.length) return;
+
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    };
+
+    /* ──────────────────────────────────────────
+       8. COOKIE & PRIVACY CONSENT BANNER (DPDP)
+    ────────────────────────────────────────── */
+    TatviyaApp.CookieConsent = {
+        init() {
+            const consentBanner = document.getElementById('cookieBanner');
+            if (!consentBanner) return;
+
+            const consentStored = localStorage.getItem('tatviya_dpdp_consent');
+            if (!consentStored) {
+                setTimeout(() => {
+                    consentBanner.hidden = false;
+                }, 1200);
+            }
+
+            const acceptAllBtn = document.getElementById('acceptAllCookies');
+            const acceptEssentialBtn = document.getElementById('acceptNecessaryCookies');
+
+            if (acceptAllBtn) {
+                acceptAllBtn.addEventListener('click', () => {
+                    localStorage.setItem('tatviya_dpdp_consent', 'all');
+                    consentBanner.hidden = true;
+                });
+            }
+
+            if (acceptEssentialBtn) {
+                acceptEssentialBtn.addEventListener('click', () => {
+                    localStorage.setItem('tatviya_dpdp_consent', 'essential');
+                    consentBanner.hidden = true;
+                });
+            }
+        }
+    };
+
+    /* ──────────────────────────────────────────
+       9. HARDENED CONTACT FORM CONTROLLER
+    ────────────────────────────────────────── */
+    TatviyaApp.ContactForm = {
+        form: null,
+        isSubmitting: false,
+
+        init() {
+            this.form = document.getElementById('contactForm');
+            if (!this.form) return;
+
+            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+
+            // Real-time input validation
+            this.form.querySelectorAll('input, textarea, select').forEach(input => {
+                input.addEventListener('blur', () => this.validateField(input));
+                input.addEventListener('input', () => {
+                    const group = input.closest('.form-group');
+                    if (group && group.classList.contains('has-error')) {
+                        this.validateField(input);
+                    }
+                });
+            });
+        },
+
+        validateField(field) {
+            const group = field.closest('.form-group');
+            if (!group) return true;
+            const errorSpan = group.querySelector('.form-error-msg');
+            let isValid = true;
+            let errorMsg = '';
+
+            const val = field.value.trim();
+
+            if (field.required && !val) {
+                isValid = false;
+                errorMsg = 'This field is required.';
+            } else if (field.type === 'email' && val) {
+                // RFC 5322 regex check
+                const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/;
+                if (!emailRegex.test(val)) {
+                    isValid = false;
+                    errorMsg = 'Please enter a valid email address.';
+                }
+            } else if (field.id === 'contactMessage' && val.length < 15) {
+                isValid = false;
+                errorMsg = 'Please provide at least 15 characters describing your inquiry.';
+            }
+
+            if (!isValid) {
+                group.classList.add('has-error');
+                field.setAttribute('aria-invalid', 'true');
+                if (errorSpan) errorSpan.textContent = errorMsg;
+            } else {
+                group.classList.remove('has-error');
+                field.setAttribute('aria-invalid', 'false');
+                if (errorSpan) errorSpan.textContent = '';
+            }
+
+            return isValid;
+        },
+
+        async handleSubmit(e) {
+            e.preventDefault();
+            if (this.isSubmitting) return;
+
+            // 1. Honeypot Bot Filter Check
+            const honeypot = document.getElementById('botFilterField');
+            if (honeypot && honeypot.value.trim() !== '') {
+                console.warn('[Security] Automated submission intercepted.');
+                this.showToast('Thank you for reaching out. We will respond shortly.', 'success');
+                this.form.reset();
+                return;
+            }
+
+            // 2. Anti-bot timing test
+            if (TatviyaApp.Security.isBotTiming()) {
+                console.warn('[Security] Submission speed anomaly detected.');
+                this.showToast('Submission rejected due to high speed anomaly.', 'error');
+                return;
+            }
+
+            // 3. Client Rate Limiter Test
+            const rateCheck = TatviyaApp.Security.isRateLimited();
+            if (rateCheck.limited) {
+                this.showToast(rateCheck.reason, 'error');
+                return;
+            }
+
+            // 4. Validate all fields
+            let allValid = true;
+            this.form.querySelectorAll('input[required], textarea[required], select[required]').forEach(field => {
+                if (!this.validateField(field)) {
+                    allValid = false;
+                }
+            });
+
+            const consentBox = document.getElementById('contactConsent');
+            if (consentBox && !consentBox.checked) {
+                this.showToast('Please agree to the Privacy Policy to proceed.', 'error');
+                allValid = false;
+            }
+
+            if (!allValid) {
+                this.showToast('Please correct the highlighted fields before submitting.', 'error');
+                return;
+            }
+
+            // Prepare Payload
+            const name = TatviyaApp.Security.escapeHTML(this.form.name.value.trim());
+            const email = this.form.email.value.trim();
+            const phone = TatviyaApp.Security.escapeHTML(this.form.phone.value.trim());
+            const service = TatviyaApp.Security.escapeHTML(this.form.service.value);
+            const subject = TatviyaApp.Security.escapeHTML(this.form.subject.value.trim());
+            const message = TatviyaApp.Security.escapeHTML(this.form.message.value.trim());
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalHTML = submitBtn ? submitBtn.innerHTML : '';
+
+            this.isSubmitting = true;
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span>Securing &amp; Sending…</span>';
+            }
+
+            try {
+                const response = await fetch(TatviyaApp.config.formEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone: phone || 'Not provided',
+                        service,
+                        subject,
+                        message,
+                        _subject: `[Tatviya Inquiry] ${service}: ${subject}`,
+                        _template: 'table'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server returned status ${response.status}`);
+                }
+
+                TatviyaApp.Security.recordSubmission();
+                this.showToast('Inquiry securely received! Our team will contact you within 24 hours. 🎉', 'success');
+                this.form.reset();
+            } catch (err) {
+                console.error('[TatviyaApp] Form submit error:', err);
+                this.showToast('Could not submit inquiry right now. Please message us directly on WhatsApp.', 'error');
+            } finally {
+                this.isSubmitting = false;
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalHTML;
+                }
+            }
+        },
+
+        /**
+         * Safe DOM-constructed Toast Notification (Zero DOM XSS risk)
+         */
+        showToast(messageText, type = 'info') {
+            document.querySelectorAll('.tatviya-toast').forEach(t => t.remove());
+
+            const toast = document.createElement('div');
+            toast.className = `tatviya-toast toast-${type}`;
+            toast.setAttribute('role', 'alert');
+
+            const icon = document.createElement('i');
+            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            icon.setAttribute('aria-hidden', 'true');
+
+            const span = document.createElement('span');
+            span.textContent = messageText; // Safe DOM text node
+
+            toast.appendChild(icon);
+            toast.appendChild(span);
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.add('is-visible');
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('is-visible');
+                setTimeout(() => toast.remove(), 400);
+            }, 4500);
+        }
+    };
+
+    /* ──────────────────────────────────────────
+       10. SCROLL REVEAL OBSERVER
+    ────────────────────────────────────────── */
+    TatviyaApp.ScrollEffects = {
+        init() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            const revealElements = document.querySelectorAll('[data-reveal]');
+            if (!revealElements.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+    };
+
+    // Initialize application when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => TatviyaApp.init());
+    } else {
+        TatviyaApp.init();
     }
-`;
-document.head.appendChild(rippleStyle);
 
-
-/* ──────────────────────────────────────────
-   ABOUT SECTION — VIS CARDS FLOAT
-────────────────────────────────────────── */
-
-const visCards = document.querySelectorAll('.vis-stat-card');
-visCards.forEach((card, i) => {
-    card.style.animation = `floatIcon ${3 + i * 0.4}s ease-in-out infinite`;
-    card.style.animationDelay = `${i * 0.3}s`;
-});
-
-
-/* ──────────────────────────────────────────
-   INIT LOG
-────────────────────────────────────────── */
-
-console.log('%cTatviya ✦ xcodefix-Inspired UI Loaded', 'color:#e2211c;font-size:14px;font-weight:bold;');
+})();

@@ -1,0 +1,17 @@
+{
+  "name": "Tatviya - Digital Growth & Social Media Agency",
+  "short_name": "Tatviya",
+  "description": "India's Premier Digital Growth & Social Media Agency. YouTube Monetization, Channel Trading, Digital Marketing & Passive Income Education.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a2540",
+  "icons": [
+    {
+      "src": "/static/logo.webp",
+      "sizes": "192x192 512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}
